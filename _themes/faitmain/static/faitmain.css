@@ -33,7 +33,7 @@ div.related {
   text-align: left;
   font-size: 80%;
   position: fixed;
-  top: 2%; 
+  top: 2%;
   left: 2%;
 }
 
@@ -43,8 +43,8 @@ div.related a {
 }
 
 div.related ul {
- list-style: none; 
- padding: 0;
+ list-style: none;
+ padding-left: 4px;
  margin: 0;
 }
 
@@ -58,11 +58,11 @@ span.author {
  font-size : 150%;
 }
 
-div.section {
+.columns {
   -moz-column-count:2; /* Firefox */
   -webkit-column-count:2; /* Safari and Chrome */
   column-count:2;
-  
+
   -moz-column-gap: 50px;
   column-gap: 50px;
   -webkit-column-gap: 50px;
