@@ -1,3 +1,5 @@
+## -*- coding: utf-8 -*-
+
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -28,7 +30,6 @@
   <div class="subnav">
     <ul class="nav nav-pills">
       <li class="active"><a href="#janvier">Sommaire Janvier</a></li>
-      <li class=""><a href="#precedents">Precedemment...</a></li>
       <li class=""><a href="#goodies">En attendant le mois prochain</a></li>
       <li class=""><a href="#footer">A propos</a></li>
     </ul>
