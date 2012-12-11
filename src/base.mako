@@ -11,9 +11,9 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <link href="/media/"bootstrap.css" rel="stylesheet">
-    <link href="/media/"bootstrap-responsive.css" rel="stylesheet">
-    <link href="/media/"bootswatch.css" rel="stylesheet"> 
+    <link href="/media/bootstrap.css" rel="stylesheet">
+    <link href="/media/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/media/bootswatch.css" rel="stylesheet"> 
 </head>
 
   <body class="preview" data-spy="scroll" data-target=".subnav" data-offset="80">
@@ -64,8 +64,8 @@ ${self.body()}
     </div><!-- /container -->
 
 
-    <script src="index_files/jquery.js"></script>
-    <script src="index_files/bootstrap.js"></script>
-    <script src="index_files/application.js"></script>
-    <script src="index_files/bootswatch.js"></script>
+    <script src="/media/jquery.js"></script>
+    <script src="/media/bootstrap.js"></script>
+    <script src="/media/application.js"></script>
+    <script src="/media/bootswatch.js"></script>
 </body></html>
