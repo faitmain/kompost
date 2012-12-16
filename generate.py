@@ -46,7 +46,7 @@ def _tree(node):
         # ??
         pass
     elif klass == 'section':
-        text.append('<h2>%s</h2>' % node.children[0])
+        text.append('<h2>%s</h2>' % node.children[0][0].astext())
         for child in node.children[1:]:
             text.append(_tree(child))
     elif klass == 'bullet_list':
