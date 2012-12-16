@@ -860,7 +860,7 @@ blockquote{border-left-color:#1cafbd;}blockquote.pull-right{border-right-color:#
 blockquote small{color:rgba(255, 255, 255, 0.6);}
 .muted{color:rgba(255, 255, 255, 0.5);}
 body{background-color:#f2f2f2;background-image:-webkit-gradient(radial, center center, 0, center center, 460, from(#f2f2f2), to(#a5f3ff));background-image:-webkit-radial-gradient(circle, #f2f2f2, #a5f3ff);background-image:-moz-radial-gradient(circle, #f2f2f2, #a5f3ff);background-image:-o-radial-gradient(circle, #f2f2f2, #a5f3ff);background-repeat:no-repeat;}
-hr{border-bottom:1px solid rgba(255, 255, 255, 0.3);}
+hr{border-bottom:1px solid rgba(255, 255, 255, 0.3);background-color: rgb(60, 185, 198); height: 5px}
 .page-header{margin:30px 0 15px;border-bottom:0px solid transparent;}
 .navbar .navbar-inner{-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;}
 .navbar .brand{padding:15px 20px 14px;font-family:'Lobster',cursive;font-size:24px;font-weight:normal;}
