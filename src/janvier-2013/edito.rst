@@ -2,7 +2,7 @@ Edito Janvier 2013
 ==================
 
 Vous affichez sur votre écran le tout premier numéro de *Fait Main*,
-un magazine en ligne qui couvre plusieurs sujets qui nous tiennent à
+un magazine en ligne qui couvre plusieurs sujets qui me tiennent à
 coeur, à savoir:
 
 - l'informatique,
@@ -14,7 +14,7 @@ coeur, à savoir:
 
 Certains de ces sujets peuvent paraitrent très éloignés les uns des autres,
 comme l'écologie de l'éléctronique -- mais en y réfléchissant de plus pret,
-la plupart des projets qui nous intéressent le plus sont souvent
+la plupart des projets qui m'intéressent le plus sont souvent
 à la croisée de deux (voir trois) de ces domaines.
 
 Un projet à base d'`Arduino <http://arduino.cc/>`_ pour controler un fumoir
@@ -40,15 +40,15 @@ Cet engouement, je pense, tiens en trois raisons simples:
   un Arduino ou un Raspberry Pi, ou en commandant l'usinage de 10 pieces
   moulées sur un service en ligne.
 
-Le magazine finalement qui se rapproche le plus de ce que nous souhaitons
+Le magazine finalement qui se rapproche le plus de ce que je souhaite
 faire avec *Fait Main* est le magazine américain `Make <http://makezine.com>`_.
 
-*Fait Main* sera mensuel, et chaque mois nous présenterons une série
+*Fait Main* sera mensuel, et chaque mois je présenterais une série
 d'articles qui pourront etre lus sur votre mobile, tablette ou ordinateur,
 dans une mise en page très épurée et sans chi-chi.
 
 Chaque article essayera de toucher au moins deux des domaines cités,
-et nous allons chercher sans cesse des auteurs, bloggeurs, hackers qui
+et je vais chercher sans cesse des auteurs, bloggeurs, hackers qui
 auront envie de participer à un numéro.
 
 *Fait Main* est entièrement gratuit et son contenu XXXLICENCE est concu
@@ -92,8 +92,6 @@ ou travailler du bois.
 Equipe
 ::::::
 
-Le projet *FaitMain* est monté par `Tarek Ziadé <http://ziade.org>`_ pour l'instant,
-qui emploiera quand meme le *nous* en parlant de l'équipe, pour essayer d'attirer
-plus de monde  :)
-
+Le projet *FaitMain* est monté par moi-meme: `Tarek Ziadé <http://ziade.org>`_ pour l'instant,
+mais j'espère attirer plus de monde assez vite.
 
