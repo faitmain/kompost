@@ -14,6 +14,57 @@ media = os.path.abspath(os.path.join(target, 'media'))
 _GENERIC = os.path.join(src, 'generic.mako')
 
 
+def _tree(node):
+    """Renders a node in HTML.
+    """
+    text = []
+    klass = node.__class__.__name__
+    if klass == 'paragraph':
+        text.append('<p>')
+        for child in node.children:
+            text.append(_tree(child))
+        text.append('</p>')
+
+    elif klass == 'Text':
+        text.append(node.astext())
+    elif klass == 'strong':
+        text.append('<strong>')
+        for child in node.children:
+            text.append(_tree(child))
+        text.append('</strong>')
+    elif klass == 'reference':
+        if node.hasattr('refid'):
+            text.append('<a href="#%s">' % node['refid'])
+        elif node.hasattr('refuri'):
+            text.append('<a href="%s">' % node['refuri'])
+        else:
+            text.append('<a>')
+        for child in node.children:
+            text.append(_tree(child))
+        text.append('</a>')
+    elif klass == 'target':
+        # ??
+        pass
+    elif klass == 'section':
+        text.append('<h2>%s</h2>' % node.children[0])
+        for child in node.children[1:]:
+            text.append(_tree(child))
+    elif klass == 'bullet_list':
+        text.append('<ul>')
+        for child in node.children:
+            text.append(_tree(child))
+        text.append('</ul>')
+    elif klass == 'list_item':
+        text.append('<li>')
+        for child in node.children:
+            text.append(_tree(child))
+        text.append('</li>')
+    else:
+        raise NotImplementedError(klass)
+
+    return ' '.join(text)
+
+
 def generate():
     if not os.path.exists(target):
         os.mkdir(target)
@@ -50,7 +101,7 @@ def generate():
 
                 title = doctree.children[0].astext()
 
-                paragraphs = ['<p>%s</p>' % text.astext()
+                paragraphs = ['<p>%s</p>' % _tree(text)
                               for text in doctree.children[1:]]
 
                 mytemplate = Template(filename=_GENERIC, lookup=lookup)
