@@ -24,14 +24,27 @@ def _tree(node):
         for child in node.children:
             text.append(_tree(child))
         text.append('</p>')
-
     elif klass == 'Text':
         text.append(node.astext())
+    elif klass == 'note':
+        text.append('<div class="well">')
+        for child in node.children:
+            text.append(_tree(child))
+        text.append('</div>')
     elif klass == 'strong':
         text.append('<strong>')
         for child in node.children:
             text.append(_tree(child))
         text.append('</strong>')
+    elif klass == 'image':
+        if node.hasattr('uri'):
+            text.append('<img src="%s">' % node['uri'])
+        else:
+            text.append('<img>')
+        for child in node.children:
+            text.append(_tree(child))
+        text.append('</img>')
+
     elif klass == 'reference':
         if node.hasattr('refid'):
             text.append('<a href="#%s">' % node['refid'])
