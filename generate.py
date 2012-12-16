@@ -31,6 +31,11 @@ def _tree(node):
         for child in node.children:
             text.append(_tree(child))
         text.append('</div>')
+    elif klass == 'emphasis':
+        text.append('<em>')
+        for child in node.children:
+            text.append(_tree(child))
+        text.append('</em>')
     elif klass == 'strong':
         text.append('<strong>')
         for child in node.children:
@@ -73,7 +78,7 @@ def _tree(node):
             text.append(_tree(child))
         text.append('</li>')
     else:
-        raise NotImplementedError(klass)
+        raise NotImplementedError(node)
 
     return ' '.join(text)
 
