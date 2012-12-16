@@ -877,7 +877,7 @@ div.subnav .nav>li:first-child>a,div.subnav .nav>li:first-child>a:hover{-webkit-
 div.subnav .nav>.active>a{background-color:transparent;border-color:transparent;color:rgba(255, 255, 255, 0.9);-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;}
 div.subnav .nav>.active>a:hover,div.subnav .nav>li>a:hover,div.subnav .nav>li.active>a:hover{border-right-color:transparent;background-color:rgba(255, 255, 255, 0.4);color:rgba(255, 255, 255, 0.9);}
 div.subnav .nav>li:first-child>a:hover{border-left-color:rgba(255, 255, 255, 0.4);border-left-width:1px;}
-div.subnav-fixed{top:50px;}
+div.subnav-fixed{top:0px;opacity: 0.7}
 .nav-tabs li.open>.dropdown-toggle,.nav-pills li.open>.dropdown-toggle{background-color:#8AD5DC;color:#e8d069;border-color:transparent;}
 .nav-tabs,.nav-pills{border-color:transparent;}.nav-tabs li>a,.nav-pills li>a{border-color:transparent;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;-webkit-box-shadow:0;-moz-box-shadow:0;box-shadow:0;}
 .nav-tabs li.active>a,.nav-pills li.active>a,.nav-tabs li:active>a,.nav-pills li:active>a,.nav-tabs li.active>a:hover,.nav-pills li.active>a:hover,.nav-tabs li:active>a:hover,.nav-pills li:active>a:hover{color:rgba(255, 255, 255, 0.9);}
