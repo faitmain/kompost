@@ -17,7 +17,8 @@ comme l'écologie de l'éléctronique -- mais en y réfléchissant de plus pret,
 la plupart des projets qui m'intéressent le plus sont souvent
 à la croisée de deux (voir trois) de ces domaines.
 
-Un projet à base d'`Arduino <http://arduino.cc/>`_ pour controler un fumoir
+Et je ne pense pas etre seul dans ce cas: un projet à base
+d'`Arduino <http://arduino.cc/>`_ pour controler un fumoir
 à saumon ou de la cuisine sous vide, un logiciel de domotique pour diminuer
 la facture d'éléctricité, un script Python de génération de musique, sont
 des sujets qui emportent beaucoup d'engouement pendant une conférence de
@@ -37,8 +38,8 @@ Cet engouement, je pense, tiens en trois raisons simples:
 - nous entrons dans l'époque reine du **Do It Yourself**, ou pour un budget
   raisonnable, n'importe lequel d'entre nous peut réaliser un
   projet avancé -- que ce soit en soudant quelques composants sur
-  un Arduino ou un Raspberry Pi, ou en commandant l'usinage de 10 pieces
-  moulées sur un service en ligne.
+  un Arduino ou un `Raspberry Pi <raspberrypi.org>`_, ou en commandant
+  l'usinage de 10 pieces moulées sur un service en ligne.
 
 Le magazine finalement qui se rapproche le plus de ce que je souhaite
 faire avec *Fait Main* est le magazine américain `Make <http://makezine.com>`_.
