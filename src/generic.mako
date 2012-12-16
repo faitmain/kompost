@@ -23,16 +23,11 @@
 <header class="jumbotron subhead" id="overview">
   <div class="row">
     <div class="span6">
-      <h1>Fait Main</h1>
+      <a href="/"><h1>Fait Main</h1></a>
       <p class="lead">Electronique | Informatique | Art | Bouffe | Ecologie</p>
     </div>
   </div>
   <div class="subnav">
-    <ul class="nav nav-pills">
-      <li class="active"><a href="#janvier">Sommaire Janvier</a></li>
-      <li class=""><a href="#goodies">En attendant le mois prochain</a></li>
-      <li class=""><a href="#footer">A propos</a></li>
-    </ul>
   </div>
   <%block name="header"/>
 </header>

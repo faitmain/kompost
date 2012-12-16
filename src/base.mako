@@ -23,7 +23,7 @@
 <header class="jumbotron subhead" id="overview">
   <div class="row">
     <div class="span6">
-      <h1>Fait Main</h1>
+      <a href="/"><h1>Fait Main</h1></a>
       <p class="lead">Electronique | Informatique | Art | Bouffe | Ecologie</p>
     </div>
   </div>
