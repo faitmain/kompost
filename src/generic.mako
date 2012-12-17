@@ -13,7 +13,8 @@
     <![endif]-->
     <link href="/media/bootstrap.css" rel="stylesheet">
     <link href="/media/bootstrap-responsive.css" rel="stylesheet">
-    <link href="/media/bootswatch.css" rel="stylesheet"> 
+    <link href="/media/bootswatch.css" rel="stylesheet">
+    <link rel="shortcut icon" href="http://faitmain.org/favicon.ico" />
 </head>
 
   <body class="preview" data-spy="scroll" data-target=".subnav" data-offset="80">
