@@ -146,7 +146,7 @@ dd{margin-left:10px;}
 .dl-horizontal:after{clear:both;}
 .dl-horizontal dt{float:left;width:160px;clear:left;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .dl-horizontal dd{margin-left:180px;}
-hr{margin:20px 0;border:0;border-top:1px solid transparent;border-bottom:1px solid #ffffff;}
+hr{height:40px;background:url("/favicon.ico") scroll no-repeat center center transparent;margin:0;padding:0;border:0}
 abbr[title],abbr[data-original-title]{cursor:help;border-bottom:1px dotted #aaaaaa;}
 abbr.initialism{font-size:90%;text-transform:uppercase;}
 blockquote{padding:0 0 0 15px;margin:0 0 20px;border-left:5px solid #dddddd;}blockquote p{margin-bottom:0;font-size:16px;font-weight:300;line-height:25px;}
@@ -860,7 +860,6 @@ blockquote{border-left-color:#1cafbd;}blockquote.pull-right{border-right-color:#
 blockquote small{color:rgba(255, 255, 255, 0.6);}
 .muted{color:rgba(255, 255, 255, 0.5);}
 body{background-color:#f2f2f2;background-image:-webkit-gradient(radial, center center, 0, center center, 460, from(#f2f2f2), to(#a5f3ff));background-image:-webkit-radial-gradient(circle, #f2f2f2, #a5f3ff);background-image:-moz-radial-gradient(circle, #f2f2f2, #a5f3ff);background-image:-o-radial-gradient(circle, #f2f2f2, #a5f3ff);background-repeat:no-repeat;}
-hr{border-bottom:1px solid rgba(255, 255, 255, 0.3);background-color: rgb(60, 185, 198); height: 5px}
 .page-header{margin:30px 0 15px;border-bottom:0px solid transparent;}
 .navbar .navbar-inner{-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;}
 .navbar .brand{padding:15px 20px 14px;font-family:'Lobster',cursive;font-size:24px;font-weight:normal;}
