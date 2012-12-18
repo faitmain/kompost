@@ -43,11 +43,11 @@ ${self.body()}
     <%block name="footer">
         <p class="pull-right"><a href="#"><img src="/media/up.png"></a></p>
         <div class="links">
-          <a href="https://twitter.com/faitmain">Twitter</a>
-          <a href="https://github.com/faitmain">GitHub</a>
-        </div>
+          <a href="https://twitter.com/faitmain">Twitter</a> ·
+          <a href="https://github.com/faitmain">GitHub</a> ·
         Thème <a target="_blank" href="http://twitter.github.com/bootstrap/">Bootstrap</a> par <a target="_blank" href="http://thomaspark.me/">Thomas Park</a> ·
-        <a target="_blank" href="http://glyphicons.com/">Icones</a> · <a target="_blank" href="http://www.google.com/webfonts">Google WebFonts</a>.<p></p>
+        <a target="_blank" href="http://glyphicons.com/">Icones</a> · <a target="_blank" href="http://www.google.com/webfonts">Google WebFonts</a>
+        </div>
       </%block>
       </footer>
 
