@@ -37,6 +37,8 @@ mois voir des années - pour elles un concours comme AngelHack est une opportuni
 de s'exposer aux investisseurs, voir d'avoir la chance d'aller leur rendre
 visite en Californie.
 
+----
+
 De mon coté -- la partie startup/pitch ne présentaient aucun intéret. Mais
 l'idée d'essayer d'écrire une appli fonctionnelle et moderne de A à Z en
 24h par contre...

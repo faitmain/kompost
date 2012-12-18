@@ -24,7 +24,9 @@ def _tree(node):
     """
     text = []
     klass = node.__class__.__name__
-    if klass == 'paragraph':
+    if klass == 'transition':
+        text.append('<hr/>')
+    elif klass == 'paragraph':
         text.append('<p>')
         for child in node.children:
             text.append(_tree(child))
