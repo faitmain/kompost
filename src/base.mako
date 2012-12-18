@@ -47,7 +47,7 @@ ${self.body()}
           <a href="https://github.com/faitmain">GitHub</a>
         </div>
         Thème <a target="_blank" href="http://twitter.github.com/bootstrap/">Bootstrap</a> par <a target="_blank" href="http://thomaspark.me/">Thomas Park</a> ·
-        <a target="_blank" href="http://glyphicons.com/">Icones/a> · <a target="_blank" href="http://www.google.com/webfonts">Google WebFonts</a>.<p></p>
+        <a target="_blank" href="http://glyphicons.com/">Icones</a> · <a target="_blank" href="http://www.google.com/webfonts">Google WebFonts</a>.<p></p>
       </%block>
       </footer>
 
