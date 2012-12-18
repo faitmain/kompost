@@ -9,7 +9,7 @@ What The Feuille ?
 
 
 Le `Hackaton <https://fr.wikipedia.org/wiki/Hackathon>`_ est un mot-valise,
-m'apprends Wikipédia -- contraction de *hacking* et de *marathon*. Un
+m'apprends Wikipédia — contraction de *hacking* et de *marathon*. Un
 *marathon de hacking* est un évènement durant lequel des
 développeurs vont travailler ensemble pour tenter d'accélerer le développement
 d'un projet en se concentrant dessus le temps d'un week-end ou parfois
@@ -17,7 +17,7 @@ d'une semaine.
 
 Dans la communauté Python, on parlera plus de *sprints*, terme inventé par
 Tres Seaver pour décrire les réunions de 2/3 jours pendants lesquelles
-des pairs de programmeurs bossaient sur Zope 3 -- un logiciel écrit
+des pairs de programmeurs bossaient sur Zope 3 — un logiciel écrit
 en Python.
 
 Les *Hackatons* organisés par `AngelHack <http://www.angelhack.com/>`_ sont
@@ -39,7 +39,7 @@ visite en Californie.
 
 ----
 
-De mon coté -- la partie startup/pitch ne présentaient aucun intéret. Mais
+De mon coté — la partie startup/pitch ne présentaient aucun intéret. Mais
 l'idée d'essayer d'écrire une appli fonctionnelle et moderne de A à Z en
 24h par contre...
 
