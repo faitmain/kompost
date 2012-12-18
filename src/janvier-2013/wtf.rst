@@ -81,8 +81,8 @@ Mine de rien, ce genre d'application touche à pas mal de domaines de programmat
 
 
 
-Responsive Design
-:::::::::::::::::
+Responsive ?
+::::::::::::
 
 XXX
 
