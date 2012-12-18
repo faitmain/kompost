@@ -1,6 +1,7 @@
 import os
 import shutil
 import codecs
+import cgi
 
 from docutils.core import publish_doctree
 
@@ -12,6 +13,10 @@ src = 'src'
 target ='build'
 media = os.path.abspath(os.path.join(target, 'media'))
 _GENERIC = os.path.join(src, 'generic.mako')
+
+
+def _notag(text):
+    return cgi.escape(text)
 
 
 def _tree(node):
@@ -28,7 +33,7 @@ def _tree(node):
         text.append(node.astext())
     elif klass == 'literal_block':
         text.append('<pre>')
-        text.append(node.astext())
+        text.append(_notag(node.astext()))
         text.append('</pre>')
     elif klass == 'note':
         text.append('<div class="well">')
