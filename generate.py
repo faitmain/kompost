@@ -26,6 +26,10 @@ def _tree(node):
         text.append('</p>')
     elif klass == 'Text':
         text.append(node.astext())
+    elif klass == 'literal_block':
+        text.append('<pre>')
+        text.append(node.astext())
+        text.append('</pre>')
     elif klass == 'note':
         text.append('<div class="well">')
         for child in node.children:
