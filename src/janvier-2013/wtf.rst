@@ -1,7 +1,79 @@
 What The Feuille ?
 ==================
 
+**Ecologie** | **Informatique**
 
-WTF
+.. image:: https://farm9.staticflickr.com/8064/8239976465_6c760b1090_c.jpg
+   :target: https://secure.flickr.com/photos/kennethreitz/8239976465/in/set-72157632156365245/
+
+
+Le `Hackaton <https://fr.wikipedia.org/wiki/Hackathon>`_ est un mot-valise,
+m'apprends Wikipédia -- contraction de *hacking* et de *marathon*. Un
+*marathon de hacking* est un évènement durant lequel des
+développeurs vont travailler ensemble pour tenter d'accélerer le développement
+d'un projet en se concentrant dessus le temps d'un week-end ou parfois
+d'une semaine.
+
+Dans la communauté Python, on parlera plus de *sprints*, terme inventé par
+Tres Seaver pour décrire les réunions de 2/3 jours pendants lesquelles
+des pairs de programmeurs bossaient sur Zope 3 -- un logiciel écrit
+en Python.
+
+Les *Hackatons* organisés par `AngelHack <http://www.angelhack.com/>`_ sont
+encore une autre variante: vous avez 24 heures pour produire un projet *from scratch*
+dans des locaux ou tous les participants se réunissent et restent eveillés
+toutes la nuit - soignés à coup de Pizzas et Red Bull par les organisateurs.
+
+A la clé, la possibilité de gagner un A/R à San Francisco pour pitcher
+des Angel Investors de la Silicon Valley.
+
+La plupart des projets sont des applications web. Plus rarement des applications
+desktop ou du hardware.
+
+Il ne faut pas se leurrer, derrière la plupart des équipes participantes
+se cachent des startups en devenir qui planchent sur leur sujet depuis des
+mois voir des années - pour elles un concours comme AngelHack est une opportunité
+de s'exposer aux investisseurs, voir d'avoir la chance d'aller leur rendre
+visite en Californie.
+
+De mon coté -- la partie startup/pitch ne présentaient aucun intéret. Mais
+l'idée d'essayer d'écrire une appli fonctionnelle et moderne de A à Z en
+24h par contre...
+
+Alors on s'est inscrit avec Olivier & Ronan et on a participé au concours
+sans carte de visite, ni rien à vendre - juste l'envie de hacker une appli.
+
+
+What The Feuille
+::::::::::::::::
+
+XXX presentation du projet
+
+
+Architecture
+::::::::::::
+
+XXX
+
+
+Responsive Design, merci Bootstrap
+::::::::::::::::::::::::::::::::::
+
+XXX
+
+Elastic Search
+::::::::::::::
+
+XXX
+
+Le projet scikit
+::::::::::::::::
+
+XXX
+
+Conclusion
+::::::::::
+
+XXX
 
 
