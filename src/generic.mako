@@ -28,8 +28,6 @@
       <p class="lead">Electronique | Informatique | Art | Bouffe | Ecologie</p>
     </div>
   </div>
-  <div class="subnav">
-  </div>
   <%block name="header"/>
 </header>
 
