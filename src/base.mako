@@ -37,26 +37,21 @@ ${self.body()}
 
 <br><br><br><br>
 
-      <hr>
+  <hr/>
 
-      <footer id="footer">
-    <%block name="footer">    
-    <p class="pull-right"><a href="#">Back to top</a></p>
+  <footer id="footer">
+    <%block name="footer">
+        <p class="pull-right"><a href="#"><img src="/media/up.png"></a></p>
         <div class="links">
           <a href="https://twitter.com/faitmain">Twitter</a>
           <a href="https://github.com/faitmain">GitHub</a>
         </div>
-        Theme Made by <a target="_blank" href="http://thomaspark.me/" onclick="pageTracker._link(this.href); return false;">Thomas Park</a>. 
-        Code licensed under the <a target="_blank" href="http://www.apache.org/licenses/LICENSE-2.0">Apache License v2.0</a>.<br>
-        Based on <a target="_blank" href="http://twitter.github.com/bootstrap/">Bootstrap</a>. 
-        Icons from <a target="_blank" href="http://glyphicons.com/">Glyphicons</a>. 
-        Web fonts from <a target="_blank" href="http://www.google.com/webfonts">Google</a>.<p></p>
+        Thème <a target="_blank" href="http://twitter.github.com/bootstrap/">Bootstrap</a> par <a target="_blank" href="http://thomaspark.me/">Thomas Park</a> ·
+        <a target="_blank" href="http://glyphicons.com/">Icones/a> · <a target="_blank" href="http://www.google.com/webfonts">Google WebFonts</a>.<p></p>
       </%block>
-
       </footer>
 
-    </div><!-- /container -->
-
+    </div>
 
     <script src="/media/jquery.js"></script>
     <script src="/media/bootstrap.js"></script>
