@@ -5,6 +5,7 @@ What The Feuille ?
 
 .. image:: https://farm9.staticflickr.com/8064/8239976465_6c760b1090_c.jpg
    :target: https://secure.flickr.com/photos/kennethreitz/8239976465/in/set-72157632156365245/
+   :alt: Tarek & Ronan en train de tester What The Feuille.
 
 
 Le `Hackaton <https://fr.wikipedia.org/wiki/Hackathon>`_ est un mot-valise,
@@ -47,17 +48,41 @@ sans carte de visite, ni rien à vendre - juste l'envie de hacker une appli.
 What The Feuille
 ::::::::::::::::
 
-XXX presentation du projet
+*What The Feuille* c'est l'excellent nom trouvé par Olivier pour l'application
+que l'on a décidé de construire pendant le hackaton.
+
+Le but de cette application est de deviner de quelle plante ou quel arbre provient
+une feuille que l'on vient de prendre en photo depuis son mobile.
+
+.. image:: Platane.jpg
+   :alt: Du platane. C'est du platane je vous dis.
 
 
-Architecture
-::::::::::::
+Mine de rien, ce genre d'application touche à pas mal de domaines de programmation:
 
-XXX
+- du `responsive design <https://fr.wikipedia.org/wiki/Responsive_Web_Design>`_, de
+  manière à pouvoir afficher l'application sur une tablette, un téléphone, etc.
+
+- du stockage d'image et de méta-donnée associées, avec potentiellement
+  beaucoup, beaucoup d'entrées
+
+- une bonne dose de Javascript pour les interactions avec l'utilisateur.
+
+- du `machine learning <https://fr.wikipedia.org/wiki/Machine_learning>`_ pour
+  toute la partie intelligente.
+
+- de la programmation web pour lier le tout, avec les composantes classiques
+  comme l'identification, le templating etc.
 
 
-Responsive Design, merci Bootstrap
-::::::::::::::::::::::::::::::::::
+.. image:: wtf-schema.png
+   :alt: C'est pas compliqué...
+
+
+
+
+Responsive Design
+:::::::::::::::::
 
 XXX
 
