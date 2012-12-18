@@ -75,24 +75,65 @@ Mine de rien, ce genre d'application touche à pas mal de domaines de programmat
   comme l'identification, le templating etc.
 
 
+Le flow principal de l'application est le suivant:
+
+- la page principale permet d'uploader une photo géolocalisée
+- la photo est stockée sous un nom unique sur le disque dur du serveur
+- l'utilisateur *édite* la photo en indiquant au doigt (ou à la souris)
+  le haut et le bas de la feuille.
+- les informations de positionnement sont envoyées au serveur, qui
+  redimensionne la photo.
+- la photo est mise à jour et affichée pour que l'utilisateur valide
+  l'édition.
+- l'algorithme de reconnaissance de feuilles cherche ensuite
+  dans la base les feuilles considérées comme similaires.
+- une liste de suggestion d'arbres/plantes est ensuite proposée,
+  et l'utilisateur peut en choisir une.
+- enfin, toutes les informations sur la photo sont stockées dans
+  la base de données.
+
+
+XXX screenshot doigts qui deplace la photo sur tablette.
+
+D'autres fonctionalitées que nous avons ajoutés:
+
+- un *plantopedia* - une page qui liste les plantes et arbres,
+  et pour chaque, les feuilles correspondantes trouvées dans
+  la base
+- une page d'acceuil qui affiche les dernières photos uploadées.
+- un système d'authentification basé sur `Mozilla Persona <https://fr.wikipedia.org/wiki/Mozilla_Persona>`_
+
+
 
 Responsive ?
 ::::::::::::
 
 XXX
 
+Du Javascript
+:::::::::::::
+
+Snapshot
+
+::
+
+    <input id="snap" type="file" name="picture" accept="image/*;capture=camera"></input>
+
+XXX edition
+
 Elastic Search
 ::::::::::::::
 
 XXX
 
-Le projet scikit
-::::::::::::::::
+La partie intelligente
+::::::::::::::::::::::
 
 XXX
 
 Conclusion
 ::::::::::
+
 
 .. image:: Platane.jpg
    :alt: Du platane. C'est du platane je vous dis.
