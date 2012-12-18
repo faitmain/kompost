@@ -54,10 +54,6 @@ que l'on a décidé de construire pendant le hackaton.
 Le but de cette application est de deviner de quelle plante ou quel arbre provient
 une feuille que l'on vient de prendre en photo depuis son mobile.
 
-.. image:: wtf-schema.png
-   :alt: C'est pas compliqué...
-
-
 Mine de rien, ce genre d'application touche à pas mal de domaines de programmation:
 
 - du `responsive design <https://fr.wikipedia.org/wiki/Responsive_Web_Design>`_, de
@@ -73,6 +69,10 @@ Mine de rien, ce genre d'application touche à pas mal de domaines de programmat
 
 - de la programmation web pour lier le tout, avec les composantes classiques
   comme l'identification, le templating etc.
+
+
+.. image:: wtf-schema.png
+   :alt: C'est pas compliqué...
 
 
 Le flow principal de l'application est le suivant:
