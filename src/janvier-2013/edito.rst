@@ -41,6 +41,8 @@ Cet engouement, je pense, tiens en trois raisons simples:
   un Arduino ou un `Raspberry Pi <raspberrypi.org>`_, ou en commandant
   l'usinage de 10 pieces moulées sur un service en ligne.
 
+----
+
 Le magazine finalement qui se rapproche le plus de ce que je souhaite
 faire avec *Fait Main* est le magazine américain `Make <http://makezine.com>`_.
 
@@ -77,17 +79,15 @@ des interprétations particulieres.
 Reconnaitre les feuilles d'un arbre, c'est finalement un probleme
 de machine learning - en théorie. C'est l'application qui a été écrite
 en 24 heures par Olivier, Ronan & Tarek lors du dernier **AngelHack** à Paris,
-un *hackaton* de programmation.
+un *hackaton* de programmation. `Lire l'article <http://faitmain.org/janvier-2013/wtf.html>`_.
 
-`Lire l'article <http://faitmain.org/janvier-2013/wtf.html>`_.
+----
 
 Le deuxième article lui, propose une introduction aux *CNC*, qui sont
 des machines-outils pilotables depuis un micro-controlleur ou un ordinateur.
 Les possibilitées offertes par ces machines sont énormes, puisqu'elles
 permettent des travaux de précisions comme graver des circuits éléctroniques
-ou travailler du bois.
-
-`Lire l'article sur les CNCs <http://faitmain.org/janvier-2013/cnc.html>`_
+ou travailler du bois. `Lire l'article <http://faitmain.org/janvier-2013/cnc.html>`_
 
 
 Equipe
