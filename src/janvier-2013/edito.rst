@@ -13,7 +13,7 @@ coeur, à savoir:
 
 
 Certains de ces sujets peuvent paraitrent très éloignés les uns des autres,
-comme l'écologie de l'éléctronique -- mais en y réfléchissant de plus pret,
+comme l'écologie de l'éléctronique — mais en y réfléchissant de plus pret,
 la plupart des projets qui m'intéressent le plus sont souvent
 à la croisée de deux (voir trois) de ces domaines.
 
@@ -37,7 +37,7 @@ Cet engouement, je pense, tiens en trois raisons simples:
 
 - nous entrons dans l'époque reine du **Do It Yourself**, ou pour un budget
   raisonnable, n'importe lequel d'entre nous peut réaliser un
-  projet avancé -- que ce soit en soudant quelques composants sur
+  projet avancé — que ce soit en soudant quelques composants sur
   un Arduino ou un `Raspberry Pi <raspberrypi.org>`_, ou en commandant
   l'usinage de 10 pieces moulées sur un service en ligne.
 
