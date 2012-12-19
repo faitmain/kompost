@@ -56,7 +56,12 @@ def _tree(node):
         text.append('</strong>')
     elif klass == 'image':
         if node.hasattr('uri'):
-            text.append('<img class="centered" src="%s">' % node['uri'])
+            uri = node['uri']
+            if uri.endswith('pen.png') or uri.endswith('info.png'):
+                class_ = 'subst'
+            else:
+                class_ = 'centered'
+            text.append('<img class="%s" src="%s">' % (class_, uri))
         else:
             text.append('<img class="centered">')
         for child in node.children:
@@ -95,8 +100,9 @@ def _tree(node):
             text.append(_tree(child))
         text.append('</ol>')
     elif klass == 'substitution_definition':
-        uri = node.children[0].attributes['uri']
-        text.append('<img class="subst" src="%s"></img>' % uri)
+        #uri = node.children[0].attributes['uri']
+        #text.append('<img class="subst" src="%s"></img>' % uri)
+        pass
     elif klass == 'list_item':
         text.append('<li>')
         for child in node.children:

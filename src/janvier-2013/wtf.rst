@@ -241,6 +241,3 @@ Conclusion
 
 
 XXX
-
-
-
