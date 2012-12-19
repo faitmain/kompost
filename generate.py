@@ -67,7 +67,11 @@ def _tree(node):
         if node.hasattr('refid'):
             text.append('<a href="#%s">' % node['refid'])
         elif node.hasattr('refuri'):
-            text.append('<a href="%s">' % node['refuri'])
+            refuri = node['refuri']
+            if 'wikipedia.org' in refuri:
+                text.append('<a href="%s" class="wikipedia">' % refuri)
+            else:
+                text.append('<a href="%s">' % refuri)
         else:
             text.append('<a>')
         for child in node.children:

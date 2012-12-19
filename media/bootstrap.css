@@ -980,3 +980,4 @@ input,textarea,.search-query,.uneditable-input,.input-append input,.input-append
 .show{display:block;}
 .invisible{visibility:hidden;}
 .affix{position:fixed;}
+.wikipedia{background: url("/media/wikipedia.ico") center right no-repeat; padding-right: 18px;}
