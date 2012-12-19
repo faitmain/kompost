@@ -56,9 +56,9 @@ def _tree(node):
         text.append('</strong>')
     elif klass == 'image':
         if node.hasattr('uri'):
-            text.append('<img src="%s">' % node['uri'])
+            text.append('<img class="centered" src="%s">' % node['uri'])
         else:
-            text.append('<img>')
+            text.append('<img class="centered">')
         for child in node.children:
             text.append(_tree(child))
         text.append('</img>')
