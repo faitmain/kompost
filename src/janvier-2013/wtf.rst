@@ -62,7 +62,7 @@ une feuille que l'on vient de prendre en photo depuis son mobile ou sa tablette.
     Oui, j'ai déjà vu des promeneurs prendre des photos avec une tablette en foret.
 
 On a choisi assez rapidement d'écrire cette application web entièrement en
-Javascript et HTML5 pour la coté utilisateur, sans passer par des dévelopements
+Javascript et HTML5 pour le coté utilisateur, sans passer par des dévelopements
 spécifiques à la plateforme iOS ou Android pour plusieurs raisons:
 
 - meme si des outils comme `PhoneGap <http://www.phonegap.com/>`_ permettent de
@@ -150,7 +150,7 @@ puissant est `Bootstrap <http://twitter.github.com/bootstrap/>`_, qui permet
 très rapidement de créer un design propre et qui s'adaptera tout seul comme
 un grand à n'importe quel type de périphérique.
 
-L'autre grande qualité de Boostrap est de permettre à des développeurs
+L'autre grande qualité de Bootstrap est de permettre à des développeurs
 comme moi qui n'ont aucune notion de design, de faire une application
 web à peut pret jolie, avec des boites qui s'alignent bien, un rendu
 moderne et standard.
@@ -162,7 +162,7 @@ fournies en exemple, et aussi parce que il y a un *Bootstrap look and feel*.
 
 Mais pour notre hackaton, c'est parfait!
 
-Si vous avez envie de tester Boostrap, je vous conseille de tester
+Si vous avez envie de tester Bootstrap, je vous conseille de tester
 `Bootswatch <http://bootswatch.com/>`_ qui offre plusieurs thèmes pour
 Bootstrap. C'est un excellent moyen de démarrer son propre thème.
 
