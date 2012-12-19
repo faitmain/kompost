@@ -65,27 +65,24 @@ On a choisi assez rapidement d'écrire cette application web entièrement en
 Javascript et HTML5 pour la coté utilisateur, sans passer par des dévelopements
 spécifiques à la plateforme iOS ou Android pour plusieurs raisons:
 
-- meme si des outils comme PhoneGap permettent de développer une application mobile
-  qui est ensuite compilée pour chaque plateforme native, le principe de subir
-  une modération sur l'app store d'Apple ou de Google Play nous rebute profondément.
+- meme si des outils comme `PhoneGap <http://www.phonegap.com/>`_ permettent de
+  développer une application mobile qui est ensuite compilée pour chaque plateforme
+  native, le principe de subir une modération sur l'app store d'Apple ou de Google Play
+  nous rebute profondément.
 
-- le HTML5 et le Javascript est compris par *tout* les périphériques, et notre
+- le HTML5 et le Javascript sont compris par *tout* les périphériques, et notre
   application n'a pas besoin d'accéder à des fonctionnalités avancées des mobiles
   ou tablettes, comme l'envoie de texto.
 
-- le HTML5/Javascript pour les applications mobile, c'est l'avenir!
+- le HTML5 et le Javascript pour les applications mobile, c'est l'avenir!
 
 - avec un peu de responsive design, la meme interface marchera aussi sur les
-  ordinateurs.
+  ordinateurs de bureau ou laptop.
 
-Coté serveur, l'application web n'a pas grand chose à faire:
+Coté serveur, l'application web n'a pas grand chose à faire: servir 2 ou 3 écrans,
+récuperer les photos et les stocker en enfin lancer l'algo de machine learning.
 
-- servir 2 ou 3 écrans,
-- récuperer les photos et les stocker,
-- lancer l'algo de machine learning.
-
-
-Mine de rien, ce genre d'application touche à pas mal de domaines de programmation:
+Mais mine de rien, ce genre d'application touche à pas mal de domaines de programmation:
 
 - du `responsive design <https://fr.wikipedia.org/wiki/Responsive_Web_Design>`_, de
   manière à pouvoir afficher l'application sur une tablette, un téléphone, etc.
@@ -100,6 +97,8 @@ Mine de rien, ce genre d'application touche à pas mal de domaines de programmat
 
 - de la programmation web pour lier le tout, avec les composantes classiques
   comme l'identification, le templating etc.
+
+----
 
 Pour résumer le fonctionnement dans un schéma simple:
 
@@ -134,20 +133,69 @@ sur ce genre de fonctionnalités.
 
 XXX screenshot doigts qui deplace la photo sur tablette.
 
-D'autres fonctionalitées que nous avons ajoutés:
-
-- un *plantopedia* - une page qui liste les plantes et arbres,
-  et pour chaque, les feuilles correspondantes trouvées dans
-  la base
-- une page d'acceuil qui affiche les dernières photos uploadées.
-- un système d'authentification basé sur `Mozilla Persona <https://fr.wikipedia.org/wiki/Mozilla_Persona>`_
-
+D'autres fonctionalitées mineures que nous avons ajoutés au fil de la nuit
+sont un *plantopedia* - une page qui liste les plantes et arbres avec
+les feuilles correspondantes trouvées dans la base; une page d'acceuil
+qui affiche les dernières photos uploadées et enfin un système
+d'authentification basé
+sur `Mozilla Persona <https://fr.wikipedia.org/wiki/Mozilla_Persona>`_
 
 
 Responsive ?
 ::::::::::::
 
-XXX
+Créer un joli design *responsive* en 24 heures est impossible sans utiliser
+un toolkit qui mache le travail. Le plus souple et le plus
+puissant est `Bootstrap <http://twitter.github.com/bootstrap/>`_, qui permet
+très rapidement de créer un design propre et qui s'adaptera tout seul comme
+un grand à n'importe quel type de périphérique.
+
+L'autre grande qualité de Boostrap est de permettre à des développeurs
+comme moi qui n'ont aucune notion de design, de faire une application
+web à peut pret jolie, avec des boites qui s'alignent bien, un rendu
+moderne et standard.
+
+C'est aussi le gros défaut de Bootstrap finalement: rien ne ressemble plus
+à un site fait avec Bootstrap qu'un autre site fait avec Bootstrap, souvent
+car les intégrateurs se sont contenter de copier-coller les mise en page
+fournies en exemple, et aussi parce que il y a un *Bootstrap look and feel*.
+
+Mais pour notre hackaton, c'est parfait!
+
+Si vous avez envie de tester Boostrap, je vous conseille de tester
+`Bootswatch <http://bootswatch.com/>`_ qui offre plusieurs thèmes pour
+Bootstrap. C'est un excellent moyen de démarrer son propre thème.
+
+La killer feature de Bootswatch c'est son *Bookmarklet* en bas de la page.
+Un lien à déposer dans Firefox dans la barre des bookmarks et *hop!*, un
+menu déroulant permet d'essayer les thèmes fournis par le projet
+en live sur n'importe quel site fait avec Bootstrap!
+
+.. image:: bootswatch.png
+   :target: http://bootswatch.com
+   :alt: Le bookmarklet de bootswatch en plein action
+
+----
+
+L'autre outil indispensable pour un design propre en 24 heures, c'est
+`Google Web Fonts <https://www.google.com/webfonts>`_.
+
+.. image:: gwf.png
+   :target: https://www.google.com/webfonts
+   :alt: La police facile.
+
+En quelques minutes, on trouve forcément une fonte qui nous plait,
+et il suffit d'ajouter un lien vers la CSS fournie par Google.
+
+En deux heures, les premières pages de What The Feuille étaient
+affichées sur notre naviguateur, tirées sur nos téléphones.
+
+Il quand meme a fallu par la suite tout le talent de Ronan pour ajouter
+un logo, une texture de fond de page sympa et tous les petits réglages
+qui on donné à notre appli web un vrai look pro.
+
+Il nous reste 22 heures pour écrire l'application maintenant.
+
 
 Du Javascript
 :::::::::::::
