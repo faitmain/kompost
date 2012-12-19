@@ -62,20 +62,22 @@ def _tree(node):
                 class_ = 'subst'
                 nolegend = True
             else:
+                text.append('<div>')
                 class_ = 'centered'
             text.append('<img class="%s" src="%s">' % (class_, uri))
         else:
+            text.append('<div>')
             text.append('<img class="centered">')
-
-        if not nolegend:
-            text.append('<span class="legend">')
-            text.append(node['alt'])
-            text.append('</span>')
 
         for child in node.children:
             text.append(_tree(child))
 
         text.append('</img>')
+        if not nolegend:
+            text.append('<span class="legend">')
+            text.append(node['alt'])
+            text.append('</span>')
+            text.append('</div>')
 
     elif klass == 'reference':
         if node.hasattr('refid'):

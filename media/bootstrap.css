@@ -982,7 +982,8 @@ input,textarea,.search-query,.uneditable-input,.input-append input,.input-append
 .affix{position:fixed;}
 .wikipedia{background: url("/media/wikipedia.ico") top right no-repeat; padding-right: 3px;}
 .subst {vertical-align: middle}
-img.centered{ display:block;margin-left: auto;margin-right: auto;margin-top:22px; margin-bottom:22px;
+
+img.centered{ display:block;margin-left: auto;margin-right: auto;margin-top:22px; 
     border-radius: 10px 10px 10px 10px;
     background-position: center center;
     background-size: cover;
@@ -990,13 +991,15 @@ img.centered{ display:block;margin-left: auto;margin-right: auto;margin-top:22px
 
 span.legend {
     display: block;
-    position: absolute;
-    width: 100%;
-    background: none repeat scroll 0% 0% rgba(25, 25, 25, 0.3);
+    margin-left: auto;margin-right: auto;
     font-size: 12px;
-    color: white;
-    text-shadow: 2px 2px 2px rgb(17, 17, 17);
+    color: black;
+    text-shadow: 1px 1px 1px rgb(17, 17, 17);
     text-decoration: none;
-    padding: 12px 18px;
+    text-align: center;
+    margin-bottom:22px;
 }
 
+a.image:hover {
+    text-decoration: none;
+}    
