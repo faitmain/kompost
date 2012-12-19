@@ -89,6 +89,14 @@ def _tree(node):
         for child in node.children:
             text.append(_tree(child))
         text.append('</ul>')
+    elif klass == 'enumerated_list':
+        text.append('<ol>')
+        for child in node.children:
+            text.append(_tree(child))
+        text.append('</ol>')
+    elif klass == 'substitution_definition':
+        uri = node.children[0].attributes['uri']
+        text.append('<img class="subst" src="%s"></img>' % uri)
     elif klass == 'list_item':
         text.append('<li>')
         for child in node.children:
@@ -98,6 +106,12 @@ def _tree(node):
         raise NotImplementedError(node)
 
     return ' '.join(text)
+
+
+_FOOTER = """
+.. |pen| image:: ../media/pen.png
+.. |info| image:: ../media/info.png
+"""
 
 
 def generate():
@@ -132,7 +146,8 @@ def generate():
             elif ext == '.rst':
                 # generating the tree, then creating a mako document
                 with open(path) as f:
-                    doctree = publish_doctree(f.read())
+                    content = f.read() + _FOOTER
+                    doctree = publish_doctree(content)
 
                 title = doctree.children[0].astext()
 

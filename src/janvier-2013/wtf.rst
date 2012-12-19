@@ -1,7 +1,8 @@
 What The Feuille ?
 ==================
 
-**Ecologie** | **Informatique**
+|info| **Ecologie** | **Informatique** |pen| *Tarek Ziadé*
+
 
 .. image:: https://farm9.staticflickr.com/8064/8239976465_6c760b1090_c.jpg
    :target: https://secure.flickr.com/photos/kennethreitz/8239976465/in/set-72157632156365245/
@@ -31,9 +32,9 @@ des Angel Investors de la Silicon Valley.
 La plupart des projets sont des applications web. Plus rarement des applications
 desktop ou du hardware.
 
-Il ne faut pas se leurrer, derrière la plupart des équipes participantes
+Il ne faut pas se leurrer, à mon avis, derrière la plupart des équipes participantes
 se cachent des startups en devenir qui planchent sur leur sujet depuis des
-mois voir des années - pour elles un concours comme AngelHack est une opportunité
+mois voir des années - pour elles, un concours comme AngelHack est une opportunité
 de s'exposer aux investisseurs, voir d'avoir la chance d'aller leur rendre
 visite en Californie.
 
@@ -54,7 +55,35 @@ What The Feuille
 que l'on a décidé de construire pendant le hackaton.
 
 Le but de cette application est de deviner de quelle plante ou quel arbre provient
-une feuille que l'on vient de prendre en photo depuis son mobile.
+une feuille que l'on vient de prendre en photo depuis son mobile ou sa tablette.
+
+.. note::
+
+    Oui, j'ai déjà vu des promeneurs prendre des photos avec une tablette en foret.
+
+On a choisi assez rapidement d'écrire cette application web entièrement en
+Javascript et HTML5 pour la coté utilisateur, sans passer par des dévelopements
+spécifiques à la plateforme iOS ou Android pour plusieurs raisons:
+
+- meme si des outils comme PhoneGap permettent de développer une application mobile
+  qui est ensuite compilée pour chaque plateforme native, le principe de subir
+  une modération sur l'app store d'Apple ou de Google Play nous rebute profondément.
+
+- le HTML5 et le Javascript est compris par *tout* les périphériques, et notre
+  application n'a pas besoin d'accéder à des fonctionnalités avancées des mobiles
+  ou tablettes, comme l'envoie de texto.
+
+- le HTML5/Javascript pour les applications mobile, c'est l'avenir!
+
+- avec un peu de responsive design, la meme interface marchera aussi sur les
+  ordinateurs.
+
+Coté serveur, l'application web n'a pas grand chose à faire:
+
+- servir 2 ou 3 écrans,
+- récuperer les photos et les stocker,
+- lancer l'algo de machine learning.
+
 
 Mine de rien, ce genre d'application touche à pas mal de domaines de programmation:
 
@@ -72,28 +101,36 @@ Mine de rien, ce genre d'application touche à pas mal de domaines de programmat
 - de la programmation web pour lier le tout, avec les composantes classiques
   comme l'identification, le templating etc.
 
+Pour résumer le fonctionnement dans un schéma simple:
 
 .. image:: wtf-schema.png
    :alt: C'est pas compliqué...
 
+L'utilisateur trouve une feuille — où l'arrache discrètement, puis
+dégaine son portable pour prendre un cliché, et demande à notre
+serveur de reconnaitre la feuille.
 
-Le flow principal de l'application est le suivant:
+En détail, le *flow* est le suivant:
 
-- la page principale permet d'uploader une photo géolocalisée
-- la photo est stockée sous un nom unique sur le disque dur du serveur
-- l'utilisateur *édite* la photo en indiquant au doigt (ou à la souris)
-  le haut et le bas de la feuille.
-- les informations de positionnement sont envoyées au serveur, qui
-  redimensionne la photo.
-- la photo est mise à jour et affichée pour que l'utilisateur valide
-  l'édition.
-- l'algorithme de reconnaissance de feuilles cherche ensuite
-  dans la base les feuilles considérées comme similaires.
-- une liste de suggestion d'arbres/plantes est ensuite proposée,
-  et l'utilisateur peut en choisir une.
-- enfin, toutes les informations sur la photo sont stockées dans
-  la base de données.
+1. La page principale permet d'uploader une photo géolocalisée
+2. La photo est stockée sous un nom unique sur le disque dur du serveur
+3. L'utilisateur *édite* la photo en indiquant au doigt (ou à la souris)
+   le haut et le bas de la feuille.
+4. Les informations de positionnement sont envoyées au serveur, qui
+   redimensionne la photo.
+5. La photo est mise à jour et affichée pour que l'utilisateur valide
+   l'édition.
+6. L'algorithme de reconnaissance de feuilles cherche ensuite
+   dans la base les feuilles considérées comme similaires.
+7. Une liste de suggestion d'arbres/plantes est ensuite proposée,
+   et l'utilisateur peut en choisir une.
+8. Enfin, toutes les informations sur la photo sont stockées dans
+   la base de données.
 
+Le va-et-vient entre 3. et 4. est du au fait que toutes les transformations
+de l'image de la feuille se font sur le serveur car à moins d'écrire une
+application native à chaque périphérique, javascript est assez limité
+sur ce genre de fonctionnalités.
 
 XXX screenshot doigts qui deplace la photo sur tablette.
 
@@ -142,5 +179,6 @@ Conclusion
 
 
 XXX
+
 
 
