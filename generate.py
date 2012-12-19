@@ -55,21 +55,26 @@ def _tree(node):
             text.append(_tree(child))
         text.append('</strong>')
     elif klass == 'image':
+        nolegend = False
         if node.hasattr('uri'):
             uri = node['uri']
             if uri.endswith('pen.png') or uri.endswith('info.png'):
                 class_ = 'subst'
+                nolegend = True
             else:
                 class_ = 'centered'
             text.append('<img class="%s" src="%s">' % (class_, uri))
         else:
             text.append('<img class="centered">')
 
-        text.append('<span class="legend">')
-        text.append(node['alt'])
-        text.append('</span>')
+        if not nolegend:
+            text.append('<span class="legend">')
+            text.append(node['alt'])
+            text.append('</span>')
+
         for child in node.children:
             text.append(_tree(child))
+
         text.append('</img>')
 
     elif klass == 'reference':
