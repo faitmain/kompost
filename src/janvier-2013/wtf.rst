@@ -200,23 +200,37 @@ Il nous reste 22 heures pour écrire l'application maintenant.
 Du Javascript
 :::::::::::::
 
-Snapshot
+Pour toutes les interactions avec l'utilisateur — et les petits effets
+spéciaux, `jQuery <http://jquery.com/`_ est incontournable. De toute
+facon, il est disponible d'office dans un environnement Bootstrap.
 
-::
+On s'est servi de jQuery pour le positionnement interactif des feuilles
+par exemple. L'utilisateur *click* sur la feuille pour indiquer le
+haut et le bas, avec son doigt sur un écran tactile ou sa souris.
+Les coordonnées sur l'image sont envoyées au serveur, qui applique
+une rotation de l'image.
 
-    <input id="snap" type="file" name="picture" accept="image/*;capture=camera"></input>
+.. image:: editeur.png
+   :alt: Tape ta feuille.
 
-XXX edition
+On est loin de la barre d'outils de Photoshop, mais l'idée est la:
+l'utilisateur peaufine son image avant de demander au serveur de faire
+une reconnaissance de la plante ou l'arbre.
+
+Ce genre de fonctionnalité n'est pas dure à ajouter mais prouve
+qu'il est possible d'écrire des applications mobile un minimum interactives
+basées sur HTML5 et Javascript.
+
 
 Elastic Search
 ::::::::::::::
 
-XXX
+XXX Ronan?
 
 La partie intelligente
 ::::::::::::::::::::::
 
-XXX
+XXX Olivier?
 
 Conclusion
 ::::::::::
