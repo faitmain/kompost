@@ -64,6 +64,10 @@ def _tree(node):
             text.append('<img class="%s" src="%s">' % (class_, uri))
         else:
             text.append('<img class="centered">')
+
+        text.append('<span class="legend">')
+        text.append(node['alt'])
+        text.append('</span>')
         for child in node.children:
             text.append(_tree(child))
         text.append('</img>')
