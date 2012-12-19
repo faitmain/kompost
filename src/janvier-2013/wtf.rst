@@ -201,7 +201,7 @@ Du Javascript
 :::::::::::::
 
 Pour toutes les interactions avec l'utilisateur — et les petits effets
-spéciaux, `jQuery <http://jquery.com/`_ est incontournable. De toute
+spéciaux, `jQuery <http://jquery.com>`_ est incontournable. De toute
 facon, il est disponible d'office dans un environnement Bootstrap.
 
 On s'est servi de jQuery pour le positionnement interactif des feuilles
