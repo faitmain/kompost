@@ -481,7 +481,8 @@ table td[class*="span"],table th[class*="span"],.row-fluid table td[class*="span
 .dropdown-submenu.pull-left{float:none;}.dropdown-submenu.pull-left>.dropdown-menu{left:-100%;margin-left:10px;-webkit-border-radius:6px 0 6px 6px;-moz-border-radius:6px 0 6px 6px;border-radius:6px 0 6px 6px;}
 .dropdown .dropdown-menu .nav-header{padding-left:20px;padding-right:20px;}
 .typeahead{z-index:1051;margin-top:2px;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;}
-.well{min-height:20px;padding:19px;margin-bottom:20px;background-color:#3cb9c6;border:1px solid #32a1ac;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;-webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05);-moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05);box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05);}.well blockquote{border-color:#ddd;border-color:rgba(0, 0, 0, 0.15);}
+.well{min-height:20px;padding:19px;margin-bottom:20px;background-color:#3cb9c6;border:1px solid #32a1ac;
+-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;-webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05);-moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05);box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05);}.well blockquote{border-color:#ddd;border-color:rgba(0, 0, 0, 0.15);}
 .well-large{padding:24px;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;}
 .well-small{padding:9px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}
 .fade{opacity:0;-webkit-transition:opacity 0.15s linear;-moz-transition:opacity 0.15s linear;-o-transition:opacity 0.15s linear;transition:opacity 0.15s linear;}.fade.in{opacity:1;}
@@ -955,7 +956,7 @@ input,textarea,.search-query,.uneditable-input,.input-append input,.input-append
 .label-important,.label-important:hover,.alert-error{background-color:#d5b321;color:rgba(255, 255, 255, 0.9);}
 .label-success,.label-success:hover,.alert-success{background-color:#48ca3b;color:rgba(255, 255, 255, 0.9);}
 .label-info,.label-info:hover,.alert-info{background-color:#4d3a7d;color:rgba(255, 255, 255, 0.9);}
-.progress,.well,pre,code{border-color:transparent;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;text-shadow:none;}
+.progress,pre,code{border-color:transparent;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;text-shadow:none;}
 .well{background-image:none;}
 .hero-unit{-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;}
 .thumbnail{border:0 solid transparent;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;}
