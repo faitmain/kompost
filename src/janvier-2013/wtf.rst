@@ -194,8 +194,6 @@ Il quand meme a fallu par la suite tout le talent de Ronan pour ajouter
 un logo, une texture de fond de page sympa et tous les petits réglages
 qui on donné à notre appli web un vrai look pro.
 
-Il nous reste 22 heures pour écrire l'application maintenant.
-
 
 Du Javascript
 :::::::::::::
@@ -225,7 +223,51 @@ basées sur HTML5 et Javascript.
 Elastic Search
 ::::::::::::::
 
-XXX Ronan?
+Les photos uploadées dans l'application sont stockées sur le disque
+dur, ainsi que les différents thumbnails, générés à la demande.
+
+`Elastic Search <http://elasticsearch.org>`_ est le système que
+nous avons choisi pour stocker toutes les autres informations.
+
+Ce n'est pas une base de donnée dans le sens strict du terme,
+mais un moteur de recherche basé sur le très performant
+`Apache Lucene <https://lucene.apache.org/>`_.
+
+Au vu des données que nous stockons, et au vu des requetes à
+réaliser - comme par exemple une liste de feuilles correspondant
+à une plante donnée, en batch - Elastic Search est l'outil idéal.
+
+XXX
+
+Elastic Search ajoute au dessus de Lucène un service web
+qui permet d'indexer et de rechercher en utilisant des message
+*JSON*, ce qui nous permet de ne pas avoir à manipuler du *XML*,
+qui est le format d'échange natif de Lucene.
+
+Mais Elastic Search c'est bien plus que ca. Les données indexées
+sont *schemaless*, c'est-à-dire qu'il n'est pas nécessaire comme
+la plupart des moteurs de recherche de définir pour chaque type
+de document les valeures à indexer. On passe un dictionnaire
+JSON à Elastic Search et il se débrouille pour créer ou mettre
+à jour le schema.
+
+L'autre interet d'Elastic Search est la possibilité de déployer
+plusieurs serveurs et de le laisser *sharder*
+les données de manière redondante - c'est-à-dire de distribuer
+les données sur au moins deux serveurs de manière à ne rien
+perdre si un des serveur tombe.
+
+Pour le hackaton on ne déploie q'une machine avec tous les
+élements, mais si potentiellement on prend en photo toutes
+les feuilles de la planète, le sharding deviens indispensable.
+
+
+
+
+Le Cloud
+::::::::
+
+XXX
 
 La partie intelligente
 ::::::::::::::::::::::
@@ -235,9 +277,25 @@ XXX Olivier?
 Conclusion
 ::::::::::
 
+On était pas très joli à voir le lendemain matin, mais le pari a été tenu -
+et la démo a fonctionné pendant les 3 minutes sur scène. Les retours étaient
+assez positifs dans l'ensemble, et l'application va devenir un bon terrain
+de jeu pour Olivier, qui va pouvoir peaufiner son algo de pattern matching.
+
+Ce hackaton m'a fait réaliser de la différence majeure entre les moyens
+que nous avions il y a 5 ans et aujourd'hui - nous autres petits développeurs.
+
+Il n'y a plus besoin d'un budget conséquent et d'une équipe complète pour
+développer une idée d'application qui peut potentiellement s'addresser
+à des centaines de milliers d'utilisateurs.
+
+Pour un budget de moins de 50 euros et un petit week-end de travail,
+nous avons pu mettre en ligne, dans le *cloud* - une application mobile qui
+ressemble à quelque chose.
+
+Le code source est ici: https://github.com/whatthefeuille/whatthefeuille
+et l'application `en ligne <http://whatthefeuille.com>`_.
 
 .. image:: Platane.jpg
    :alt: Du platane. C'est du platane je vous dis.
 
-
-XXX
