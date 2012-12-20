@@ -40,7 +40,7 @@ def _tree(node):
         text.append(_notag(node.astext()))
         text.append('</pre>')
     elif klass == 'note':
-        text.append('<div class="well">')
+        text.append('<div class="well note">')
         for child in node.children:
             text.append(_tree(child))
         text.append('</div>')
