@@ -131,7 +131,7 @@ de l'image de la feuille se font sur le serveur car à moins d'écrire une
 application native à chaque périphérique, javascript est assez limité
 sur ce genre de fonctionnalités.
 
-.. image:: wtf-edition.png
+.. image:: wtf-edition.jpg
    :alt: Edition de la feuille
 
 
