@@ -131,7 +131,9 @@ de l'image de la feuille se font sur le serveur car à moins d'écrire une
 application native à chaque périphérique, javascript est assez limité
 sur ce genre de fonctionnalités.
 
-XXX screenshot doigts qui deplace la photo sur tablette.
+.. image:: wtf-edition.png
+   :alt: Edition de la feuille
+
 
 D'autres fonctionalitées mineures que nous avons ajoutés au fil de la nuit
 sont un *plantopedia* - une page qui liste les plantes et arbres avec
@@ -234,7 +236,7 @@ mais un moteur de recherche basé sur le très performant
 `Apache Lucene <https://lucene.apache.org/>`_.
 
 Au vu des données que nous stockons, et au vu des requetes à
-réaliser - comme par exemple une liste de feuilles correspondant
+réaliser - comme par exemple une liste de feuilles correspondantes
 à une plante donnée, en batch - Elastic Search est l'outil idéal.
 
 XXX
@@ -242,7 +244,7 @@ XXX
 Elastic Search ajoute au dessus de Lucène un service web
 qui permet d'indexer et de rechercher en utilisant des message
 *JSON*, ce qui nous permet de ne pas avoir à manipuler du *XML*,
-qui est le format d'échange natif de Lucene.
+qui est le format d'échange natif de Lucene - et assez laborieux.
 
 Mais Elastic Search c'est bien plus que ca. Les données indexées
 sont *schemaless*, c'est-à-dire qu'il n'est pas nécessaire comme
@@ -261,11 +263,15 @@ Pour le hackaton on ne déploie q'une machine avec tous les
 élements, mais si potentiellement on prend en photo toutes
 les feuilles de la planète, le sharding deviens indispensable.
 
-
-
-
 Le Cloud
 ::::::::
+
+En parlant de déployement, nous avons choisi de mettre l'application
+sur un serveur `Amazon EC2 <https://aws.amazon.com/ec2/>`_ de
+type `Spot Instance <https://aws.amazon.com/ec2/spot-instances/>`_
+pour minimiser les couts au maximum.
+
+Les *spot instance* sont des serveurs qui peuvent
 
 XXX
 
