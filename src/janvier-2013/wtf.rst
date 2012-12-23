@@ -288,6 +288,11 @@ et la démo a fonctionné pendant les 3 minutes sur scène. Les retours étaient
 assez positifs dans l'ensemble, et l'application va devenir un bon terrain
 de jeu pour Olivier, qui va pouvoir peaufiner son algo de pattern matching.
 
+.. image:: wtf-winners.jpg
+   :target: https://secure.flickr.com/photos/kennethreitz/8239979675/sizes/c/in/set-72157632156365245/
+   :alt: Des heu-reux gagnants du AngelHack (by Kenneth Reitz)
+
+
 Ce hackaton m'a fait réaliser de la différence majeure entre les moyens
 que nous avions il y a 5 ans et aujourd'hui - nous autres petits développeurs.
 
