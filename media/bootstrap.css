@@ -903,7 +903,7 @@ div.subnav-fixed{top:0px;opacity: 0.7}
 .pagination ul>.active>a,.pagination ul>.active>a:hover,.pagination ul>.active>span,.pagination ul>.active>span:hover{background-color:rgba(255, 255, 255, 0.4);color:rgba(255, 255, 255, 0.9);}
 .pager li>a{background-color:#3CB9C6;}.pager li>a:hover{background-color:#8AD5DC;}
 .pager .disabled a,.pager .disabled a:hover{background-color:#3CB9C6;color:#ffffff;}
-.btn{padding:12px 16px;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;background-image:none;text-shadow:none;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;background-color:white;border-color:transparent;}.btn:hover,.btn:active,.btn.active,.btn.disabled,.btn[disabled]{background-color:#d0d0d0;text-shadow:none;}
+.btn{padding:12px 16px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;background-image:none;text-shadow:none;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;background-color:white;}.btn:hover,.btn:active,.btn.active,.btn.disabled,.btn[disabled]{background-color:#d0d0d0;text-shadow:none;}
 .btn:active,.btn.active{background-color:#b7b7b7;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;}
 .btn:active,.btn.active{background-color:#b7b7b7 \9;}
 .btn-group .btn:first-child{margin-left:0;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;}
@@ -1008,4 +1008,13 @@ a.image:hover {
 
 .note {
     padding-top: 19px;
+}
+
+.rounded {
+    border-radius: 10px 10px 10px 10px;
+    background-position: center center;
+    background-size: cover;
+    box-shadow: 1px 1px rgb(170, 170, 153);
+    margin-top: 10px;
+    margin-bottom: 10px
 }
