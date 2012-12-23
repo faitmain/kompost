@@ -128,6 +128,7 @@ def _tree(node):
 _FOOTER = """
 .. |pen| image:: ../media/pen.png
 .. |info| image:: ../media/info.png
+.. |thumbsup| image:: ../media/thumbsup.png
 """
 
 

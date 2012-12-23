@@ -190,7 +190,8 @@ En quelques minutes, on trouve forcément une fonte qui nous plait,
 et il suffit d'ajouter un lien vers la CSS fournie par Google.
 
 En deux heures, les premières pages de What The Feuille étaient
-affichées sur notre naviguateur, tirées sur nos téléphones.
+affichées sur notre naviguateur, et correctement retaillées sur
+nos téléphones.
 
 Il quand meme a fallu par la suite tout le talent de Ronan pour ajouter
 un logo, une texture de fond de page sympa et tous les petits réglages
@@ -250,8 +251,8 @@ Mais Elastic Search c'est bien plus que ca. Les données indexées
 sont *schemaless*, c'est-à-dire qu'il n'est pas nécessaire comme
 la plupart des moteurs de recherche de définir pour chaque type
 de document les valeures à indexer. On passe un dictionnaire
-JSON à Elastic Search et il se débrouille pour créer ou mettre
-à jour le schema.
+JSON à Elastic Search et il se débrouille comme un grand pour
+créer ou mettre à jour le schema.
 
 L'autre interet d'Elastic Search est la possibilité de déployer
 plusieurs serveurs et de le laisser *sharder*
@@ -269,11 +270,45 @@ Le Cloud
 En parlant de déployement, nous avons choisi de mettre l'application
 sur un serveur `Amazon EC2 <https://aws.amazon.com/ec2/>`_ de
 type `Spot Instance <https://aws.amazon.com/ec2/spot-instances/>`_
-pour minimiser les couts au maximum.
+pour minimiser les couts au maximum pour ce premier prototype.
 
-Les *spot instance* sont des serveurs qui peuvent
+Les *Spot Instance* sont des serveurs chez Amazon qui ne sont pas
+attribués à des clients fixes et dont le prix de location fluctue
+en fonction de l'offre et de la demande.
 
-XXX
+C'est un système malin pour réduire le parc de machines non utilisées:
+Amazon mets à jour en temps réel son prix de location, et pour
+pour obtenir une *Spot Instance* il faut faire une enchère dont le
+montant est supérieur au prix fixé.
+
+L'avantage est que l'on peut avoir une machine à un prix
+très avantageux, comme l'explique `cet article <http://cloudcomments.net/2011/05/16/dont-forget-spot-instances-on-aws/>`_.
+
+Le gros inconvénient est que si le prix fixé par Amazon dépasse
+le prix de votre enchère, vous perdez brutalement la machine.
+
+Pour notre démo ce n'est pas très grave - et meme à terme, on
+peut très bien imaginer une architecture ou des machines
+spot instance sont utilisées comme noeuds pour Elastic
+Search - du moment que l'ensemble est tolérant à la disparition
+d'un des noeuds.
+
+Les données sont stockées dans un volume `ESB (Elastic Block Store) <https://aws.amazon.com/ebs/>`_,
+qui est complètement indépendant des instances. Un ESB est simplement
+monté comme volume supplémentaire au démarrage d'une ou plusieures
+instances. Les ESB sont *hautement disponible*, contrairement aux
+spot instances, si bien qu'il est possible de déployer des projets
+dont les bases de données sont stockées sur un ESB - et toutes les
+applications sur des instances plus ou moins fiables.
+
+Il existe d'autres *cloud providers* comme Rackspace, qui offrent
+encore d'autre solutions - mais Amazon est probablement le provider
+qui offre le plus d'options et de souplesse, en fonction du projet.
+
+Bien sur, toutes cette belle technologie déployée sur http://whatthefeuille.com
+n'avait aucun interet pour notre démo - puisque le wifi était trop mauvais:
+les manipulations ont été présentées sur une version locale |thumbsup|
+
 
 La partie intelligente
 ::::::::::::::::::::::
