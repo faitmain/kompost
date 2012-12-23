@@ -4,9 +4,9 @@ What The Feuille ?
 |info| **Ecologie** | **Informatique** |pen| *Tarek Ziadé*
 
 
-.. image:: https://farm9.staticflickr.com/8064/8239976465_6c760b1090_c.jpg
+.. image:: tarek-ronan.jpg
    :target: https://secure.flickr.com/photos/kennethreitz/8239976465/in/set-72157632156365245/
-   :alt: Tarek & Ronan en train de tester What The Feuille.
+   :alt: Tarek & Ronan en train de tester What The Feuille (by Kenneth Reitz)
 
 
 Le `Hackaton <https://fr.wikipedia.org/wiki/Hackathon>`_ est un mot-valise,
@@ -239,7 +239,7 @@ Au vu des données que nous stockons, et au vu des requetes à
 réaliser - comme par exemple une liste de feuilles correspondantes
 à une plante donnée, en batch - Elastic Search est l'outil idéal.
 
-XXX
+----
 
 Elastic Search ajoute au dessus de Lucène un service web
 qui permet d'indexer et de rechercher en utilisant des message
