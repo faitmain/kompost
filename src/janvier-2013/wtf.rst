@@ -260,9 +260,9 @@ les données de manière redondante - c'est-à-dire de distribuer
 les données sur au moins deux serveurs de manière à ne rien
 perdre si un des serveur tombe.
 
-Pour le hackaton on ne déploie q'une machine avec tous les
+Pour le hackaton on ne déploie qu'une machine avec tous les
 élements, mais si potentiellement on prend en photo toutes
-les feuilles de la planète, le sharding deviens indispensable.
+les feuilles de la planète, le sharding devient indispensable.
 
 Le Cloud
 ::::::::
