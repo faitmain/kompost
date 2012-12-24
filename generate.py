@@ -75,7 +75,7 @@ def _tree(node):
             text.append(_tree(child))
 
         text.append('</img>')
-        if not nolegend:
+        if not nolegend and 'alt' in node:
             text.append('<span class="legend">')
             text.append(node['alt'])
             text.append('</span>')
