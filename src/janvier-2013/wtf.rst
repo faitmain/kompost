@@ -296,24 +296,49 @@ d'un des noeuds.
 Les données sont stockées dans un volume `ESB (Elastic Block Store) <https://aws.amazon.com/ebs/>`_,
 qui est complètement indépendant des instances. Un ESB est simplement
 monté comme volume supplémentaire au démarrage d'une ou plusieures
-instances. Les ESB sont *hautement disponible*, contrairement aux
+instances. Les ESB sont *hautement disponibles*, contrairement aux
 spot instances, si bien qu'il est possible de déployer des projets
-dont les bases de données sont stockées sur un ESB - et toutes les
-applications sur des instances plus ou moins fiables.
+dont les bases de données sont stockées sur un ESB et dont toutes les
+applications exécutées sur des instances plus ou moins fiables.
 
-Il existe d'autres *cloud providers* comme Rackspace, qui offrent
-encore d'autre solutions - mais Amazon est probablement le provider
-qui offre le plus d'options et de souplesse, en fonction du projet.
+Il existe d'autres *cloud providers* comme `Rackspace <https://www.rackspace.com/>`_,
+qui offrent encore d'autre solutions - mais Amazon est probablement le provider
+qui offre le plus d'options et de souplesse, et permet de s'adapter à tout
+type de projet.
 
 Bien sur, toutes cette belle technologie déployée sur http://whatthefeuille.com
 n'avait aucun interet pour notre démo - puisque le wifi était trop mauvais:
-les manipulations ont été présentées sur une version locale |thumbsup|
+les manipulations ont été présentées sur une version locale |thumbsup|.
 
 
 La partie intelligente
 ::::::::::::::::::::::
 
-XXX Olivier?
+.. image:: scikit-image.png
+  :target: http://scikit-image.org/
+
+La partie la plus intéressante est la reconnaissance des feuilles bien sur,
+et pour l'opérer, nous avons utilisé la librairie Python **scikit-image**
+qui fournie toute une série d'algorithmes pour la vision artificielle.
+
+Chaque feuille entrée dans l'application subie d'abord une rotation et
+une normalization de taille, afin d'avoir un jeu de donnée le plus
+homogène possible. La rotation consiste à positionner avec l'aide de
+l'utilisateur le haut de la feuille en haut au milieu de l'image
+et le bas de la feuille, sans compter la tige, en bas au milieu.
+
+Cette étape améliore grandement les résultats puisque l'algorithme
+de reconnaissance ne sait pas qu'il manipule des feuilles. Il
+se contente d'essayer d'extraire de chaque photo le maximum
+de caractéristiques uniques - appelés **features**
+
+Il existe plusieurs algorithmes d'extractions de features,
+XXX
+
+Nous avons choisi d'utiliser le `HOG <https://en.wikipedia.org/wiki/Histogram_of_oriented_gradients>`_
+car xxx je sais pas du tout en fait :D
+
+
 
 Conclusion
 ::::::::::
