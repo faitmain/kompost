@@ -331,10 +331,10 @@ et le bas de la feuille, sans compter la tige, en bas au milieu.
 L'image est aussi passée en noir & blanc car l'information de couleur
 n'est pas utile XXX demander
 
-Cette étape améliore grandement les résultats puisque l'algorithme
-de reconnaissance ne sait pas qu'il manipule des feuilles. Il
-se contente d'essayer d'extraire de chaque photo le maximum
-de caractéristiques uniques - appelés **features**
+Ces étapes de normalisation améliorent grandement les résultats
+puisque l'algorithme de reconnaissance ne sait pas qu'il manipule
+des feuilles. Il se contente d'essayer d'extraire de chaque photo
+le maximum de caractéristiques uniques - appelés **features**
 
 Il existe plusieurs algorithmes d'extractions de features,
 XXX lesquels
