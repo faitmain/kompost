@@ -13,6 +13,7 @@ src = 'src'
 target ='build'
 media = os.path.abspath(os.path.join(target, 'media'))
 _GENERIC = os.path.join(src, 'generic.mako')
+_ICONS = ('pen.png', 'info.png', 'thumbsup.png')
 
 
 def _notag(text):
@@ -58,7 +59,8 @@ def _tree(node):
         nolegend = False
         if node.hasattr('uri'):
             uri = node['uri']
-            if uri.endswith('pen.png') or uri.endswith('info.png'):
+            file_ = os.path.split(uri)[-1]
+            if file_ in _ICONS:
                 class_ = 'subst'
                 nolegend = True
             else:
