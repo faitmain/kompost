@@ -316,6 +316,10 @@ La partie intelligente
 
 .. image:: scikit-image.png
   :target: http://scikit-image.org/
+  :alt: Scikit-image en action.
+
+XXX photo avec feuille, feuille rotationnee, features?
+(si ca peut s'afficher)
 
 La partie la plus intéressante est la reconnaissance des feuilles bien sur,
 et pour l'opérer, nous avons utilisé la librairie Python **scikit-image**
@@ -338,6 +342,7 @@ XXX
 Nous avons choisi d'utiliser le `HOG <https://en.wikipedia.org/wiki/Histogram_of_oriented_gradients>`_
 car xxx je sais pas du tout en fait :D
 
+XXX conclure qu'on tatonne encore
 
 
 Conclusion
