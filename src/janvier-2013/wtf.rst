@@ -318,9 +318,6 @@ La partie intelligente
   :target: http://scikit-image.org/
   :alt: Scikit-image en action.
 
-XXX photo avec feuille, feuille rotationnee, features?
-(si ca peut s'afficher)
-
 La partie la plus intéressante est la reconnaissance des feuilles bien sur,
 et pour l'opérer, nous avons utilisé la librairie Python **scikit-image**
 qui fournie toute une série d'algorithmes pour la vision artificielle.
@@ -331,13 +328,16 @@ homogène possible. La rotation consiste à positionner avec l'aide de
 l'utilisateur le haut de la feuille en haut au milieu de l'image
 et le bas de la feuille, sans compter la tige, en bas au milieu.
 
+L'image est aussi passée en noir & blanc car l'information de couleur
+n'est pas utile XXX demander
+
 Cette étape améliore grandement les résultats puisque l'algorithme
 de reconnaissance ne sait pas qu'il manipule des feuilles. Il
 se contente d'essayer d'extraire de chaque photo le maximum
 de caractéristiques uniques - appelés **features**
 
 Il existe plusieurs algorithmes d'extractions de features,
-XXX
+XXX lesquels
 
 Nous avons choisi d'utiliser le `HOG <https://en.wikipedia.org/wiki/Histogram_of_oriented_gradients>`_
 car xxx je sais pas du tout en fait :D
