@@ -186,7 +186,7 @@ L'autre outil indispensable pour un design propre en 24 heures, c'est
    :target: https://www.google.com/webfonts
    :alt: La police facile.
 
-En quelques minutes, on trouve forcément une fonte qui nous plait,
+En quelques minutes, on trouve forcément une police qui nous plait,
 et il suffit d'ajouter un lien vers la CSS fournie par Google.
 
 En deux heures, les premières pages de What The Feuille étaient
