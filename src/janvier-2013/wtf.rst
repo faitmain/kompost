@@ -367,10 +367,13 @@ elle ralentira au fur et à mesure que la base de feuilles grossie.
 La solution à terme consistera à effectuer ces calculs en parallèle
 et en asynchrone sur plusieurs machines, et d'optimiser le calcul
 en ne comparant la feuille qu'avec un nombre limité de feuilles
-les plus représentatives de la base. Par exemple en utilisant
-la feuille qui est au *centre* des feuilles pour une plante
-ou un arbre donné, si l'on dispose les histogrammes des feuilles
-dans un plan, et que chaque plante/arbre est une patate.
+la base. Par exemple en n'utilisant que la feuille la plus
+représentative de chaque plante.
+
+Sélectionner la feuille la plus représentative peut etre fait
+par exemple en sélectionnant celle qui se rapproche le plus du
+centre de gravité de la forme obtenue en disposant les histogrammes
+d'une plante donnée sur un plan à N dimensions.
 
 Quoi qu'il en soit, toute la partie intelligente de l'application
 ne prouvera son efficacité que lorsque la base sera suffisament
