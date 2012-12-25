@@ -13,7 +13,8 @@ src = 'src'
 target ='build'
 media = os.path.abspath(os.path.join(target, 'media'))
 _GENERIC = os.path.join(src, 'generic.mako')
-_ICONS = ('pen.png', 'info.png', 'thumbsup.png')
+_ICONS = ('pen.png', 'info.png', 'thumbsup.png',
+          'right.png')
 
 
 def _notag(text):
@@ -131,6 +132,7 @@ _FOOTER = """
 .. |pen| image:: ../media/pen.png
 .. |info| image:: ../media/info.png
 .. |thumbsup| image:: ../media/thumbsup.png
+.. |right| image:: ../media/right.png
 """
 
 

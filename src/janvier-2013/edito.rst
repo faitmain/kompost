@@ -65,7 +65,7 @@ en 24 heures par Olivier, Ronan & Tarek lors du dernier **AngelHack** à Paris.
 On y parle de `machine learning <https://fr.wikipedia.org/wiki/Machine_learning>`_
 au service des plantes, des *hackatons* de programmation & de *responsive design*.
 
-|thumbsup| `Lire l'article <http://faitmain.org/janvier-2013/wtf.html>`_
+|right| `Lire l'article <http://faitmain.org/janvier-2013/wtf.html>`_
 
 ----
 
@@ -73,7 +73,7 @@ Le deuxième article lui, propose une introduction aux *CNCs*, qui sont
 des machines-outils pilotables depuis un micro-controlleur ou un ordinateur.
 Les possibilitées offertes par ces machines sont énormes, puisqu'elles
 permettent des travaux de précisions comme graver des circuits éléctroniques
-ou travailler du bois. |thumbsup| `Lire l'article <http://faitmain.org/janvier-2013/cnc.html>`_
+ou travailler du bois. |right| `Lire l'article <http://faitmain.org/janvier-2013/cnc.html>`_
 
 
 Equipe
