@@ -6,8 +6,7 @@
     <meta charset="utf-8">
     <title>Fait Main</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sweet and cheery.">
-    <meta name="author" content="Thomas Park">
+    <meta name="description" content="Vulgarisation pour Geeks">
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
