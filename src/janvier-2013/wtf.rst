@@ -335,7 +335,7 @@ des feuilles. Il se contente d'essayer de détecter sur chaque photo
 le maximum de *zones d'interet* , ou **features** en anglais.
 
 Il existe plusieurs algorithmes d'extractions de features, celui que nous
-avons choisi d'expérimenter est le `HOG <https://fr.wikipedia.org/wiki/HOG>`_,
+avons choisi d'expérimenter est le `HOG <https://fr.wikipedia.org/wiki/HOG>`_
 (histogramme de gradient orienté).
 
 Cet algorithme est très efficace pour détecter des personnes sur une
@@ -344,7 +344,7 @@ chiens, des chats etc. Pour que l'algorithme soit efficace sur une
 classe d'objets donnée, comme les feuilles, il convient
 de faire varier certains paramètres comme les tailles de blocs.
 
-Nous ne savons pas si les paramètres que nous utilisons sont optimales
+Nous ne savons pas si les paramètres que nous utilisons sont optimaux
 pour la détection de feuilles, et nous ne le sauront pas tant que
 la base de données n'est pas plus fournie.
 
@@ -352,7 +352,7 @@ la base de données n'est pas plus fournie.
 
 Une fois que chaque feuille de la base est transformée en son
 histogramme, il devient possible de suggérer pour une nouvelle
-feuille, les feuilles qui s'en rapprochent le plus et donc
+feuille les feuilles qui s'en rapprochent le plus et donc
 par extension la plante ou l'arbre d'appartenance.
 
 Pour faire cette suggestion, notre application calcule la
@@ -362,12 +362,15 @@ de la base.
 
 Dans le prototype actuel, tous ces calculs sont faits à la volée.
 Mais comme cette opération de comparaison est de complexité *O(n)*,
-elle ralentira au fur et à mesure que la base de feuilles grossi.
+elle ralentira au fur et à mesure que la base de feuilles grossie.
 
 La solution à terme consistera à effectuer ces calculs en parallèle
 et en asynchrone sur plusieurs machines, et d'optimiser le calcul
 en ne comparant la feuille qu'avec un nombre limité de feuilles
-les plus représentatives de la base.
+les plus représentatives de la base. Par exemple en utilisant
+la feuille qui est au *centre* des feuilles pour une plante
+ou un arbre donné, si l'on dispose les histogrammes des feuilles
+dans un plan, et que chaque plante/arbre est une patate.
 
 Quoi qu'il en soit, toute la partie intelligente de l'application
 ne prouvera son efficacité que lorsque la base sera suffisament
