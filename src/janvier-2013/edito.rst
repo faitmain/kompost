@@ -60,11 +60,12 @@ Le premier article présente une application de reconnaissance de
 feuille écrite pendant un Hackaton.
 
 C'est l'application qui a été écrite
-en 24 heures par Olivier, Ronan & Tarek lors du dernier **AngelHack** à Paris
-`Lire l'article <http://faitmain.org/janvier-2013/wtf.html>`_.
+en 24 heures par Olivier, Ronan & Tarek lors du dernier **AngelHack** à Paris.
 
 On y parle de `machine learning <https://fr.wikipedia.org/wiki/Machine_learning>`_
 au service des plantes, des *hackatons* de programmation & de *responsive design*.
+
+|thumbsup| `Lire l'article <http://faitmain.org/janvier-2013/wtf.html>`_
 
 ----
 
@@ -72,17 +73,19 @@ Le deuxième article lui, propose une introduction aux *CNCs*, qui sont
 des machines-outils pilotables depuis un micro-controlleur ou un ordinateur.
 Les possibilitées offertes par ces machines sont énormes, puisqu'elles
 permettent des travaux de précisions comme graver des circuits éléctroniques
-ou travailler du bois. `Lire l'article <http://faitmain.org/janvier-2013/cnc.html>`_
+ou travailler du bois. |thumbsup| `Lire l'article <http://faitmain.org/janvier-2013/cnc.html>`_
 
 
 Equipe
 ::::::
 
-Le projet *FaitMain* est monté par moi-meme: `Tarek Ziadé <http://ziade.org>`_ mais
+Le projet *FaitMain* est monté par `Tarek Ziadé <http://ziade.org>`_ mais
 est surtout possible grace aux créateurs d'articles et aux relecteurs.
 
 Ont participés à ce numéro:
 
 - Yannick Jost - relecteur
+- Tarek Ziadé - Article "What The Feuille"
+
 
 
