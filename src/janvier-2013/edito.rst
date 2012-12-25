@@ -30,8 +30,8 @@ l'usinage de 10 pieces moulées sur un service en ligne.
 *Fait Main* a pour objectif de montrer à travers ses articles
 ce qu'il est possible de faire avec les outils d'aujourd'hui et sans
 dépenser des sommes folles. *Fait Main* a envie d'éveiller la créativité
-de chaque lecteur, et peut etre de lui donner l'envie de se lancer lui
-meme dans un projet DYI.
+de chaque lectrice et lecteur, et peut etre de lui donner l'envie de se lancer
+dans son propre projet DYI.
 
 
 ----
