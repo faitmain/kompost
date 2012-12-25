@@ -42,6 +42,7 @@ ${self.body()}
     <%block name="footer">
         <p class="pull-right"><a href="#"><img src="/media/up.png"></a></p>
         <div class="links">
+          Contenu en licence <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-By-SA</a> ·
           <a href="https://twitter.com/faitmain">Twitter</a> ·
           <a href="https://github.com/faitmain">GitHub</a> ·
         Thème <a target="_blank" href="http://twitter.github.com/bootstrap/">Bootstrap</a> par <a target="_blank" href="http://thomaspark.me/">Thomas Park</a> avec quelques retouches ·
