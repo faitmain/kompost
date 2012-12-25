@@ -319,8 +319,9 @@ La partie intelligente
   :alt: Scikit-image en action.
 
 La partie la plus intéressante est la reconnaissance des feuilles bien sur,
-et pour l'opérer, nous avons utilisé la librairie Python **scikit-image**
-qui fournie toute une série d'algorithmes pour la vision artificielle.
+et pour l'opérer, nous avons utilisé la librairie Python
+`scikit-image <http://scikit-image.org/>`_
+qui fourni toute une série d'algorithmes pour la vision artificielle.
 
 Chaque feuille entrée dans l'application subie d'abord une rotation et
 une normalization de taille, afin d'avoir un jeu de donnée le plus
@@ -328,21 +329,49 @@ homogène possible. La rotation consiste à positionner avec l'aide de
 l'utilisateur le haut de la feuille en haut au milieu de l'image
 et le bas de la feuille, sans compter la tige, en bas au milieu.
 
-L'image est aussi passée en noir & blanc car l'information de couleur
-n'est pas utile XXX demander
-
 Ces étapes de normalisation améliorent grandement les résultats
 puisque l'algorithme de reconnaissance ne sait pas qu'il manipule
-des feuilles. Il se contente d'essayer d'extraire de chaque photo
-le maximum de caractéristiques uniques - appelés **features**
+des feuilles. Il se contente d'essayer de détecter sur chaque photo
+le maximum de *zones d'interet* , ou **features** en anglais.
 
-Il existe plusieurs algorithmes d'extractions de features,
-XXX lesquels
+Il existe plusieurs algorithmes d'extractions de features, celui que nous
+avons choisi d'expérimenter est le `HOG <https://fr.wikipedia.org/wiki/HOG>`_,
+(histogramme de gradient orienté).
 
-Nous avons choisi d'utiliser le `HOG <https://en.wikipedia.org/wiki/Histogram_of_oriented_gradients>`_
-car xxx je sais pas du tout en fait :D
+Cet algorithme est très efficace pour détecter des personnes sur une
+photo, et par extension tous types d'objets comme des voitures, des
+chiens, des chats etc. Pour que l'algorithme soit efficace sur une
+classe d'objets donnée, comme les feuilles, il convient
+de faire varier certains paramètres comme les tailles de blocs.
 
-XXX conclure qu'on tatonne encore
+Nous ne savons pas si les paramètres que nous utilisons sont optimales
+pour la détection de feuilles, et nous ne le sauront pas tant que
+la base de données n'est pas plus fournie.
+
+----
+
+Une fois que chaque feuille de la base est transformée en son
+histogramme, il devient possible de suggérer pour une nouvelle
+feuille, les feuilles qui s'en rapprochent le plus et donc
+par extension la plante ou l'arbre d'appartenance.
+
+Pour faire cette suggestion, notre application calcule la
+`distance euclidienne <https://fr.wikipedia.org/wiki/Distance_euclidienne>`_
+entre l'histogramme de la feuille et l'intégralité des histogrammes
+de la base.
+
+Dans le prototype actuel, tous ces calculs sont faits à la volée.
+Mais comme cette opération de comparaison est de complexité *O(n)*,
+elle ralentira au fur et à mesure que la base de feuilles grossi.
+
+La solution à terme consistera à effectuer ces calculs en parallèle
+et en asynchrone sur plusieurs machines, et d'optimiser le calcul
+en ne comparant la feuille qu'avec un nombre limité de feuilles
+les plus représentatives de la base.
+
+Quoi qu'il en soit, toute la partie intelligente de l'application
+ne prouvera son efficacité que lorsque la base sera suffisament
+riche en plantes et en arbres.
 
 
 Conclusion
