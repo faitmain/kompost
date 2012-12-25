@@ -31,7 +31,7 @@ l'usinage de 10 pieces moulées sur un service en ligne.
 ce qu'il est possible de faire avec les outils d'aujourd'hui et sans
 dépenser des sommes folles. *Fait Main* a envie d'éveiller la créativité
 de chaque lectrice et lecteur, et peut etre de lui donner l'envie de se lancer
-dans son propre projet DYI.
+dans son propre projet DIY.
 
 
 ----
