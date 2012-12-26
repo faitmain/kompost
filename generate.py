@@ -2,11 +2,18 @@ import os
 import shutil
 import codecs
 import cgi
+import urllib2
+import json
+import sys
 
 from docutils.core import publish_doctree
 
 from mako.template import Template
 from mako.lookup import TemplateLookup
+
+_SERVER = 'http://short.faitmain.org'
+_KEY = 'booba81'
+
 
 
 src = 'src'
@@ -19,6 +26,15 @@ _ICONS = ('pen.png', 'info.png', 'thumbsup.png',
 
 def _notag(text):
     return cgi.escape(text)
+
+
+def shorten(url):
+    req = urllib2.Request(_SERVER, headers={'X-Short': _KEY})
+    req.get_method = lambda: 'POST'
+    req.add_data(url)
+    res = urllib2.urlopen(req).read()
+    res = json.loads(res)
+    return _SERVER + '/' + res['short']
 
 
 def _tree(node):
@@ -90,6 +106,9 @@ def _tree(node):
             if 'wikipedia.org' in refuri:
                 text.append('<a href="%s" class="wikipedia">' % refuri)
             else:
+                if 'faitmain.org' not in refuri:
+                    refuri = shorten(refuri)
+
                 text.append('<a href="%s">' % refuri)
         else:
             text.append('<a>')
