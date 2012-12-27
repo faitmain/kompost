@@ -24,7 +24,7 @@
   <div class="row">
     <div class="span6">
       <a href="/"><h1>Fait Main</h1></a>
-      <p class="lead">Electronique | Informatique | Art | Bouffe | Ecologie</p>
+      <p class="lead">Electronique ∝ Informatique ∝ Art ∝ Bouffe ∝ Ecologie</p>
     </div>
   </div>
   <%block name="header"/>
@@ -33,10 +33,11 @@
 
 ${self.body()}
 
+<div class="span11 center">
+<span id="EOD">§</span>
+</div>
+<br/><br/>
 
-<br><br><br><br>
-
-  <hr/>
   <footer id="footer">
     <%block name="footer">
     <div class="links">

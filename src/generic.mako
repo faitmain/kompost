@@ -24,20 +24,21 @@
   <div class="row">
     <div class="span6">
       <a href="/"><h1>Fait Main</h1></a>
-      <p class="lead">Electronique | Informatique | Art | Bouffe | Ecologie</p>
+      <p class="lead">Electronique ∝ Informatique ∝ Art ∝ Bouffe ∝ Ecologie</p>
     </div>
   </div>
   <%block name="header"/>
 </header>
 
-
 <h1>${title}</h1>
 
 ${body}
 
-<br><br><br><br>
-
-  <hr/>
+<br/>
+<div class="span11 center">
+<span class="EOD">§</span>
+</div>
+<br/><br/>
   <footer id="footer">
     <%block name="footer">
     <div class="links">

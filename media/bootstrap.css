@@ -1038,3 +1038,13 @@ div.links li {
 #footer {
   margin-top: 20px;
 }
+
+.center{
+    text-align: center;
+    display: block;    
+}
+
+.EOD {
+    font-size:300%;
+    text-shadow:0 0 5px red;
+}
