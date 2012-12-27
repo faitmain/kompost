@@ -24,7 +24,7 @@ autant d'applications très concrètes de savoir faire en informatique,
 Nous entrons dans l'époque reine du **Do It Yourself**, où, pour un budget
 raisonnable, n'importe lequel d'entre nous peut réaliser un
 projet avancé — que ce soit en soudant quelques composants sur
-un Arduino ou un `Raspberry Pi <raspberrypi.org>`_, ou en commandant
+un Arduino ou un `Raspberry Pi <http://raspberrypi.org>`_, ou en commandant
 l'usinage de 10 pièces moulées sur un service en ligne.
 
 *Fait Main* a pour objectif de montrer à travers ses articles
