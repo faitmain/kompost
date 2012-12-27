@@ -12,7 +12,7 @@ from mako.template import Template
 from mako.lookup import TemplateLookup
 
 _SERVER = 'http://short.faitmain.org'
-_KEY = 'booba81'
+_KEY = 'booba82'
 
 
 

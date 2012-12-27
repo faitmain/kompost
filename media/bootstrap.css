@@ -1018,3 +1018,23 @@ a.image:hover {
     margin-top: 10px;
     margin-bottom: 10px
 }
+
+div.links ul {
+ list-style-type: none;
+ height: 40px;
+ margin: auto;
+
+}
+
+div.links li {
+ float: left;
+ padding-left: 10px;
+ padding-right: 10px;
+ border-right: 1px solid rgba(0, 0, 0, 0.15);
+ word-wrap: break-word;
+ text-wrap: break-word;
+}
+
+#footer {
+  margin-top: 20px;
+}
