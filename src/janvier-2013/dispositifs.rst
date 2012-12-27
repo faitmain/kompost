@@ -1,6 +1,7 @@
-Dispositifs sans fil, Arduino & Raspberry Pi
-============================================
+Piloter des dispositifs sans fil
+================================
 
+|flash| **Niveau**: Avancé
 |info| **Electronique** | **Informatique** |pen| *Jonathan Schemoul*
 
 
