@@ -196,34 +196,54 @@ Pour régler ce problème, il suffit d'ajouter un timer sur la réception, pour 
 l'avoir qu'une seule fois::
 
     #include <RCSwitch.h>
-
-    #define couloir 12449942 #define porte 13464924
+    #define couloir 12449942
+    #define porte 13464924
 
     RCSwitch mySwitch = RCSwitch();
 
     #define debounceDelay 1000 // On limite à un évènement par seconde long
+
     last_times[2] = {0,0}; // On a deux détecteurs, donc on a deux timers.
 
-    void setup() { Serial.begin(9600); mySwitch.enableReceive(0); }
+    void setup() {
+        Serial.begin(9600);
+        mySwitch.enableReceive(0);
+    }
 
-    bool debounce(int number) { if ((last_times[number] == 0) || ((millis() -
-    last_times[number]) > debounceDelay)) { last_times[number] = millis(); return
-    true; } return false; }
+    bool debounce(int number) {
+        if ((last_times[number] == 0) || ((millis() - last_times[number]) > debounceDelay)) {
+            last_times[number] = millis();
+            return true;
+        }
+        return false;
+    }
 
-    void loop() { if (mySwitch.available()) {
+    void loop() {
+      if (mySwitch.available()) {
 
         int value = mySwitch.getReceivedValue();
 
         // on remet à zero le timer
-
         while (!Serial) ;
 
-        switch (value) { case porte: if (debounce(0)) Serial.println("Quelqu'un a
-    ouvert la porte !"); break; case couloir: if (debounce(1))
-    Serial.println("Quelqu'un marche dans le couloir !"); break; default:
-    Serial.print("Dispositif inconnu: "); Serial.println(value); break; }
+        switch (value) {
+            case porte:
+                if (debounce(0))
+                    Serial.println("Quelqu'un a ouvert la porte !");
+                break;
+            case couloir:
+                if (debounce(1))
+                    Serial.println("Quelqu'un marche dans le couloir !");
+                break;
+            default:
+                Serial.print("Dispositif inconnu: ");
+                Serial.println(value);
+                break;
+        }
 
-        mySwitch.resetAvailable(); } }
+        mySwitch.resetAvailable();
+      }
+    }
 
 Notre fonction debounce permet, pour un détecteur donné (de 0 à 1 ici), de dire
 si c'est un nouvel événement ou pas. Voici ce que cela donne si j'ouvre la
