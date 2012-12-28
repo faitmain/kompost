@@ -198,7 +198,9 @@ l'information. Du coup, elle est envoyée plusieurs fois pour être sur de sa
 réception.
 
 Pour régler ce problème, il suffit d'ajouter un timer sur la réception, pour ne
-l'avoir qu'une seule fois::
+l'avoir qu'une seule fois:
+
+.. code-block:: c
 
     #include <RCSwitch.h>
     #define couloir 12449942
@@ -206,9 +208,11 @@ l'avoir qu'une seule fois::
 
     RCSwitch mySwitch = RCSwitch();
 
-    #define debounceDelay 1000 // On limite à un évènement par seconde long
+    // On limite à un évènement par seconde long
+    #define debounceDelay 1000 
 
-    last_times[2] = {0,0}; // On a deux détecteurs, donc on a deux timers.
+    // On a deux détecteurs, donc on a deux timers.
+    last_times[2] = {0,0}; 
 
     void setup() {
         Serial.begin(9600);
@@ -216,7 +220,8 @@ l'avoir qu'une seule fois::
     }
 
     bool debounce(int number) {
-        if ((last_times[number] == 0) || ((millis() - last_times[number]) > debounceDelay)) {
+        if ((last_times[number] == 0) || 
+            ((millis() - last_times[number]) > debounceDelay)) {
             last_times[number] = millis();
             return true;
         }

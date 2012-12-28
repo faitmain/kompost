@@ -1060,7 +1060,7 @@ div.syntax {
 pre {
   background-color: white;
   border: 0;
-  overflow-x: scroll;
+  overflow-x: auto;
   white-space: pre;
 }
 
