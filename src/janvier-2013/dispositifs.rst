@@ -1,11 +1,13 @@
 Piloter des dispositifs sans fil
-================================
+::::::::::::::::::::::::::::::::
 
-|flash| **Niveau**: Avancé
+
 |info| **Electronique** | **Informatique** |pen| *Jonathan Schemoul*
 
+|flash| **Niveau**: Avancé
 
-**Partie 1: Réception en 433Mhz**
+
+*Partie 1: Réception en 433Mhz*
 
 leonardo_montage
 
@@ -138,7 +140,9 @@ Interprétation
 De là à garder ces codes et à donner une information humainement
 compréhensible, il n'y a qu'un pas.
 
-Essayons d'envoyer une information utile sur le port série::
+Essayons d'envoyer une information utile sur le port série
+
+.. code-block:: c
 
     #include <RCSwitch.h>
     #define couloir 12449942

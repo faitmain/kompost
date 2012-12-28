@@ -8,7 +8,7 @@ build:
 	virtualenv $(VTENV_OPTS) .
 	bin/pip install Mako
 	bin/pip install docutils
-
+	bin/pip install Pygments
 
 generate: 
 	bin/python generate.py

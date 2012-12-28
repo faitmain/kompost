@@ -856,7 +856,7 @@ a.label:hover,a.badge:hover{color:#ffffff;text-decoration:none;cursor:pointer;}
 .affix{position:fixed;}
 h6{color:rgba(255, 255, 255, 0.9);}
 h1 small,h2 small,h3 small,h4 small,h5 small,h6 small{font-family:'Cabin',Verdana,sans-serif;color:rgba(255, 255, 255, 0.9);}
-code,pre{background-color:rgba(255, 255, 255, 0.3);padding:2px;}
+code,pre{padding:2px;}
 blockquote{border-left-color:#1cafbd;}blockquote.pull-right{border-right-color:#1cafbd;}
 blockquote small{color:rgba(255, 255, 255, 0.6);}
 .muted{color:rgba(255, 255, 255, 0.5);}
@@ -1047,4 +1047,31 @@ div.links li {
 .EOD {
     font-size:300%;
     text-shadow:0 0 5px red;
+}
+
+div.syntax {
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+pre {
+  background-color: white;
+  border: 0;
+  overflow-x: scroll;
+  white-space: pre;
+}
+
+table.highlighttable {
+   background-color: transparent;
+}
+
+table.highlighttable td.linenos {
+  border-right: 2px solid rgba(0, 0, 0, 0.15);
+  padding-right: 4px;
+  padding-left: 4px;
+  min-width: 25px;
+  vertical-align: top;
 }

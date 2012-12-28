@@ -11,6 +11,25 @@ from docutils.core import publish_doctree
 from mako.template import Template
 from mako.lookup import TemplateLookup
 
+from pygments import highlight
+from pygments.lexers import get_lexer_by_name
+from pygments.formatters import HtmlFormatter
+
+
+def hilite(node):
+    lexer = 'text'
+    if 'classes' in node.attributes:
+        classes = node.attributes['classes']
+        if len(classes) == 2:
+            lexer = node.attributes['classes'][-1]
+
+    code = node.astext()
+    lexer = get_lexer_by_name(lexer)
+    formatter = HtmlFormatter(
+                              style='colorful')
+    return highlight(code, lexer, formatter)
+
+
 _SERVER = 'http://short.faitmain.org'
 _KEY = 'booba82'
 
@@ -54,9 +73,9 @@ def _tree(node):
     elif klass == 'Text':
         text.append(node.astext())
     elif klass == 'literal_block':
-        text.append('<pre>')
-        text.append(_notag(node.astext()))
-        text.append('</pre>')
+        text.append('<div class="syntax rounded">')
+        text.append(hilite(node))
+        text.append('</div>')
     elif klass == 'note':
         text.append('<div class="well note">')
         for child in node.children:
