@@ -85,7 +85,6 @@ est surtout possible grâce aux créateurs d'articles et aux relecteurs.
 Ont participé à ce numéro:
 
 - Yannick Jost - relecteur
-- Tarek Ziadé - Article "What The Feuille"
-
-
+- Xavier Fernandez - relecteur
+- `Tarek Ziadé </auteurs/tarek.html>`_ - Article "What The Feuille"
 

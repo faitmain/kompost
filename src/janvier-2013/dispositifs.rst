@@ -6,10 +6,12 @@ Piloter des dispositifs sans fil
 
 |flash| **Niveau**: Avancé
 
+.. image:: leonardo_montage.png
+   :alt: Montage avec la Leonardo
 
-*Partie 1: Réception en 433Mhz*
 
-leonardo_montage
+Partie 1: Réception en 433Mhz
+=============================
 
 Vous avez sans doute entendu parler ou vu des détecteurs de fumée, d'ouverture
 de porte, des télécommandes, des prises murales, etc. sans fil ?
@@ -41,18 +43,28 @@ Regardons de plus prêt ce que nous avons à disposition :
 - Un 433 mhz RF link kit (un émetteur, un récepteur)
 - Des fils à breadboard
 
-composants
+.. image:: composants1.jpg
+   :alt: Montage détaillé
+
 
 Niveau détecteurs:
 
 - Un détecteur d'ouverture de porte
 - Un détecteur PIR
 
-pir  doorswitch
+.. image:: pir.jpg
+   :alt: Détecteur PIR
+
+
+.. image:: doorswitch.png
+   :alt: Détecteur d'ouverture de porte
+
 
 Regardons ce détecteur d'ouverture de porte de plus près :
 
-20121217_124151
+.. image:: doorswitch-grosplan.jpg
+   :alt: Gros plan sur le détecteur d'ouverture de porte
+
 
 On voit bien le PT2262 pour l'encodage et à gauche des jumper pour choisir le
 code (ainsi chaque émetteur aura un code différent). Pas besoin de déduire le
@@ -86,7 +98,9 @@ Leonardo    3   2   0   1
 Sur notre Leonardo, si nous voulons connecter notre récepteur sur l'interrupt
 0, il nous faut le connecter sur le pin 3 :
 
-leonardo_montage
+.. image:: leonardo_montage.png
+   :alt: Montage
+
 
 
 Recevoir des codes
@@ -98,7 +112,8 @@ Pour cela, nous allons lancer l'ide arduino et charger l'exemple de RCSwitch,
 Pour le Leonardo, il faut ajouter "while (!Serial) ;" avant d'écrire sur le
 port série (lié à l'utilisation de l'usb après le lancement) :
 
-sketch_demo
+.. image:: sketch_demo.png
+   :alt: Le code dans Arduino IDE
 
 Envoyons le croquis sur la carte, et lancons le moniteur série (Outils >
 Moniteur Série, après avoir vérifié que le port était le bon dans Outils > Port
@@ -107,11 +122,13 @@ série).
 Actionnez votre senseur (ici le détecteur d'ouverture de porte, en écartant les
 deux parties):
 
-montage
+.. image:: montage.jpg
+   :alt: Montage
 
 Et magie, des codes s'affichent dans le moniteur série :
 
-serial_print
+.. image:: serial_print.png
+   :alt: Retours dans le port série
 
 Ce code, 13464924 dans cette capture d'écran, est l'id unique de votre senseur,
 24bit est la taille de celui-ci et 1 le protocole utilisé (ici celui du
@@ -120,11 +137,15 @@ PT2262).
 Si l'on active un autre senseur (le capteur de mouvement ici, il s'allume en
 rouge lorsqu'il détecte un mouvement):
 
-20121217_105715
 
-deux_codes
+.. image:: capteur_move.jpg
+   :alt: Détéction de moouvement
 
-On voit que l'on reçoit un nouveau code : 12449942.
+
+.. image:: deux_codes.png
+   :alt: Deux codes
+
+On voit que l'on reçoit un nouveau code : **12449942**.
 
 Note: si vous ne voyez rien dans la console avbec un Leonardo, c'est quelque
 chose qui arrive souvent, n'hésitez pas à ouvrir un autre moniteur série que
@@ -190,7 +211,8 @@ couloir !" selon le cas.
 
 Voici ce que l'on reçoit sur le port série :
 
-Capture du 2012-12-17 14:04:54
+.. image:: Capture-du-2012-12-17-140454.png
+   :alt: Capture du port série
 
 Comme vous pouvez le voir, on a l'information, mais elle se répète. C'est du à
 la nature du protocole, qui ne permet pas de vérifier la réception de
@@ -209,10 +231,10 @@ l'avoir qu'une seule fois:
     RCSwitch mySwitch = RCSwitch();
 
     // On limite à un évènement par seconde long
-    #define debounceDelay 1000 
+    #define debounceDelay 1000
 
     // On a deux détecteurs, donc on a deux timers.
-    last_times[2] = {0,0}; 
+    last_times[2] = {0,0};
 
     void setup() {
         Serial.begin(9600);
@@ -220,7 +242,7 @@ l'avoir qu'une seule fois:
     }
 
     bool debounce(int number) {
-        if ((last_times[number] == 0) || 
+        if ((last_times[number] == 0) ||
             ((millis() - last_times[number]) > debounceDelay)) {
             last_times[number] = millis();
             return true;
@@ -259,7 +281,9 @@ Notre fonction debounce permet, pour un détecteur donné (de 0 à 1 ici), de di
 si c'est un nouvel événement ou pas. Voici ce que cela donne si j'ouvre la
 porte, marche jusqu'à une autre porte puis ouvre cette autre porte inconnue :
 
-Capture du 2012-12-17 14:21:21
+.. image:: Capture-du-2012-12-17-142121.png
+   :alt: Capture du port série
+
 
 Comme vous pouvez le voir, nous n'avons pas de timer sur l'émetteur inconnu
 mais on en a un sur ceux qui sont connus.
