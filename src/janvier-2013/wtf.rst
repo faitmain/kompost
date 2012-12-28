@@ -1,7 +1,9 @@
 What The Feuille ?
 ==================
 
-|info| **Ecologie** | **Informatique** |pen| *Tarek Ziadé*
+|info| **Ecologie** | **Informatique** |pen| `Tarek Ziadé </auteurs/tarek.html>`_
+
+|flash| **Niveau**: Vulgarisation
 
 
 .. image:: tarek-ronan.jpg

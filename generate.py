@@ -125,9 +125,8 @@ def _tree(node):
             if 'wikipedia.org' in refuri:
                 text.append('<a href="%s" class="wikipedia">' % refuri)
             else:
-                if 'faitmain.org' not in refuri:
+                if 'faitmain.org' not in refuri and not refuri.startswith('/'):
                     refuri = shorten(refuri)
-
                 text.append('<a href="%s">' % refuri)
         else:
             text.append('<a>')
