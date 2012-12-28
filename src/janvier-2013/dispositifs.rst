@@ -2,7 +2,7 @@ Piloter des dispositifs sans fil
 ::::::::::::::::::::::::::::::::
 
 
-|info| **Electronique** | **Informatique** |pen| *Jonathan Schemoul*
+|info| **Electronique** | **Informatique** |pen| `Jonathan Schemoul </auteurs/jonathan.html>`
 
 |flash| **Niveau**: Avancé
 
