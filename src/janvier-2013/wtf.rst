@@ -104,7 +104,7 @@ Mais mine de rien, ce genre d'application touche à pas mal de domaines de progr
 
 Pour résumer le fonctionnement dans un schéma simple:
 
-.. image:: wtf-schema.png
+.. image:: wtf-schema.jpg
    :alt: C'est pas compliqué...
 
 L'utilisateur trouve une feuille — où l'arrache discrètement, puis
@@ -175,7 +175,7 @@ Un lien à déposer dans Firefox dans la barre des bookmarks et *hop!*, un
 menu déroulant permet d'essayer les thèmes fournis par le projet
 en live sur n'importe quel site fait avec Bootstrap !
 
-.. image:: bootswatch.png
+.. image:: bootswatch.jpg
    :target: http://bootswatch.com
    :alt: Le bookmarklet de bootswatch en plein action
 
@@ -184,7 +184,7 @@ en live sur n'importe quel site fait avec Bootstrap !
 L'autre outil indispensable pour un design propre en 24 heures, c'est
 `Google Web Fonts <https://www.google.com/webfonts>`_.
 
-.. image:: gwf.png
+.. image:: gwf.jpg
    :target: https://www.google.com/webfonts
    :alt: La police facile.
 
@@ -213,7 +213,7 @@ haut et le bas, avec son doigt sur un écran tactile ou sa souris.
 Les coordonnées sur l'image sont envoyées au serveur, qui applique
 une rotation de l'image.
 
-.. image:: editeur.png
+.. image:: editeur.jpg
    :alt: Tape ta feuille.
 
 On est loin de la barre d'outils de Photoshop, mais l'idée est là :
@@ -316,7 +316,7 @@ les manipulations ont été présentées sur une version locale |thumbsup|.
 La partie intelligente
 ::::::::::::::::::::::
 
-.. image:: scikit-image.png
+.. image:: scikit-image.jpg
   :target: http://scikit-image.org/
   :alt: Scikit-image en action.
 

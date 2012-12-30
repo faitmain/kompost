@@ -6,7 +6,7 @@ Piloter des dispositifs sans fil
 
 |flash| **Niveau**: Avancé
 
-.. image:: leonardo_montage.png
+.. image:: leonardo_montage.jpg
    :alt: Montage avec la Leonardo
 
 
@@ -56,7 +56,7 @@ Niveau détecteurs:
    :alt: Détecteur PIR
 
 
-.. image:: doorswitch.png
+.. image:: doorswitch.jpg
    :alt: Détecteur d'ouverture de porte
 
 
@@ -98,7 +98,7 @@ Leonardo    3   2   0   1
 Sur notre Leonardo, si nous voulons connecter notre récepteur sur l'interrupt
 0, il nous faut le connecter sur le pin 3 :
 
-.. image:: leonardo_montage.png
+.. image:: leonardo_montage.jpg
    :alt: Montage
 
 
@@ -112,7 +112,7 @@ Pour cela, nous allons lancer l'ide arduino et charger l'exemple de RCSwitch,
 Pour le Leonardo, il faut ajouter "while (!Serial) ;" avant d'écrire sur le
 port série (lié à l'utilisation de l'usb après le lancement) :
 
-.. image:: sketch_demo.png
+.. image:: sketch_demo.jpg
    :alt: Le code dans Arduino IDE
 
 Envoyons le croquis sur la carte, et lancons le moniteur série (Outils >
@@ -127,7 +127,7 @@ deux parties):
 
 Et magie, des codes s'affichent dans le moniteur série :
 
-.. image:: serial_print.png
+.. image:: serial_print.jpg
    :alt: Retours dans le port série
 
 Ce code, 13464924 dans cette capture d'écran, est l'id unique de votre senseur,
@@ -142,7 +142,7 @@ rouge lorsqu'il détecte un mouvement):
    :alt: Détéction de moouvement
 
 
-.. image:: deux_codes.png
+.. image:: deux_codes.jpg
    :alt: Deux codes
 
 On voit que l'on reçoit un nouveau code : **12449942**.
@@ -211,7 +211,7 @@ couloir !" selon le cas.
 
 Voici ce que l'on reçoit sur le port série :
 
-.. image:: Capture-du-2012-12-17-140454.png
+.. image:: Capture-du-2012-12-17-140454.jpg
    :alt: Capture du port série
 
 Comme vous pouvez le voir, on a l'information, mais elle se répète. C'est du à
@@ -281,7 +281,7 @@ Notre fonction debounce permet, pour un détecteur donné (de 0 à 1 ici), de di
 si c'est un nouvel événement ou pas. Voici ce que cela donne si j'ouvre la
 porte, marche jusqu'à une autre porte puis ouvre cette autre porte inconnue :
 
-.. image:: Capture-du-2012-12-17-142121.png
+.. image:: Capture-du-2012-12-17-142121.jpg
    :alt: Capture du port série
 
 
