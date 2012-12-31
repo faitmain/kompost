@@ -57,7 +57,5 @@ ${self.body()}
  </div>
     <script src="/media/jquery.js"></script>
     <script src="/media/bootstrap.js"></script>
-    <script src="/media/application.js"></script>
-    <script src="/media/bootswatch.js"></script>
     <script src="/media/retina.js"></script>
 </body></html>
