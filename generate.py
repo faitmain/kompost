@@ -166,11 +166,11 @@ def _tree(node):
 
 
 _FOOTER = """
-.. |pen| image:: ../media/pen.png
-.. |info| image:: ../media/info.png
-.. |thumbsup| image:: ../media/thumbsup.png
-.. |right| image:: ../media/right.png
-.. |flash| image:: ../media/flash.png
+.. |pen| image:: http://cnd.faitmain.org/media/pen.png
+.. |info| image:: http://cnd.faitmain.org/media/info.png
+.. |thumbsup| image:: http://cnd.faitmain.org/media/thumbsup.png
+.. |right| image:: http://cnd.faitmain.org/media/right.png
+.. |flash| image:: http://cnd.faitmain.org/media/flash.png
 
 """
 
