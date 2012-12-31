@@ -10,10 +10,10 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <link href="/media/bootstrap.css" rel="stylesheet">
-    <link href="/media/bootstrap-responsive.css" rel="stylesheet">
-    <link href="/media/bootswatch.css" rel="stylesheet"> 
-    <link rel="shortcut icon" href="http://faitmain.org/favicon.ico" />
+    <link href="http://cnd.faitmain.org/media/bootstrap.css" rel="stylesheet">
+    <link href="http://cnd.faitmain.org/media/bootstrap-responsive.css" rel="stylesheet">
+    <link href="http://cnd.faitmain.org/media/bootswatch.css" rel="stylesheet"> 
+    <link rel="shortcut icon" href="http://cnd.faitmain.org/favicon.ico" />
     <%block name="head"/>
 </head>
 
@@ -52,11 +52,11 @@ ${self.body()}
       </ul>
       <div style="clear:both"/>
      </div>
-     <p class="pull-right"><a href="#"><img src="/media/up.png"></a></p>
+     <p class="pull-right"><a href="#"><img src="http://cnd.faitmain.org/media/up.png"></a></p>
     </%block>
   </footer>
  </div>
-    <script src="/media/jquery.js"></script>
-    <script src="/media/bootstrap.js"></script>
-    <script src="/media/retina.js"></script>
+    <script src="http://cnd.faitmain.org/media/jquery.js"></script>
+    <script src="http://cnd.faitmain.org/media/bootstrap.js"></script>
+    <script src="http://cnd.faitmain.org/media/retina.js"></script>
 </body></html>
