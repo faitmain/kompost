@@ -56,7 +56,7 @@ ${self.body()}
     </%block>
   </footer>
  </div>
-    <script src="http://cnd.faitmain.org/media/jquery.js"></script>
-    <script src="http://cnd.faitmain.org/media/bootstrap.js"></script>
+    <script async src="http://cnd.faitmain.org/media/jquery.js"></script>
+    <script async src="http://cnd.faitmain.org/media/bootstrap.js"></script>
     <script src="http://cnd.faitmain.org/media/retina.js"></script>
 </body></html>
