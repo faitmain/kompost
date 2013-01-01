@@ -49,7 +49,7 @@ a:hover{color:#e8d069;text-decoration:underline;}
 .row{margin-left:-20px;*zoom:1;}.row:before,.row:after{display:table;content:"";line-height:0;}
 .row:after{clear:both;}
 [class*="span"]{float:left;min-height:1px;margin-left:20px;}
-.container,.navbar-static-top .container,.navbar-fixed-top .container,.navbar-fixed-bottom .container{width:940px;}
+.container,.navbar-static-top .container,.navbar-fixed-top .container,.navbar-fixed-bottom .container{width:800px;max-width:800px}
 .span12{width:940px;}
 .span11{width:860px;}
 .span10{width:780px;}
