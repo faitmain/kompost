@@ -27,6 +27,10 @@ projet avancé — que ce soit en soudant quelques composants sur
 un Arduino ou un `Raspberry Pi <http://raspberrypi.org>`_, ou en commandant
 l'usinage de 10 pièces moulées sur un service en ligne.
 
+.. image:: mamacar.jpg
+   :alt: Une voiture de récupe, pilotée avec un Arduino.
+
+
 *Fait Main* a pour objectif de montrer à travers ses articles
 ce qu'il est possible de faire avec les outils d'aujourd'hui et sans
 dépenser des sommes folles. *Fait Main* a envie d'éveiller la créativité
