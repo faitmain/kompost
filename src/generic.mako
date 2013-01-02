@@ -36,7 +36,7 @@
 ${body}
 
 <br/>
-<div class="span11 center">
+<div class="center">
 <span class="EOD">§</span>
 </div>
 <br/><br/>

@@ -34,7 +34,7 @@
 
 ${self.body()}
 
-<div class="span11 center">
+<div class="center">
 <span id="EOD">§</span>
 </div>
 <br/><br/>
