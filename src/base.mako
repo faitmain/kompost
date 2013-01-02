@@ -43,6 +43,7 @@ ${self.body()}
     <%block name="footer">
     <div class="links">
       <ul>
+        <li><a href="/apropos.html">A propos</a></li>
         <li>Contenu <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-By-SA</a></li>
         <li><a href="https://twitter.com/faitmain">Twitter</a></li>
         <li><a href="https://github.com/faitmain">GitHub</a></li>
