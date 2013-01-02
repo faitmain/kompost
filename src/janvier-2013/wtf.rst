@@ -24,7 +24,7 @@ des paires de programmeurs bossaient sur Zope 3 — un logiciel écrit
 en Python.
 
 Les *Hackatons* organisés par `AngelHack <http://www.angelhack.com/>`_ sont
-encore une autre variante : vous avez 24 heures pour produire un projet *from scratch* (TRADUIRE OU EXPLIQUER)
+encore une autre variante : vous avez 24 heures pour produire un projet de A à Z
 dans des locaux où tous les participants se réunissent et restent éveillés
 toute la nuit — soignés à coup de pizzas et Red Bull par les organisateurs.
 
@@ -43,7 +43,7 @@ visite en Californie.
 ----
 
 De mon coté — la partie startup/pitch ne présentait aucun intéret. Mais
-l'idée d'essayer d'écrire une appli fonctionnelle et moderne de A à Z en
+l'idée d'essayer d'écrire une appli fonctionnelle et moderne en
 24h par contre...
 
 On s'est donc inscrit avec Olivier & Ronan et on a participé au concours
@@ -340,11 +340,14 @@ Il existe plusieurs algorithmes d'extractions de features, celui que nous
 avons choisi d'expérimenter est le `HOG <https://fr.wikipedia.org/wiki/HOG>`_
 (histogramme de gradient orienté).
 
+HOG extrait des histogrammes de gradients sur des blocs carrés de
+pixels contigus.
+
 Cet algorithme est très efficace pour détecter des personnes sur une
 photo, et par extension tous types d'objets comme des voitures, des
 chiens, des chats, etc. Pour que l'algorithme soit efficace sur une
 classe d'objets donnée, comme les feuilles, il convient
-de faire varier certains paramètres comme les tailles de blocs *(QUELS BLOCS ?)*.
+de faire varier certains paramètres comme les tailles de blocs.
 
 Nous ne savons pas si les paramètres que nous utilisons sont optimaux
 pour la détection de feuilles, et nous ne le saurons pas tant que
@@ -366,16 +369,32 @@ Dans le prototype actuel, tous ces calculs sont faits à la volée.
 Mais comme cette opération de comparaison est de complexité *O(n)*,
 elle ralentira au fur et à mesure que la base de feuilles grossit.
 
-La solution à terme consistera à effectuer ces calculs en parallèle
-et en asynchrone sur plusieurs machines, et d'optimiser le calcul
-en ne comparant la feuille qu'avec un nombre limité de feuilles
-de base. Par exemple en n'utilisant que la feuille la plus
-représentative de chaque plante.
+Une solution potentielle consisterait en la construction d'un
+vocabulaire de taille limitée de 1000 à 10000 images *prototypiques*
+qu'ont appelle des **mots visuels**. Ce vocabulaire peut etre construit
+par l'utilisation d'un algorithme de clustering sur les features
+extraites de la base d'images existantes.
 
-Déterminer la feuille la plus représentative peut être fait en
-sélectionnant celle qui se rapproche le plus du
-centre de gravité de la forme obtenue en disposant les histogrammes
-d'une plante donnée dans un espace à N dimensions.
+Chaque image de la base sera ensuite approximativement encodée dans ce
+vocabulaire en lui attribuant les 10 ou 100 mots visuels les plus
+représentatifs pour cette image. On utilise alors ces mots pour
+indexer les images de la base dans l'index Elastic Search.
+
+On parle de représentation creuse (*sparse* en Anglais) car chaque image
+est encodée en utilisant moins de 10% du vocabulaire possible. Cette
+technique permet de faire des requetes de suggestion qui fonctionnent
+mieux sur une base de données très large
+
+En effet quand une nouvelle image normalisée arrive, on extrait ses
+features, on cherche et on fait une requete de similarité
+(*"MoreLikeThis"*) dans l'index Elastic Search avec les identifiants des
+mots visuels les plus représentatif de la nouvelle image.
+
+L'utilisation de l'index Elastic Search permet ainsi de pre-filtrer de
+manière efficace les 1000 candidats les plus probables.
+
+Pour trouver la suggestion finale on calcule la distance euclidienne sur
+les features de ces 1000 candidats au lieu de la base complète.
 
 Quoi qu'il en soit, toute la partie intelligente de l'application
 ne prouvera son efficacité que lorsque la base sera suffisamment
