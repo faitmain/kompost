@@ -46,8 +46,8 @@ ${body}
       <ul>
         <li><a href="/apropos.html">A propos</a></li>
         <li>Contenu <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-By-SA</a></li>
-        <li><a href="https://twitter.com/faitmain">Twitter</a></li>
-        <li><a href="https://github.com/faitmain">GitHub</a></li>
+        <li><a href="https://twitter.com/FaitMainMag">Twitter</a></li>
+        <li><a href="https://github.com/tarekziade/faitmain">GitHub</a></li>
         <li><p>Design adapté de <a target="_blank" href="http://thomaspark.me/">Thomas Park</a></p></li>
         <li><a target="_blank" href="http://glyphicons.com/">Icones</a><li>
          <li><a target="_blank" href="http://www.google.com/webfonts">Polices</a></li>
