@@ -33,6 +33,11 @@
 
 <h1>${title}</h1>
 
+<div class="alert alert-error">
+Attention le magazine n'est pas encore officiellement lancé. Ceci est un protoype. Ne pas diffuser.
+</div>
+
+
 ${body}
 
 <br/>
