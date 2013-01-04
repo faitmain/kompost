@@ -4,17 +4,17 @@ Piloter des dispositifs sans fil
 
 |info| **Electronique** | **Informatique** |pen| `Jonathan Schemoul </auteurs/jonathan.html>`_
 
-|flash| **Niveau**: Avancé
+|flash| **Niveau** : Avancé
 
 .. image:: leonardo_montage.jpg
    :alt: Montage avec la Leonardo
 
 
-Partie 1: Réception en 433Mhz
-=============================
+Partie 1 : Réception en 433Mhz
+==============================
 
 Vous avez sans doute entendu parler ou vu des détecteurs de fumée, d'ouverture
-de porte, des télécommandes, des prises murales, etc. sans fil ?
+de porte, des télécommandes, des prises murales, etc. sans fil ?
 
 Que ce soit les modèles chers que vous trouvez en magasin ou les modèles
 chinois bon marché, la plupart, s'ils ne sont pas avancés, utilisent la bande
@@ -35,7 +35,7 @@ Raspberry Pi.
 
 ----
 
-Regardons de plus prêt ce que nous avons à disposition :
+Regardons de plus prêt ce que nous avons à disposition :
 
 - Un Arduino (ici un Leonardo, mais un Uno ou un clone
   quelconque fera l'affaire)
@@ -47,7 +47,7 @@ Regardons de plus prêt ce que nous avons à disposition :
    :alt: Montage détaillé
 
 
-Niveau détecteurs:
+Niveau détecteurs :
 
 - Un détecteur d'ouverture de porte
 - Un détecteur PIR
@@ -60,7 +60,7 @@ Niveau détecteurs:
    :alt: Détecteur d'ouverture de porte
 
 
-Regardons ce détecteur d'ouverture de porte de plus près :
+Regardons ce détecteur d'ouverture de porte de plus près :
 
 .. image:: doorswitch-grosplan.jpg
    :alt: Gros plan sur le détecteur d'ouverture de porte
@@ -76,7 +76,7 @@ Installation de la librairie RC Switch
 ======================================
 
 Télécharger RCswitch_2.3.zip et extraire le contenu dans le sous-repertoire "libraries"
-(s'il n'existe pas, créez le) de votre répertoire "sketchbook", pour que cela donne :
+(s'il n'existe pas, créez le) de votre répertoire "sketchbook", pour que cela donne :
 
 - sous Mac, /Users/<votre utilisateur>/Documents/Arduino/libraries/RCswitch
 - sous Linux, /home/<votre utilisateur>/sketchbook/libraries/RCswitch
@@ -91,12 +91,12 @@ un pin de l'Arduino ayant une interruption.
 
 recepteur
 
-Voici un petit tableau des interruptions : Carte   int.0   int.1   int.2
+Voici un petit tableau des interruptions : Carte   int.0   int.1   int.2
 int.3   int.4   int.5 Uno, Ethernet   2   3 Mega2560    2   3   21  20  19  18
 Leonardo    3   2   0   1
 
 Sur notre Leonardo, si nous voulons connecter notre récepteur sur l'interrupt
-0, il nous faut le connecter sur le pin 3 :
+0, il nous faut le connecter sur le pin 3 :
 
 .. image:: leonardo_montage.jpg
    :alt: Montage
@@ -110,7 +110,7 @@ Pour cela, nous allons lancer l'ide arduino et charger l'exemple de RCSwitch,
 "ReceiveDemo_Simple".
 
 Pour le Leonardo, il faut ajouter "while (!Serial) ;" avant d'écrire sur le
-port série (lié à l'utilisation de l'usb après le lancement) :
+port série (lié à l'utilisation de l'usb après le lancement) :
 
 .. image:: sketch_demo.jpg
    :alt: Le code dans Arduino IDE
@@ -120,12 +120,12 @@ Moniteur Série, après avoir vérifié que le port était le bon dans Outils > 
 série).
 
 Actionnez votre senseur (ici le détecteur d'ouverture de porte, en écartant les
-deux parties):
+deux parties) :
 
 .. image:: montage.jpg
    :alt: Montage
 
-Et magie, des codes s'affichent dans le moniteur série :
+Et magie, des codes s'affichent dans le moniteur série :
 
 .. image:: serial_print.jpg
    :alt: Retours dans le port série
@@ -135,7 +135,7 @@ Ce code, 13464924 dans cette capture d'écran, est l'id unique de votre senseur,
 PT2262).
 
 Si l'on active un autre senseur (le capteur de mouvement ici, il s'allume en
-rouge lorsqu'il détecte un mouvement):
+rouge lorsqu'il détecte un mouvement) :
 
 
 .. image:: capteur_move.jpg
@@ -145,9 +145,9 @@ rouge lorsqu'il détecte un mouvement):
 .. image:: deux_codes.jpg
    :alt: Deux codes
 
-On voit que l'on reçoit un nouveau code : **12449942**.
+On voit que l'on reçoit un nouveau code : **12449942**.
 
-Note: si vous ne voyez rien dans la console avbec un Leonardo, c'est quelque
+Note : si vous ne voyez rien dans la console avbec un Leonardo, c'est quelque
 chose qui arrive souvent, n'hésitez pas à ouvrir un autre moniteur série que
 celui livré avec l'ide Arduino. Par exemple, putty fait très bien l'affaire
 même sous linux. La commande "putty -serial /dev/ttyACM2 -sercfg 9600" permet
@@ -209,7 +209,7 @@ loop() lorsque l'on recoit un message, on agit selon ce qui est reçu. On envoie
 un message simple "Quelqu'un a ouvert la porte !" ou "Quelqu'un marche dans le
 couloir !" selon le cas.
 
-Voici ce que l'on reçoit sur le port série :
+Voici ce que l'on reçoit sur le port série :
 
 .. image:: Capture-du-2012-12-17-140454.jpg
    :alt: Capture du port série
@@ -220,7 +220,7 @@ l'information. Du coup, elle est envoyée plusieurs fois pour être sur de sa
 réception.
 
 Pour régler ce problème, il suffit d'ajouter un timer sur la réception, pour ne
-l'avoir qu'une seule fois:
+l'avoir qu'une seule fois :
 
 .. code-block:: c
 
@@ -279,7 +279,7 @@ l'avoir qu'une seule fois:
 
 Notre fonction debounce permet, pour un détecteur donné (de 0 à 1 ici), de dire
 si c'est un nouvel événement ou pas. Voici ce que cela donne si j'ouvre la
-porte, marche jusqu'à une autre porte puis ouvre cette autre porte inconnue :
+porte, marche jusqu'à une autre porte puis ouvre cette autre porte inconnue :
 
 .. image:: Capture-du-2012-12-17-142121.jpg
    :alt: Capture du port série
@@ -288,7 +288,7 @@ porte, marche jusqu'à une autre porte puis ouvre cette autre porte inconnue :
 Comme vous pouvez le voir, nous n'avons pas de timer sur l'émetteur inconnu
 mais on en a un sur ceux qui sont connus.
 
-La suite ?
+La suite ?
 ==========
 
 Dans la deuxième partie nous verrons comment envoyer des signaux à une prise en
