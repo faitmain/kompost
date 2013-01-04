@@ -350,7 +350,7 @@ Python - et il est nécessaire d'intégrer des librairies externes
 pour la plupart des fonctionnalités avancées.
 
 Pyramid reste malgrès tout un bon choix, même en partant de zéro. Même
-si démarrer une application avec ce framework est un exercie plus contraignant,
+si démarrer une application avec ce framework est un exerice plus contraignant,
 c'est en général un choix gagnant à moyen terme. En effet, il est assez
 fréquent de voir les projets qui grossissent abandonner les micro-frameworks
 pour passer à des outils qui fournissent plus de fonctionnalités de base.
@@ -360,7 +360,7 @@ Voici un exemple de code Pyramid dans notre application:
 .. code-block:: python
 
     @view_config(route_name='plants', request_method='GET',
-                renderer='plants.mako')
+                 renderer='plants.mako')
     def plants(request):
         """Plants page."""
         query = StringQuery('*')
@@ -379,7 +379,7 @@ Voici un exemple de code Pyramid dans notre application:
 Cette fonction est appelée quand l'utilisateur visite l'URL **/plants**.
 *request.db.search* lance une recherche sur la base Elastic Search pour
 récuperer les 10 premières plantes. *data* est un dictionnaire qui contient
-toutes les donnée nécessaires à l'affichage. Dans ce cas, la liste des
+toutes les données nécessaires à l'affichage. Dans ce cas, la liste des
 plantes, et quelques données annexes comme l'utilisateur (*user*).
 
 La fonction renvoie à Pyramid le dictionnaire et indique le nom
