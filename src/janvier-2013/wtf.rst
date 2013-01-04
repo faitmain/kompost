@@ -78,11 +78,16 @@ spécifiques à la plateforme iOS ou Android pour plusieurs raisons:
 
 - le HTML5 et le Javascript pour les applications mobile, c'est l'avenir !
 
-- avec un peu de *responsive design* (TRADUIRE OU EXPLIQUER), la même interface marchera aussi sur les
-  ordinateurs de bureau ou laptop.
+- avec un peu de *responsive design*, la même interface marchera aussi sur les
+  ordinateurs de bureau ou laptop. Cette technique consiste à adapter la mise
+  en page en fonction du périphérique qui se connecte sur le site: téléphone,
+  tablette, ou ordinateur. En fonction de la taille de l'écran, le serveur
+  essayera d'optimiser l'affichage.
+
 
 Côté serveur, l'application web n'a pas grand chose à faire: servir 2 ou 3 écrans,
-récupérer les photos et les stocker, et enfin lancer l'algo de *machine learning* (TRADUIRE OU EXPLIQUER).
+récupérer les photos et les stocker, et enfin lancer l'algo d'apprentissage
+automatique - ou *machine learning* en anglais.
 
 Mais mine de rien, ce genre d'application touche à pas mal de domaines de programmation:
 
@@ -311,6 +316,84 @@ type de projet.
 Bien sûr, toute cette belle technologie déployée sur http://whatthefeuille.com
 n'avait aucun intérêt pour notre démo — puisque le WiFi était trop mauvais:
 les manipulations ont été présentées sur une version locale |thumbsup|.
+
+La partie web
+:::::::::::::
+
+Pour ce projet la partie web a pour principaux objectifs:
+
+- l'authentification des utilisateurs
+- le requêtage de la base Elastic Search
+- le calcul et l'affichage de pages HTML
+
+Il existe une pléthore de frameworks qui permettent de fournir ces fonctionalités,
+et nous avons choisi `Pyramid <http://www.pylonsproject.org/>`_ pour pouvoir
+recycler une petit application existante qui une fois dépouillée de son contenu, nous
+a fourni un squelette avec tout les outils nécessaires.
+
+Sans cette application de départ, nous aurions probablement choisi
+un outil plus léger, comme le *micro-framework*
+`Bottle <http://bottlepy.org/docs/dev/>`_ ou
+`Flask <http://flask.pocoo.org/>`_ qui permettent de monter une application
+web en Python en quelques lignes.
+
+La définition de *micro-framework* est vague, mais dans le monde
+Python, elle regroupe les outils dont le principal objectif est
+de simplifier au maximum la création d'une application web, au
+détriment des fonctionnalités secondaires habituellements fournies
+dans les frameworks web. Il est rare par exemple de retrouver des
+fonctionnalités de permissions très avancées, ou des systèmes de
+schémas de base de donnés.
+
+Bottle par exemple est un framework distribué dans un seul module
+Python - et il est nécessaire d'intégrer des librairies externes
+pour la plupart des fonctionnalités avancées.
+
+Pyramid reste malgrès tout un bon choix, même en partant de zéro. Même
+si démarrer une application avec ce framework est un exercie plus contraignant,
+c'est en général un choix gagnant à moyen terme. En effet, il est assez
+fréquent de voir les projets qui grossissent abandonner les micro-frameworks
+pour passer à des outils qui fournissent plus de fonctionnalités de base.
+
+Voici un exemple de code Pyramid dans notre application:
+
+.. code-block:: python
+
+    @view_config(route_name='plants', request_method='GET',
+                renderer='plants.mako')
+    def plants(request):
+        """Plants page."""
+        query = StringQuery('*')
+        plants = request.db.search(query, size=10, indices=['plants'],
+                                  sort='name')
+
+        data = {'messages': request.session.pop_flash(),
+                'user': request.user,
+                'gravatar': gravatar_image_url,
+                'came_from': request.path_qs,
+                'plants': plants,
+                'format_date': format_es_date}
+
+        return data
+
+Cette fonction est appelée quand l'utilisateur visite l'URL **/plants**.
+*request.db.search* lance une recherche sur la base Elastic Search pour
+récuperer les 10 premières plantes. *data* est un dictionnaire qui contient
+toutes les donnée nécessaires à l'affichage. Dans ce cas, la liste des
+plantes, et quelques données annexes comme l'utilisateur (*user*).
+
+La fonction renvoie à Pyramid le dictionnaire et indique le nom
+du template a utiliser: *plants.mako*. Le rendu est automatiquement généré
+et renvoyé par le framework.
+
+Le reste de l'application est construit sur le même modèle: une fonction
+par URL.
+
+L'authentification est gérée par `Mozilla Persona <https://fr.wikipedia.org/wiki/Mozilla_Persona>`_,
+l'affichage des pages est obtenue via le moteur de template `Mako <http://docs.makotemplates.org/>`_
+et les formulaires validés via `FormEncode <http://www.formencode.org>`_.
+
+Enfin le requêtage d'Elastic Search est fait par la librairie `pyes <http://packages.python.org/pyes/>`_.
 
 
 La partie intelligente
