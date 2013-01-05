@@ -1,6 +1,10 @@
 ## -*- coding: utf-8 -*-
 
-<%inherit file="base.mako"/>
+<%inherit file="generic.mako"/>
+
+<%block name="headtitle">
+<title>Fait Main Magazine</title>
+</%block>
 
 <%block name="head">
   <link rel="prefetch" href="/janvier-2013/edito.html">
@@ -8,6 +12,8 @@
   <link rel="prefetch" href="/janvier-2013/wtf.html">
   <link rel="prefetch" href="/janvier-2013/dispositif.html">
 </%block>
+
+<%block name="first_h1"/>
 
 <section id="janvier">
   <div>
@@ -45,7 +51,7 @@
       <a href="/janvier-2013/cnc.html">
         <img src="/janvier-2013/cnc.jpg" class="rounded"/>
       </a>
-      <p>Les imprimantes 3D sont à la mode - mais l'outil ultime du 
+      <p>Les imprimantes 3D sont à la mode - mais l'outil ultime du
       bricoleur est la CNC ou <em>Computer Numerical Control</em>.
       Découvrez dans cet article le monde merveilleux des CNCs.</p>
       <a class="btn" href="/janvier-2013/cnc.html">Lire plus...</a>
@@ -69,7 +75,7 @@
       <p>Montre moi ta feuille et je te dirai quel arbre tu es</p>
       <a href="/janvier-2013/wtf.html">
         <img src="/janvier-2013/wtf.jpg" class="rounded"/>
-        </a>  
+        </a>
       <p>Récit d'une application mobile écrite en 24h lors
       du dernier AngelHack à Paris.</p>
 

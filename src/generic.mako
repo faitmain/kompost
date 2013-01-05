@@ -4,7 +4,9 @@
 <html lang="en"><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
+    <%block name="headtitle">
     <title>${title} - Fait Main Magazine</title>
+    </%block>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Vulgarisation pour Geeks">
     <!--[if lt IE 9]>
@@ -64,11 +66,19 @@
 Attention le magazine n'est pas encore officiellement lancé. Ceci est un prototype. Ne pas diffuser.
 </div>
 
-
+<%block name="first_h1">
 <h1>${title}</h1>
+</%block>
 
-${body}
+%if body:
+  ${body}
+%else:
+  ${self.body()}
+%endif
+
 <br/><br/>
+
+
  <p class="pull-right"><a href="#"><img src="http://cnd.faitmain.org/media/up.png"></a></p>
 
   <footer id="footer">
