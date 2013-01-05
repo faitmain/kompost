@@ -2,7 +2,7 @@ Edito Janvier 2013
 ==================
 
 Vous affichez sur votre écran le tout premier numéro de *Fait Main*,
-un magazine en ligne qui couvre plusieurs sujets, à savoir:
+un magazine en ligne qui couvre plusieurs sujets, à savoir :
 
 - l'informatique,
 - l'électronique,
@@ -54,7 +54,7 @@ participer à un numéro.
 *Fait Main* est entièrement gratuit et son contenu est distribué sous
 licence `CC-By-NC-SA <https://creativecommons.org/licenses/by-nc-sa/2.0/>`_,
 
-Le magazine est conçu sur **github** à cette adresse: https://github.com/tarekziade/faitmain
+Le magazine est conçu sur **github** à cette adresse : https://github.com/tarekziade/faitmain
 
 
 Contenu du Numéro de Janvier
@@ -86,7 +86,7 @@ Equipe
 Le projet *FaitMain* est monté par `Tarek Ziadé <http://ziade.org>`_ mais
 est surtout possible grâce aux créateurs d'articles et aux relecteurs.
 
-Ont participé à ce numéro:
+Ont participé à ce numéro :
 
 - Yannick Jost - relecteur
 - Xavier Fernandez - relecteur

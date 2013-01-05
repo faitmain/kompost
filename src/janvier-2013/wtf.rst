@@ -1,9 +1,9 @@
-What The Feuille ?
+What The Feuille ?
 ==================
 
 |info| **Ecologie** | **Informatique** |pen| `Tarek Ziadé </auteurs/tarek.html>`_
 
-|flash| **Niveau**: Vulgarisation
+|flash| **Niveau** : Vulgarisation
 
 
 .. image:: tarek-ronan.jpg
@@ -24,7 +24,7 @@ des paires de programmeurs bossaient sur Zope 3 — un logiciel écrit
 en Python.
 
 Les *Hackatons* organisés par `AngelHack <http://www.angelhack.com/>`_ sont
-encore une autre variante : vous avez 24 heures pour produire un projet de A à Z
+encore une autre variante : vous avez 24 heures pour produire un projet de A à Z
 dans des locaux où tous les participants se réunissent et restent éveillés
 toute la nuit — soignés à coup de pizzas et Red Bull par les organisateurs.
 
@@ -65,7 +65,7 @@ une feuille que l'on vient de prendre en photo depuis son mobile ou sa tablette.
 
 On a choisi assez rapidement d'écrire cette application web entièrement en
 Javascript et HTML5 pour le coté utilisateur, sans passer par des dévelopements
-spécifiques à la plateforme iOS ou Android pour plusieurs raisons:
+spécifiques à la plateforme iOS ou Android pour plusieurs raisons :
 
 - même si des outils comme `PhoneGap <http://www.phonegap.com/>`_ permettent de
   développer une application mobile qui est ensuite compilée pour chaque plateforme
@@ -76,38 +76,38 @@ spécifiques à la plateforme iOS ou Android pour plusieurs raisons:
   application n'a pas besoin d'accéder à des fonctionnalités avancées des mobiles
   ou tablettes, comme l'envoi de texto.
 
-- le HTML5 et le Javascript pour les applications mobile, c'est l'avenir !
+- le HTML5 et le Javascript pour les applications mobile, c'est l'avenir !
 
 - avec un peu de *responsive design*, la même interface marchera aussi sur les
   ordinateurs de bureau ou laptop. Cette technique consiste à adapter la mise
-  en page en fonction du périphérique qui se connecte sur le site: téléphone,
+  en page en fonction du périphérique qui se connecte sur le site : téléphone,
   tablette, ou ordinateur. En fonction de la taille de l'écran, le serveur
   essayera d'optimiser l'affichage.
 
 
-Côté serveur, l'application web n'a pas grand chose à faire: servir 2 ou 3 écrans,
+Côté serveur, l'application web n'a pas grand chose à faire : servir 2 ou 3 écrans,
 récupérer les photos et les stocker, et enfin lancer l'algo d'apprentissage
 automatique - ou *machine learning* en anglais.
 
-Mais mine de rien, ce genre d'application touche à pas mal de domaines de programmation:
+Mais mine de rien, ce genre d'application touche à pas mal de domaines de programmation :
 
 - du `responsive design <https://fr.wikipedia.org/wiki/Responsive_Web_Design>`_, de
-  manière à pouvoir afficher l'application sur une tablette, un téléphone, etc;
+  manière à pouvoir afficher l'application sur une tablette, un téléphone, etc ;
 
 - du stockage d'images et de méta-données associées, avec potentiellement
-  beaucoup, beaucoup d'entrées;
+  beaucoup, beaucoup d'entrées ;
 
-- une bonne dose de Javascript pour les interactions avec l'utilisateur;
+- une bonne dose de Javascript pour les interactions avec l'utilisateur ;
 
 - du `machine learning <https://fr.wikipedia.org/wiki/Machine_learning>`_ pour
-  toute la partie intelligente;
+  toute la partie intelligente ;
 
 - de la programmation web pour lier le tout, avec les composantes classiques
   comme l'identification, le templating, etc.
 
 ----
 
-Pour résumer le fonctionnement dans un schéma simple:
+Pour résumer le fonctionnement dans un schéma simple :
 
 .. image:: wtf-schema.jpg
    :alt: C'est pas compliqué...
@@ -116,7 +116,7 @@ L'utilisateur trouve une feuille — où l'arrache discrètement, puis
 dégaine son portable pour prendre un cliché, et demande à notre
 serveur de reconnaître la feuille.
 
-En détail, le *flow* est le suivant:
+En détail, le *flow* est le suivant :
 
 1. La page principale permet d'uploader une photo géolocalisée.
 2. La photo est stockée sous un nom unique sur le disque dur du serveur.
@@ -144,13 +144,13 @@ sur ce genre de fonctionnalités.
 
 D'autres fonctionalitées mineures que nous avons ajoutées au fil de la nuit
 sont un *plantopedia* — une page qui liste les plantes et arbres avec
-les feuilles correspondantes trouvées dans la base; une page d'accueil
+les feuilles correspondantes trouvées dans la base ; une page d'accueil
 qui affiche les dernières photos uploadées et enfin un système
 d'authentification basé
 sur `Mozilla Persona <https://fr.wikipedia.org/wiki/Mozilla_Persona>`_
 
 
-Responsive ?
+Responsive ?
 ::::::::::::
 
 Créer un joli design *responsive* en 24 heures est impossible sans utiliser
@@ -164,21 +164,21 @@ comme moi qui n'ont aucune notion de design, de faire une application
 web à peu près jolie, avec des boîtes qui s'alignent bien, un rendu
 moderne et standard.
 
-C'est aussi le gros défaut de Bootstrap finalement: rien ne ressemble plus
+C'est aussi le gros défaut de Bootstrap finalement : rien ne ressemble plus
 à un site fait avec Bootstrap qu'un autre site fait avec Bootstrap, souvent
 car les intégrateurs se sont contentés de copier-coller les mises en page
 fournies en exemple, et aussi parce que il y a un *Bootstrap look and feel*.
 
-Mais pour notre hackathon, c'est parfait !
+Mais pour notre hackathon, c'est parfait !
 
 Si vous avez envie de tester Bootstrap, je vous conseille de tester
 `Bootswatch <http://bootswatch.com/>`_ qui offre plusieurs thèmes pour
 Bootstrap. C'est un excellent moyen de démarrer son propre thème.
 
 La *killer feature* de Bootswatch c'est son *Bookmarklet* en bas de la page.
-Un lien à déposer dans Firefox dans la barre des bookmarks et *hop!*, un
+Un lien à déposer dans Firefox dans la barre des bookmarks et *hop !*, un
 menu déroulant permet d'essayer les thèmes fournis par le projet
-en live sur n'importe quel site fait avec Bootstrap !
+en live sur n'importe quel site fait avec Bootstrap !
 
 .. image:: bootswatch.jpg
    :target: http://bootswatch.com
@@ -221,7 +221,7 @@ une rotation de l'image.
 .. image:: editeur.jpg
    :alt: Tape ta feuille.
 
-On est loin de la barre d'outils de Photoshop, mais l'idée est là :
+On est loin de la barre d'outils de Photoshop, mais l'idée est là :
 l'utilisateur peaufine son image avant de demander au serveur de faire
 une reconnaissance de la plante ou l'arbre.
 
@@ -283,7 +283,7 @@ Les *Spot Instance* sont des serveurs chez Amazon qui ne sont pas
 attribués à des clients fixes et dont le prix de location fluctue
 en fonction de l'offre et de la demande.
 
-C'est un système malin pour réduire le parc de machines non utilisées:
+C'est un système malin pour réduire le parc de machines non utilisées :
 Amazon met à jour en temps réel son prix de location, et pour
 obtenir une *Spot Instance* il faut faire une enchère dont le
 montant est supérieur au prix fixé.
@@ -314,13 +314,13 @@ qui offre le plus d'options et de souplesse, et permet de s'adapter à tout
 type de projet.
 
 Bien sûr, toute cette belle technologie déployée sur http://whatthefeuille.com
-n'avait aucun intérêt pour notre démo — puisque le WiFi était trop mauvais:
+n'avait aucun intérêt pour notre démo — puisque le WiFi était trop mauvais :
 les manipulations ont été présentées sur une version locale |thumbsup|.
 
 La partie web
 :::::::::::::
 
-Pour ce projet la partie web a pour principaux objectifs:
+Pour ce projet la partie web a pour principaux objectifs :
 
 - l'authentification des utilisateurs
 - le requêtage de la base Elastic Search
@@ -355,7 +355,7 @@ c'est en général un choix gagnant à moyen terme. En effet, il est assez
 fréquent de voir les projets qui grossissent abandonner les micro-frameworks
 pour passer à des outils qui fournissent plus de fonctionnalités de base.
 
-Voici un exemple de code Pyramid dans notre application:
+Voici un exemple de code Pyramid dans notre application :
 
 .. code-block:: python
 
@@ -383,10 +383,10 @@ toutes les données nécessaires à l'affichage. Dans ce cas, la liste des
 plantes, et quelques données annexes comme l'utilisateur (*user*).
 
 La fonction renvoie à Pyramid le dictionnaire et indique le nom
-du template a utiliser: *plants.mako*. Le rendu est automatiquement généré
+du template a utiliser : *plants.mako*. Le rendu est automatiquement généré
 et renvoyé par le framework.
 
-Le reste de l'application est construit sur le même modèle: une fonction
+Le reste de l'application est construit sur le même modèle : une fonction
 par URL.
 
 L'authentification est gérée par `Mozilla Persona <https://fr.wikipedia.org/wiki/Mozilla_Persona>`_,
@@ -508,7 +508,7 @@ Pour un budget de moins de 50 euros et un petit week-end de travail,
 nous avons pu mettre en ligne, dans le *cloud* une application mobile qui
 ressemble à quelque chose.
 
-Le code source est ici: https://github.com/whatthefeuille/whatthefeuille
+Le code source est ici : https://github.com/whatthefeuille/whatthefeuille
 et l'application `en ligne <http://whatthefeuille.com>`_.
 
 .. image:: Platane.jpg
