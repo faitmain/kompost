@@ -4,7 +4,7 @@
 <html lang="en"><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <title>Fait Main Magazine</title>
+    <title>${title} - Fait Main Magazine</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Vulgarisation pour Geeks">
     <!--[if lt IE 9]>
@@ -12,13 +12,12 @@
     <![endif]-->
     <link href="http://cnd.faitmain.org/media/bootstrap.css" rel="stylesheet">
     <link href="http://cnd.faitmain.org/media/bootstrap-responsive.css" rel="stylesheet">
-    <link href="http://cnd.faitmain.org/media/bootswatch.css" rel="stylesheet"> 
+    <link href="http://cnd.faitmain.org/media/bootswatch.css" rel="stylesheet">
+    <link href="http://cnd.faitmain.org/media/pygments_style.css" rel="stylesheet">
     <link rel="shortcut icon" href="http://cnd.faitmain.org/favicon.ico" />
-    <%block name="head"/>
 </head>
 
   <body class="preview" data-spy="scroll" data-target=".subnav" data-offset="80">
-
 <div class="navbar navbar-fixed-top">
 
 <div class="navbar-inner">
@@ -47,23 +46,32 @@
 </div>
 </div>
 
+
     <div class="container">
 
 <header class="jumbotron subhead" id="overview">
   <div class="row">
     <div class="span9">
       <a href="/"><h1>Fait Main</h1></a>
-      <p class="lead">Electronique ∝ Informatique ∝ Art ∝ Cuisine ∝ Ecologie</p>
+      <p class="lead">Electronique ∝ Informatique ∝ Art ∝ Bouffe ∝ Ecologie</p>
     </div>
   </div>
   <%block name="header"/>
 </header>
 
+
 <div class="alert alert-error">
 Attention le magazine n'est pas encore officiellement lancé. Ceci est un prototype. Ne pas diffuser.
 </div>
 
-${self.body()}
+<h1>${title}</h1>
+
+<p>Tous les articles sur ce sujet:</p>
+<ul>
+%for path, title_ in paths:
+<li><a href="${path}">${title_}</a></li>
+%endfor
+</ul>
 
 <br/><br/>
  <p class="pull-right"><a href="#"><img src="http://cnd.faitmain.org/media/up.png"></a></p>
@@ -87,3 +95,4 @@ ${self.body()}
     <script async src="http://cnd.faitmain.org/media/bootstrap.js"></script>
     <script src="http://cnd.faitmain.org/media/retina.js"></script>
 </body></html>
+

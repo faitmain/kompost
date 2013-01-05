@@ -1,10 +1,10 @@
 Piloter des dispositifs sans fil
 ::::::::::::::::::::::::::::::::
 
-
-|info| **Electronique** | **Informatique** |pen| `Jonathan Schemoul </auteurs/jonathan.html>`_
-
-|flash| **Niveau**: Avancé
+:date: 2012-12-12
+:category: electronique,informatique
+:level: avancé
+:author: Jonathan Schemoul
 
 .. image:: leonardo_montage.jpg
    :alt: Montage avec la Leonardo

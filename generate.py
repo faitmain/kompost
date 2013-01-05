@@ -5,6 +5,9 @@ import cgi
 import urllib2
 import json
 import sys
+import socket
+import unicodedata
+from collections import defaultdict
 
 from docutils.core import publish_doctree
 
@@ -14,6 +17,9 @@ from mako.lookup import TemplateLookup
 from pygments import highlight
 from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter
+
+
+socket.setdefaulttimeout(1)
 
 
 def hilite(node):
@@ -33,14 +39,18 @@ def hilite(node):
 _SERVER = 'http://short.faitmain.org'
 _KEY = 'booba82'
 
-
+def strip_accents(s):
+    return ''.join((c for c in unicodedata.normalize('NFD', s) if
+                   unicodedata.category(c) != 'Mn'))
 
 src = 'src'
 target ='build'
 media = os.path.abspath(os.path.join(target, 'media'))
 _GENERIC = os.path.join(src, 'generic.mako')
+_CATS = os.path.join(src, 'category.mako')
 _ICONS = ('pen.png', 'info.png', 'thumbsup.png',
           'right.png', 'flash.png')
+_METADATA = os.path.join(target, 'metadata.json')
 
 
 def _notag(text):
@@ -56,7 +66,28 @@ def shorten(url):
     return _SERVER + '/' + res['short']
 
 
-def _tree(node):
+
+_INDEX = defaultdict(dict)
+
+
+def _index(document, title, name, value):
+    _INDEX[document + ':' + title][name] = value
+
+
+def _save_index():
+    if os.path.exists(_METADATA):
+        with open(_METADATA) as f:
+            metadata = json.loads(f.read())
+    else:
+        metadata = {}
+
+    metadata.update(_INDEX)
+
+    with open(_METADATA, 'w') as f:
+        f.write(json.dumps(metadata))
+
+
+def _tree(node, document, title):
     """Renders a node in HTML.
     """
     text = []
@@ -68,7 +99,7 @@ def _tree(node):
     elif klass == 'paragraph':
         text.append('<p>')
         for child in node.children:
-            text.append(_tree(child))
+            text.append(_tree(child, document, title))
         text.append('</p>')
     elif klass == 'Text':
         text.append(node.astext())
@@ -79,17 +110,17 @@ def _tree(node):
     elif klass == 'note':
         text.append('<div class="well note">')
         for child in node.children:
-            text.append(_tree(child))
+            text.append(_tree(child, document, title))
         text.append('</div>')
     elif klass == 'emphasis':
         text.append('<em>')
         for child in node.children:
-            text.append(_tree(child))
+            text.append(_tree(child, document, title))
         text.append('</em>')
     elif klass == 'strong':
         text.append('<strong>')
         for child in node.children:
-            text.append(_tree(child))
+            text.append(_tree(child, document, title))
         text.append('</strong>')
     elif klass == 'image':
         nolegend = False
@@ -108,7 +139,7 @@ def _tree(node):
             text.append('<img class="centered">')
 
         for child in node.children:
-            text.append(_tree(child))
+            text.append(_tree(child, document, title))
 
         text.append('</img>')
         if not nolegend and 'alt' in node:
@@ -125,13 +156,17 @@ def _tree(node):
             if 'wikipedia.org' in refuri:
                 text.append('<a href="%s" class="wikipedia">' % refuri)
             else:
-                if 'faitmain.org' not in refuri and not refuri.startswith('/'):
-                    refuri = shorten(refuri)
+                #if 'faitmain.org' not in refuri and not refuri.startswith('/'):
+                #    try:
+                #        refuri = shorten(refuri)
+                #    except urllib2.URLError:
+                #        pass
+
                 text.append('<a href="%s">' % refuri)
         else:
             text.append('<a>')
         for child in node.children:
-            text.append(_tree(child))
+            text.append(_tree(child, document, title))
         text.append('</a>')
     elif klass == 'target':
         # ??
@@ -139,16 +174,16 @@ def _tree(node):
     elif klass == 'section':
         text.append('<h2>%s</h2>' % node.children[0][0].astext())
         for child in node.children[1:]:
-            text.append(_tree(child))
+            text.append(_tree(child, document, title))
     elif klass == 'bullet_list':
         text.append('<ul>')
         for child in node.children:
-            text.append(_tree(child))
+            text.append(_tree(child, document, title))
         text.append('</ul>')
     elif klass == 'enumerated_list':
         text.append('<ol>')
         for child in node.children:
-            text.append(_tree(child))
+            text.append(_tree(child, document, title))
         text.append('</ol>')
     elif klass == 'substitution_definition':
         #uri = node.children[0].attributes['uri']
@@ -157,8 +192,45 @@ def _tree(node):
     elif klass == 'list_item':
         text.append('<li>')
         for child in node.children:
-            text.append(_tree(child))
+            text.append(_tree(child, document, title))
         text.append('</li>')
+    elif klass == 'docinfo':
+        # reading metadata
+        for child in node.children:
+            text.append(_tree(child, document, title))
+    elif klass == 'author':
+        value = node.astext()
+        _index(document, title, 'author', value)
+        author_id = strip_accents(value).lower()
+        author_id = author_id.replace(' ', '_')
+        text.append('<img class="subst" '
+                    'src="http://cnd.faitmain.org/media/pen.png">')
+        text.append('</img>')
+        text.append('<a href="/auteurs/%s.html">%s</a>' % (author_id,
+                                                           value))
+    elif klass == 'date':
+        # XXX
+        pass
+    elif klass == 'field':
+        name = node.children[0].astext()
+        value = node.children[1].astext()
+        if name == 'category':
+            text.append('<img class="subst" '
+                        'src="http://cnd.faitmain.org/media/info.png">')
+            text.append('</img>')
+            cats = value.split(',')
+            _index(document, title, name, cats)
+
+            cats = ['<a href="/%s.html">%s</a>' % (cat, cat.capitalize())
+                    for cat in cats]
+            text.append(' | '.join(cats))
+        elif name == 'level':
+            _index(document, title, name, value)
+
+            text.append('<img class="subst" '
+                        'src="http://cnd.faitmain.org/media/flash.png">')
+            text.append('</img>')
+            text.append('<strong>Niveau</strong>: %s' % value.capitalize())
     else:
         raise NotImplementedError(node)
 
@@ -193,7 +265,6 @@ def generate():
             # getting read of '/src
             location = path[len('src/'):]
             file_target = os.path.join(target, location)
-            print 'Generating %r' % file_target
             target_dir = os.path.dirname(file_target)
 
             if not os.path.exists(target_dir):
@@ -201,6 +272,7 @@ def generate():
 
             if ext == '.html':
                 mytemplate = Template(filename=path, lookup=lookup)
+                print 'Generating %r' % file_target
 
                 with codecs.open(file_target, 'w', encoding='utf8') as f:
                     f.write(mytemplate.render())
@@ -211,25 +283,55 @@ def generate():
                     doctree = publish_doctree(content)
 
                 title = doctree.children[0].astext()
+                file_target = os.path.splitext(file_target)[0] + '.html'
+                url_target = file_target[len(target):]
 
-                paragraphs = ['<p>%s</p>' % _tree(text)
+                paragraphs = ['<p>%s</p>' % _tree(text, url_target, title)
                               for text in doctree.children[1:]]
 
                 mytemplate = Template(filename=_GENERIC, lookup=lookup)
 
-                file_target = os.path.splitext(file_target)[0] + '.html'
+                print 'Generating %r' % file_target
+
                 with codecs.open(file_target, 'w', encoding='utf8') as f:
                     f.write(mytemplate.render(body='\n'.join(paragraphs),
                                               title=title))
 
-
+                _save_index()
             else:
+                print 'Copying %r' % file_target
                 shutil.copyfile(path, file_target)
 
     # media
     if os.path.exists(media):
         shutil.rmtree(media)
     shutil.copytree('media', media)
+
+    # building category pages now
+    categories = defaultdict(list)
+
+    for key, index in _INDEX.items():
+        path, title = key.split(':')
+        for key, value in index.items():
+            if key != 'category':
+                continue
+            for cat in value:
+                categories[cat].append((path, title))
+
+    for wanted in ('electronique', 'informatique', 'art', 'cuisine',
+                   'ecologie'):
+        if wanted in categories:
+            continue
+        categories[wanted] = []
+
+    for cat, paths in categories.items():
+        print 'Generating category %r' % cat
+        file_target = os.path.join(target, cat + '.html')
+
+        mytemplate = Template(filename=_CATS, lookup=lookup)
+
+        with codecs.open(file_target, 'w', encoding='utf8') as f:
+            f.write(mytemplate.render(paths=paths, title=cat.capitalize()))
 
 
 if __name__ == '__main__':

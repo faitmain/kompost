@@ -30,11 +30,11 @@
 <a class="brand" href="/">Fait Main</a>
 <div class="nav-collapse">
 <ul class="nav">
-<li><a href="/electronique" title="A propos">Electronique</a></li>
-<li><a href="/informatique" title="Informatique">Informatique</a></li>
-<li><a href="/art" title="Art">Art</a></li>
-<li><a href="/cuisine" title="Cuisine">Cuisine</a></li>
-<li><a href="/ecologie" title="Ecologie">Ecologie</a></li>
+<li><a href="/electronique.html" title="A propos">Electronique</a></li>
+<li><a href="/informatique.html" title="Informatique">Informatique</a></li>
+<li><a href="/art.html" title="Art">Art</a></li>
+<li><a href="/cuisine.html" title="Cuisine">Cuisine</a></li>
+<li><a href="/ecologie.html" title="Ecologie">Ecologie</a></li>
 <li><a target="_blank" title="Twitter" href="http://twitter.com/FaitMainMag" id="toptwitter" rel="nofollow"><img src="http://cnd.faitmain.org/media/twitter.png"/></a></li>
 <li><a target="_blank" href="https://plus.google.com/+faitmainmag/posts" id="topgoogleplus" rel="nofollow"><img src="http://cnd.faitmain.org/media/google_plus.png"/></a> </li>
 <li><a target="_blank" title="RSS" href="/rss" id="toprss"><img src="http://cnd.faitmain.org/media/rss.png"/></a></li>
@@ -59,12 +59,13 @@
   <%block name="header"/>
 </header>
 
-<h1>${title}</h1>
 
 <div class="alert alert-error">
 Attention le magazine n'est pas encore officiellement lancé. Ceci est un prototype. Ne pas diffuser.
 </div>
 
+
+<h1>${title}</h1>
 
 ${body}
 <br/><br/>

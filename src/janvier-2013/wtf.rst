@@ -1,10 +1,10 @@
 What The Feuille ?
 ==================
 
-|info| **Ecologie** | **Informatique** |pen| `Tarek Ziadé </auteurs/tarek.html>`_
-
-|flash| **Niveau**: Vulgarisation
-
+:date: 2012-12-12
+:category: ecologie,informatique
+:level: vulgarisation
+:author: Tarek Ziadé
 
 .. image:: tarek-ronan.jpg
    :target: https://secure.flickr.com/photos/kennethreitz/8239976465/in/set-72157632156365245/
