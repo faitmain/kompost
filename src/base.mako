@@ -38,9 +38,10 @@
 <li><a href="/ecologie" title="Ecologie">Ecologie</a></li>
 </ul>
 <ul class="nav pull-right">
-<li><a target="_blank" title="Twitter" href="http://twitter.com/FaitMainMag" id="toptwitter" rel="nofollow"><img src="http://cnd.faitmain.org/media/up.png"/></a></li>
-<li><a target="_blank" href="https://plus.google.com/+faitmainmag/posts" id="topgoogleplus" rel="nofollow"><img src="http://cnd.faitmain.org/media/up.png"/></a> </li>
-<li><a target="_blank" title="RSS" href="/rss" id="toprss"><img src="http://cnd.faitmain.org/media/up.png"/></a></li>
+<li><a target="_blank" title="Twitter" href="http://twitter.com/FaitMainMag" id="toptwitter" rel="nofollow"><img src="http://cnd.faitmain.org/media/twitter.png"/></a></li>
+<li><a target="_blank" href="https://plus.google.com/+faitmainmag/posts" id="topgoogleplus" rel="nofollow"><img src="http://cnd.faitmain.org/media/google_plus.png"/></a> </li>
+<li><a target="_blank" title="RSS" href="/rss" id="toprss"><img src="http://cnd.faitmain.org/media/rss.png"/></a></li>
+<li><a target="_blank" title="RSS" href="/rss" id="toprss"><img src="http://cnd.faitmain.org/media/github.png"/></a></li>
 </ul>
 </div><!--/.nav-collapse -->
 </div>
