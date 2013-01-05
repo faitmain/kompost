@@ -24,7 +24,7 @@ l'instant.
 
 En ce qui concerne ces capteurs en 433mhz, il se trouve qu'ils utilisent pour
 la plupart un protocole très simple, introduit par des circuits intégrés
-chinois à bas cout, les PT2262 coté émission et les PT2272 coté réception
+chinois à bas coût, les PT2262 coté émission et les PT2272 coté réception
 (d'autres plus exotiques comme les SC5262 / SC5272, HX2262 / HX2272,  EV1527,
 RT1527, FP1527 ou encore HS1527 peuvent être trouvés et fonctionneront aussi).
 
@@ -75,12 +75,13 @@ au fur et à mesure de leur activation.
 Installation de la librairie RC Switch
 ======================================
 
-Télécharger RCswitch_2.3.zip et extraire le contenu dans le sous-repertoire "libraries"
+Télécharger `RCswitch_2.3.zip <https://code.google.com/p/rc-switch/downloads/detail?name=RCswitch_2.3.zip&can=2&q=>`_
+et extraire le contenu dans le sous-repertoire "libraries"
 (s'il n'existe pas, créez le) de votre répertoire "sketchbook", pour que cela donne :
 
-- sous Mac, /Users/<votre utilisateur>/Documents/Arduino/libraries/RCswitch
-- sous Linux, /home/<votre utilisateur>/sketchbook/libraries/RCswitch
-- sous Windows, C:\Users\<votreutilisateur>\Documents\Arduino\libraries\RCswitch
+- sous Mac, ``/Users/VOTRE_UTILISATEUR/Documents/Arduino/libraries/RCswitch``
+- sous Linux, ``/home/VOTRE_UTILISATEUR/sketchbook/libraries/RCswitch``
+- sous Windows, ``C:\Users\VOTRE_UTILISATEUR\Documents\Arduino\libraries\RCswitch``
 
 
 Connexion du récepteur
@@ -89,11 +90,20 @@ Connexion du récepteur
 Le récepteur est simple, il suffit de le connecter au courant (+5v et GND) et à
 un pin de l'Arduino ayant une interruption.
 
-recepteur
+.. image:: recepteur.jpg
+   :alt: Recepteur
 
-Voici un petit tableau des interruptions : Carte   int.0   int.1   int.2
-int.3   int.4   int.5 Uno, Ethernet   2   3 Mega2560    2   3   21  20  19  18
-Leonardo    3   2   0   1
+Voici un petit tableau des interruptions :
+
++---------------+-------+-------+-------+-------+-------+-------+
+| Carte         | int.0 | int.1 | int.2 | int.3 | int.4 | int.5 |
++===============+=======+=======+=======+=======+=======+=======+
+| Uno, Ethernet | 2     | 3     |       |       |       |       |
++---------------+-------+-------+-------+-------+-------+-------+
+| Mega2560      | 2     | 3     | 21    | 20    | 19    | 18    |
++---------------+-------+-------+-------+-------+-------+-------+
+| Leonardo      | 3     | 2     | 0     | 1     |       |       |
++---------------+-------+-------+-------+-------+-------+-------+
 
 Sur notre Leonardo, si nous voulons connecter notre récepteur sur l'interrupt
 0, il nous faut le connecter sur le pin 3 :
@@ -112,7 +122,7 @@ Pour cela, nous allons lancer l'ide arduino et charger l'exemple de RCSwitch,
 Pour le Leonardo, il faut ajouter "while (!Serial) ;" avant d'écrire sur le
 port série (lié à l'utilisation de l'usb après le lancement) :
 
-.. image:: sketch_demo.jpg
+.. image:: sketch_demo.png
    :alt: Le code dans Arduino IDE
 
 Envoyons le croquis sur la carte, et lancons le moniteur série (Outils >
@@ -127,7 +137,7 @@ deux parties) :
 
 Et magie, des codes s'affichent dans le moniteur série :
 
-.. image:: serial_print.jpg
+.. image:: serial_print.png
    :alt: Retours dans le port série
 
 Ce code, 13464924 dans cette capture d'écran, est l'id unique de votre senseur,
@@ -147,7 +157,7 @@ rouge lorsqu'il détecte un mouvement) :
 
 On voit que l'on reçoit un nouveau code : **12449942**.
 
-Note : si vous ne voyez rien dans la console avbec un Leonardo, c'est quelque
+Note : si vous ne voyez rien dans la console avec un Leonardo, c'est quelque
 chose qui arrive souvent, n'hésitez pas à ouvrir un autre moniteur série que
 celui livré avec l'ide Arduino. Par exemple, putty fait très bien l'affaire
 même sous linux. La commande "putty -serial /dev/ttyACM2 -sercfg 9600" permet
