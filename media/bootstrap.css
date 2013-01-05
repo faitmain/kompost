@@ -1094,3 +1094,7 @@ table.highlighttable td.linenos {
   min-width: 25px;
   vertical-align: top;
 }
+
+.navbar .brand {
+  font-size: 80px;
+}
