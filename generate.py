@@ -31,8 +31,7 @@ def hilite(node):
 
     code = node.astext()
     lexer = get_lexer_by_name(lexer)
-    formatter = HtmlFormatter(
-                              style='colorful')
+    formatter = HtmlFormatter(style='colorful')
     return highlight(code, lexer, formatter)
 
 
@@ -44,7 +43,7 @@ def strip_accents(s):
                    unicodedata.category(c) != 'Mn'))
 
 src = 'src'
-target ='build'
+target = 'build'
 media = os.path.abspath(os.path.join(target, 'media'))
 _GENERIC = os.path.join(src, 'generic.mako')
 _CATS = os.path.join(src, 'category.mako')
@@ -87,6 +86,44 @@ def _save_index():
         f.write(json.dumps(metadata))
 
 
+SIMPLE_TAGS = {
+    # node tagname: (html tagname, strip child?)
+    'paragraph': ('p', False),
+    'emphasis': ('em', False),
+    'strong': ('strong', False),
+    'literal': ('pre', False),
+    'bullet_list': ('ul', False),
+    'enumerated_list': ('ol', False),
+    'list_item': ('li', True),
+    'table': ('table', True),
+    'thead': ('thead', False),
+    'tbody': ('tbody', False),
+    'row': ('tr', False),
+}
+
+
+def render_simple_tag(node, document, title, tagname=None, strip_child=False):
+    """Render a tag using the simplest default method.
+
+    If tagname is provided, it is used instead of the node.tagname attribute.
+    If strip_child is True, then the (single) child is stripped and its
+    children are rendered instead.
+
+    """
+    if tagname is None:
+        tagname = node.tagname
+    attributes = ['%s="%s"' % (attr, value) for attr, value in node.attlist()]
+    rendered = ['<%s>' % tagname]
+    if attributes:
+        rendered[0] = '<%s %s>' % (tagname, " ".join(attributes))
+    if node.children and strip_child:
+        node = node.children[0]
+    for child in node.children:
+        rendered.append(_tree(child, document, title))
+    rendered.append('</%s>' % tagname)
+    return rendered
+
+
 def _tree(node, document, title):
     """Renders a node in HTML.
     """
@@ -108,20 +145,9 @@ def _tree(node, document, title):
         text.append(hilite(node))
         text.append('</div>')
     elif klass == 'note':
-        text.append('<div class="well note">')
-        for child in node.children:
-            text.append(_tree(child, document, title))
-        text.append('</div>')
-    elif klass == 'emphasis':
-        text.append('<em>')
-        for child in node.children:
-            text.append(_tree(child, document, title))
-        text.append('</em>')
-    elif klass == 'strong':
-        text.append('<strong>')
-        for child in node.children:
-            text.append(_tree(child, document, title))
-        text.append('</strong>')
+        node.attributes['class'] = 'well note'
+        text.extend(render_simple_tag(node, document, title,
+                                      'div', strip_child=True))
     elif klass == 'image':
         nolegend = False
         if node.hasattr('uri'):
@@ -147,8 +173,7 @@ def _tree(node, document, title):
             text.append(node['alt'])
             text.append('</span>')
             text.append('</div>')
-
-    elif klass == 'reference':
+    elif klass == 'reference':  # link
         if node.hasattr('refid'):
             text.append('<a href="#%s">' % node['refid'])
         elif node.hasattr('refuri'):
@@ -175,25 +200,10 @@ def _tree(node, document, title):
         text.append('<h2>%s</h2>' % node.children[0][0].astext())
         for child in node.children[1:]:
             text.append(_tree(child, document, title))
-    elif klass == 'bullet_list':
-        text.append('<ul>')
-        for child in node.children:
-            text.append(_tree(child, document, title))
-        text.append('</ul>')
-    elif klass == 'enumerated_list':
-        text.append('<ol>')
-        for child in node.children:
-            text.append(_tree(child, document, title))
-        text.append('</ol>')
     elif klass == 'substitution_definition':
         #uri = node.children[0].attributes['uri']
         #text.append('<img class="subst" src="%s"></img>' % uri)
         pass
-    elif klass == 'list_item':
-        text.append('<li>')
-        for child in node.children:
-            text.append(_tree(child, document, title))
-        text.append('</li>')
     elif klass == 'docinfo':
         # reading metadata
         for child in node.children:
@@ -231,6 +241,18 @@ def _tree(node, document, title):
                         'src="http://cnd.faitmain.org/media/flash.png">')
             text.append('</img>')
             text.append('<strong>Niveau</strong>: %s' % value.capitalize())
+    elif klass == 'colspec':  # table colspec
+        pass
+    elif klass == 'entry':  # table entry
+        tagname = 'td'
+        if node.parent.parent.tagname == 'thead':
+            tagname = 'th'
+        text.extend(render_simple_tag(node, document, title,
+                                      tagname, strip_child=True))
+    elif klass in SIMPLE_TAGS:
+        tagname, strip_child = SIMPLE_TAGS[klass]
+        text.extend(render_simple_tag(node, document, title,
+                                      tagname, strip_child=strip_child))
     else:
         raise NotImplementedError(node)
 
@@ -251,7 +273,6 @@ def generate():
     if not os.path.exists(target):
         os.mkdir(target)
 
-
     lookup = TemplateLookup(directories=['.'])
 
     for root, dirs, files in os.walk(src):
@@ -259,7 +280,7 @@ def generate():
             ext = os.path.splitext(file)[-1]
             path = os.path.join(root, file)
 
-            if ext in ('.mako' , '.un~'):
+            if ext in ('.mako', '.un~'):
                 continue
 
             # getting read of '/src
