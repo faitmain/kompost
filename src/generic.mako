@@ -67,7 +67,9 @@ Attention le magazine n'est pas encore officiellement lancé. Ceci est un protot
 </div>
 
 <%block name="first_h1">
-<h1>${title}</h1>
+<div class="page-header">
+  <h1>${title}</h1>
+</div>
 </%block>
 
 %if body:
