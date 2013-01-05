@@ -19,13 +19,42 @@
 
   <body class="preview" data-spy="scroll" data-target=".subnav" data-offset="80">
 
+<div class="navbar navbar-fixed-top">
+
+<div class="navbar-inner">
+<div class="container branding">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</a>
+<a class="brand" href="/">Fait Main</a>
+<div class="nav-collapse">
+<ul class="nav">
+<li><a href="/electronique" title="A propos">Electronique</a></li>
+<li><a href="/informatique" title="Informatique">Informatique</a></li>
+<li><a href="/art" title="Art">Art</a></li>
+<li><a href="/cuisine" title="Cuisine">Cuisine</a></li>
+<li><a href="/ecologie" title="Ecologie">Ecologie</a></li>
+</ul>
+<ul class="nav pull-right">
+<li><a target="_blank" title="Twitter" href="http://twitter.com/FaitMainMag" id="toptwitter" rel="nofollow"><img src="http://cnd.faitmain.org/media/up.png"/></a></li>
+<li><a target="_blank" href="https://plus.google.com/+faitmainmag/posts" id="topgoogleplus" rel="nofollow"><img src="http://cnd.faitmain.org/media/up.png"/></a> </li>
+<li><a target="_blank" title="RSS" href="/rss" id="toprss"><img src="http://cnd.faitmain.org/media/up.png"/></a></li>
+</ul>
+</div><!--/.nav-collapse -->
+</div>
+
+</div>
+</div>
+
     <div class="container">
 
 <header class="jumbotron subhead" id="overview">
   <div class="row">
-    <div class="span6">
+    <div class="span9">
       <a href="/"><h1>Fait Main</h1></a>
-      <p class="lead">Electronique ∝ Informatique ∝ Art ∝ Bouffe ∝ Ecologie</p>
+      <p class="lead">Electronique ∝ Informatique ∝ Art ∝ Cuisine ∝ Ecologie</p>
     </div>
   </div>
   <%block name="header"/>
