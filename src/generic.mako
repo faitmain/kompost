@@ -37,9 +37,6 @@
 <li><a href="/art.html" title="Art">Art</a></li>
 <li><a href="/cuisine.html" title="Cuisine">Cuisine</a></li>
 <li><a href="/ecologie.html" title="Ecologie">Ecologie</a></li>
-<li><a target="_blank" title="Twitter" href="http://twitter.com/FaitMainMag" id="toptwitter" rel="nofollow"><img src="http://cnd.faitmain.org/media/twitter.png"/></a></li>
-<li><a target="_blank" href="https://plus.google.com/u/0/communities/117661540788222488034" id="topgoogleplus" rel="nofollow"><img src="http://cnd.faitmain.org/media/google_plus.png"/></a> </li>
-<li><a target="_blank" title="GitHub" href="http://github.com/tarekziade/faitmain" id="topgithub"><img src="http://cnd.faitmain.org/media/github.png"/></a></li>
 </ul>
 </div><!--/.nav-collapse -->
 </div>
@@ -49,42 +46,51 @@
 
 
 <div class="container-fluid">
-<div class="span2">
-Sidebar
-</div>
-
-<div class="span10">
-
-<header class="jumbotron subhead" id="overview">
-  <div class="row">
-    <div class="span9">
-      <a href="/"><h1>Fait Main</h1></a>
-      <p class="lead">Electronique ∝ Informatique ∝ Art ∝ Bouffe ∝ Ecologie</p>
-    </div>
+ <div class="row-fluid">
+ <div class="span10">
+  <div class="alert alert-error">
+    Attention le magazine n'est pas encore officiellement lancé. Ceci est un prototype. Ne pas diffuser.
   </div>
-  <%block name="header"/>
-</header>
+  <%block name="first_h1">
+  <div class="page-header">
+    <h1>${title}</h1>
+  </div>
+  </%block>
 
+  %if body:
+    ${body}
+  %else:
+    ${self.body()}
+  %endif
+ </div>  <!-- end of body span9 -->
+   <div class="span2">
+     <div class="sidebar-nav">
+      <ul class="nav nav-list">
+        <li class="nav-header" style="color:black">Social</li>
+        <li><a target="_blank" title="Twitter" href="http://twitter.com/FaitMainMag" id="toptwitter" rel="nofollow">
+            <img src="http://cnd.faitmain.org/media/twitter.png"/> Twitter</a>
+        </li>
+        <li><a target="_blank" href="https://plus.google.com/u/0/communities/117661540788222488034" id="topgoogleplus" rel="nofollow">
+           <img src="http://cnd.faitmain.org/media/google_plus.png"/></a> </li>
+        <li><a target="_blank" title="GitHub" href="http://github.com/tarekziade/faitmain" id="topgithub">
+          <img src="http://cnd.faitmain.org/media/github.png"/>
+</a></li>
 
-<div class="alert alert-error">
-Attention le magazine n'est pas encore officiellement lancé. Ceci est un prototype. Ne pas diffuser.
-</div>
+        <li class="nav-header" style="color:black">Archives</li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>  
+</ul>
 
-<%block name="first_h1">
-<div class="page-header">
-  <h1>${title}</h1>
-</div>
-</%block>
+     </div> 
+   </div>
 
-%if body:
-  ${body}
-%else:
-  ${self.body()}
-%endif
-
+ </div> <!-- end of row-fluid -->
 
 <br/><br/>
-
  <p class="pull-right"><a href="#"><img src="http://cnd.faitmain.org/media/up.png"></a></p>
 
   <footer id="footer">
@@ -101,9 +107,9 @@ Attention le magazine n'est pas encore officiellement lancé. Ceci est un protot
     </%block>
   </div>
   </footer>
- </div>
 
-</div>
+</div> <!-- end container -->
+
     <script async src="http://cnd.faitmain.org/media/jquery.js"></script>
     <script async src="http://cnd.faitmain.org/media/bootstrap.js"></script>
     <script src="http://cnd.faitmain.org/media/retina.js"></script>

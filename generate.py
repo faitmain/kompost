@@ -157,22 +157,24 @@ def _tree(node, document, title):
                 class_ = 'subst'
                 nolegend = True
             else:
-                text.append('<div>')
-                class_ = 'centered'
+                text.append('<div class="row-fluid">')
+                class_ = 'centered span12'
+
             text.append('<img class="%s" src="%s">' % (class_, uri))
         else:
-            text.append('<div>')
-            text.append('<img class="centered">')
+            text.append('<div class="row-fluid">')
+            text.append('<img class="centered span12">')
 
         for child in node.children:
             text.append(_tree(child, document, title))
 
         text.append('</img>')
         if not nolegend and 'alt' in node:
-            text.append('<span class="legend">')
+            text.append('<span class="legend span10 offset1">')
             text.append(node['alt'])
             text.append('</span>')
             text.append('</div>')
+
     elif klass == 'reference':  # link
         if node.hasattr('refid'):
             text.append('<a href="#%s">' % node['refid'])
