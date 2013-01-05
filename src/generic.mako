@@ -39,8 +39,7 @@
 <li><a href="/ecologie.html" title="Ecologie">Ecologie</a></li>
 <li><a target="_blank" title="Twitter" href="http://twitter.com/FaitMainMag" id="toptwitter" rel="nofollow"><img src="http://cnd.faitmain.org/media/twitter.png"/></a></li>
 <li><a target="_blank" href="https://plus.google.com/u/0/communities/117661540788222488034" id="topgoogleplus" rel="nofollow"><img src="http://cnd.faitmain.org/media/google_plus.png"/></a> </li>
-<li><a target="_blank" title="RSS" href="/rss" id="toprss"><img src="http://cnd.faitmain.org/media/rss.png"/></a></li>
-<li><a target="_blank" title="RSS" href="http://github.com/tarekziade/faitmain" id="topgithub"><img src="http://cnd.faitmain.org/media/github.png"/></a></li>
+<li><a target="_blank" title="GitHub" href="http://github.com/tarekziade/faitmain" id="topgithub"><img src="http://cnd.faitmain.org/media/github.png"/></a></li>
 </ul>
 </div><!--/.nav-collapse -->
 </div>
