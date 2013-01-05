@@ -66,12 +66,17 @@ Attention le magazine n'est pas encore officiellement lancé. Ceci est un protot
 
 <h1>${title}</h1>
 
-<p>Tous les articles sur ce sujet:</p>
-<ul>
-%for path, title_ in paths:
-<li><a href="${path}">${title_}</a></li>
-%endfor
-</ul>
+%if paths:
+ <p>Tous les articles sur ce sujet:</p>
+  <ul>
+   %for path, title_ in paths:
+    <li><a href="${path}">${title_}</a></li>
+   %endfor
+  </ul>
+%else:
+  <p>Aucun article sur ce sujet pour le moment.</p>
+%endif
+
 
 <br/><br/>
  <p class="pull-right"><a href="#"><img src="http://cnd.faitmain.org/media/up.png"></a></p>
