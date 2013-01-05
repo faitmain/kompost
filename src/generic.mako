@@ -18,6 +18,34 @@
 </head>
 
   <body class="preview" data-spy="scroll" data-target=".subnav" data-offset="80">
+<div class="navbar navbar-fixed-top">
+
+<div class="navbar-inner">
+<div class="container branding">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</a>
+<a class="brand" href="/">Fait Main</a>
+<div class="nav-collapse">
+<ul class="nav">
+<li><a href="/electronique" title="A propos">Electronique</a></li>
+<li><a href="/informatique" title="Informatique">Informatique</a></li>
+<li><a href="/art" title="Art">Art</a></li>
+<li><a href="/cuisine" title="Cuisine">Cuisine</a></li>
+<li><a href="/ecologie" title="Ecologie">Ecologie</a></li>
+<li><a target="_blank" title="Twitter" href="http://twitter.com/FaitMainMag" id="toptwitter" rel="nofollow"><img src="http://cnd.faitmain.org/media/twitter.png"/></a></li>
+<li><a target="_blank" href="https://plus.google.com/+faitmainmag/posts" id="topgoogleplus" rel="nofollow"><img src="http://cnd.faitmain.org/media/google_plus.png"/></a> </li>
+<li><a target="_blank" title="RSS" href="/rss" id="toprss"><img src="http://cnd.faitmain.org/media/rss.png"/></a></li>
+<li><a target="_blank" title="RSS" href="http://github.com/tarekziade/faitmain" id="topgithub"><img src="http://cnd.faitmain.org/media/github.png"/></a></li>
+</ul>
+</div><!--/.nav-collapse -->
+</div>
+
+</div>
+</div>
+
 
     <div class="container">
 
@@ -39,28 +67,22 @@ Attention le magazine n'est pas encore officiellement lancé. Ceci est un protot
 
 
 ${body}
-
-<br/>
-<div class="center">
-<span class="EOD">§</span>
-</div>
 <br/><br/>
+ <p class="pull-right"><a href="#"><img src="http://cnd.faitmain.org/media/up.png"></a></p>
+
   <footer id="footer">
+  <div class="inner">
     <%block name="footer">
     <div class="links">
       <ul>
+        <li>© 2012 FaitMain</li>
         <li><a href="/apropos.html">A propos</a></li>
-        <li>Contenu <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-By-SA</a></li>
-        <li><a href="https://twitter.com/FaitMainMag">Twitter</a></li>
-        <li><a href="https://github.com/tarekziade/faitmain">GitHub</a></li>
-        <li><p>Design adapté de <a target="_blank" href="http://thomaspark.me/">Thomas Park</a></p></li>
-        <li><a target="_blank" href="http://glyphicons.com/">Icones</a><li>
-         <li><a target="_blank" href="http://www.google.com/webfonts">Polices</a></li>
+        <li>Contenu <a href="https://creativecommons.org/licenses/by-nc-sa/2.0/">CC-By-NC-SA</a></li>
       </ul>
       <div style="clear:both"/>
      </div>
-     <p class="pull-right"><a href="#"><img src="http://cnd.faitmain.org/media/up.png"></a></p>
     </%block>
+  </div>
   </footer>
  </div>
     <script async src="http://cnd.faitmain.org/media/jquery.js"></script>

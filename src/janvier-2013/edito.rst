@@ -6,7 +6,7 @@ un magazine en ligne qui couvre plusieurs sujets, à savoir:
 
 - l'informatique,
 - l'électronique,
-- la *bouffe*,
+- la cuisine
 - l'art,
 - et enfin l'écologie.
 
@@ -52,7 +52,7 @@ et nous chercherons sans cesse de nouveaux auteurs qui auront envie de
 participer à un numéro.
 
 *Fait Main* est entièrement gratuit et son contenu est distribué sous
-licence `CC-BY-SA <https://creativecommons.org/licenses/by-sa/2.0/>`_,
+licence `CC-By-NC-SA <https://creativecommons.org/licenses/by-nc-sa/2.0/>`_,
 
 Le magazine est conçu sur **github** à cette adresse: https://github.com/tarekziade/faitmain
 
