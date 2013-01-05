@@ -47,7 +47,7 @@
 
 <div class="container-fluid">
  <div class="row-fluid">
- <div class="span10">
+ <div class="span9 offset1">
   <div class="alert alert-error">
     Attention le magazine n'est pas encore officiellement lancé. Ceci est un prototype. Ne pas diffuser.
   </div>
@@ -71,9 +71,9 @@
             <img src="http://cnd.faitmain.org/media/twitter.png"/> Twitter</a>
         </li>
         <li><a target="_blank" href="https://plus.google.com/u/0/communities/117661540788222488034" id="topgoogleplus" rel="nofollow">
-           <img src="http://cnd.faitmain.org/media/google_plus.png"/></a> </li>
+           <img src="http://cnd.faitmain.org/media/google_plus.png"/> Google+</a> </li>
         <li><a target="_blank" title="GitHub" href="http://github.com/tarekziade/faitmain" id="topgithub">
-          <img src="http://cnd.faitmain.org/media/github.png"/>
+          <img src="http://cnd.faitmain.org/media/github.png"/> Github
 </a></li>
 
         <li class="nav-header" style="color:black">Archives</li>
