@@ -48,7 +48,12 @@
 </div>
 
 
-    <div class="container">
+<div class="container-fluid">
+<div class="span2">
+Sidebar
+</div>
+
+<div class="span10">
 
 <header class="jumbotron subhead" id="overview">
   <div class="row">
@@ -77,8 +82,8 @@ Attention le magazine n'est pas encore officiellement lancé. Ceci est un protot
   ${self.body()}
 %endif
 
-<br/><br/>
 
+<br/><br/>
 
  <p class="pull-right"><a href="#"><img src="http://cnd.faitmain.org/media/up.png"></a></p>
 
@@ -97,6 +102,8 @@ Attention le magazine n'est pas encore officiellement lancé. Ceci est un protot
   </div>
   </footer>
  </div>
+
+</div>
     <script async src="http://cnd.faitmain.org/media/jquery.js"></script>
     <script async src="http://cnd.faitmain.org/media/bootstrap.js"></script>
     <script src="http://cnd.faitmain.org/media/retina.js"></script>
