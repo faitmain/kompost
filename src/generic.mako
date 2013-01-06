@@ -66,6 +66,12 @@
    <div class="span2">
      <div class="sidebar-nav">
       <ul class="nav nav-list">
+        <li class="nav-header" style="color:black">Recherche</li>
+        <li>
+          <form class="form-search" action="/recherche" method="get">
+           <input type="text" class="input-medium search-query" name="query"/>
+         </form>
+        </li>
         <li class="nav-header" style="color:black">Social</li>
         <li><a target="_blank" title="Twitter" href="http://twitter.com/FaitMainMag" id="toptwitter" rel="nofollow">
             <img src="http://cnd.faitmain.org/media/twitter.png"/> Twitter</a>
@@ -114,5 +120,6 @@
     <script async src="http://cnd.faitmain.org/media/jquery.js"></script>
     <script async src="http://cnd.faitmain.org/media/bootstrap.js"></script>
     <script src="http://cnd.faitmain.org/media/retina.js"></script>
+   <%block name="script"></%block>
 </body></html>
 

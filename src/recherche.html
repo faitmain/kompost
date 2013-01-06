@@ -1,0 +1,40 @@
+## -*- coding: utf-8 -*-
+
+<%inherit file="generic.mako"/>
+
+<%block name="headtitle">
+<title>Fait Main Magazine</title>
+</%block>
+
+<%block name="first_h1">
+<div class="page-header">
+  <h1 id="state">Recherche en cours...</h1>
+</div>  
+</%block>
+
+
+
+<div class="progress progress-striped active">
+  <div class="bar" style="width: 40%;"></div>
+</div>
+
+<div id="results">
+</div>
+
+
+<%block name="script">
+<script>
+  $(document).ready(function(){
+
+$.get("/search/search?query=tarek",
+function(data) {
+  $.each(data.results, function(i, item) {
+
+    $('results').append(item);
+    });
+
+  }, "json");
+});
+</%block>
+
+</script>
