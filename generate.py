@@ -396,7 +396,7 @@ def generate():
 
     # asking Trouvailles to index the web site
     print 'Indexing the whole website'
-    url = "http://faitmain.org/s"
+    url = "http://faitmain.org/search"
     data = {'sitemap': 'http://faitmain.org/sitemap.json'}
     headers = {'Content-type': 'application/json'}
     r = requests.post(url, data=json.dumps(data), headers=headers)

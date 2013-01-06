@@ -18,23 +18,26 @@
   <div class="bar" style="width: 40%;"></div>
 </div>
 
-<div id="results">
-</div>
+<ul id="results">
+</ul>
 
 
 <%block name="script">
-<script>
-  $(document).ready(function(){
-
+<script langage="javascript">
+$(document).ready(function(){
 $.get("/search/search?query=tarek",
 function(data) {
+  var items = [];
+
   $.each(data.results, function(i, item) {
-
-    $('results').append(item);
+    items.push('<li>' + item + '</li>');
     });
+    
+   $('#results').append(items.join(''));
 
-  }, "json");
+}, "json");
 });
-</%block>
 
 </script>
+</%block>
+

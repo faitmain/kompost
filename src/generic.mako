@@ -68,7 +68,7 @@
       <ul class="nav nav-list">
         <li class="nav-header" style="color:black">Recherche</li>
         <li>
-          <form class="form-search" action="/recherche" method="get">
+          <form class="form-search" action="/recherche.html" method="get">
            <input type="text" class="input-medium search-query" name="query"/>
          </form>
         </li>
@@ -117,7 +117,7 @@
 
 </div> <!-- end container -->
 
-    <script async src="http://cnd.faitmain.org/media/jquery.js"></script>
+    <script src="http://cnd.faitmain.org/media/jquery.js"></script>
     <script async src="http://cnd.faitmain.org/media/bootstrap.js"></script>
     <script src="http://cnd.faitmain.org/media/retina.js"></script>
    <%block name="script"></%block>
