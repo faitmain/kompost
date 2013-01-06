@@ -288,6 +288,8 @@ _FOOTER = """
 
 
 def generate():
+    sitemap = {}
+
     if not os.path.exists(target):
         os.mkdir(target)
 
@@ -312,9 +314,12 @@ def generate():
             if ext == '.html':
                 mytemplate = Template(filename=path, lookup=lookup)
                 print 'Generating %r' % file_target
+                url_target = file_target[len(target):]
 
                 with codecs.open(file_target, 'w', encoding='utf8') as f:
                     f.write(mytemplate.render())
+
+                sitemap[url_target] = ''
             elif ext == '.rst':
                 # generating the tree, then creating a mako document
                 with open(path) as f:
@@ -336,6 +341,7 @@ def generate():
                     f.write(mytemplate.render(body='\n'.join(paragraphs),
                                               title=title))
 
+                sitemap[url_target] = title
                 _save_index()
             else:
                 print 'Copying %r' % file_target
@@ -368,9 +374,16 @@ def generate():
         file_target = os.path.join(target, cat + '.html')
 
         mytemplate = Template(filename=_CATS, lookup=lookup)
+        sitemap['/%s.html' % cat] = cat.capitalize()
 
         with codecs.open(file_target, 'w', encoding='utf8') as f:
             f.write(mytemplate.render(paths=paths, title=cat.capitalize()))
+
+    # creating sitemap
+    sitemap_file = os.path.join(target, 'sitemap.json')
+    print 'Generating sitemap at %r' % sitemap_file
+    with open(sitemap_file, 'w') as f:
+        f.write(json.dumps(sitemap))
 
 
 if __name__ == '__main__':
