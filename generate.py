@@ -155,6 +155,15 @@ def _tree(node, document, title):
     elif klass == 'image':
         # XXX find a way to display images at different sizes
         nolegend = False
+        if node.hasattr('scale'):
+            span = 12. * (float(node['scale']) / 100.)
+            offset = int((12-span) / 2.)
+            span = 'span%d' % int(span)
+            if offset > 0:
+                span += ' offset%d' % offset
+        else:
+            span = 'span12'
+
         if node.hasattr('uri'):
             uri = node['uri']
             file_ = os.path.split(uri)[-1]
@@ -163,19 +172,19 @@ def _tree(node, document, title):
                 nolegend = True
             else:
                 text.append('<div class="row-fluid">')
-                class_ = 'centered span12'
+                class_ = 'centered %s' % span
 
             text.append('<img class="%s" src="%s">' % (class_, uri))
         else:
             text.append('<div class="row-fluid">')
-            text.append('<img class="centered span12">')
+            text.append('<img class="centered %s">' % span)
 
         for child in node.children:
             text.append(_tree(child, document, title))
 
         text.append('</img>')
         if not nolegend and 'alt' in node:
-            text.append('<span class="legend span12">')
+            text.append('<span class="legend %s">' % span)
             text.append(node['alt'])
             text.append('</span>')
             text.append('</div>')

@@ -111,6 +111,8 @@ Pour résumer le fonctionnement dans un schéma simple :
 
 .. image:: wtf-schema.jpg
    :alt: C'est pas compliqué...
+   :scale: 50
+
 
 L'utilisateur trouve une feuille — où l'arrache discrètement, puis
 dégaine son portable pour prendre un cliché, et demande à notre
@@ -220,6 +222,7 @@ une rotation de l'image.
 
 .. image:: editeur.jpg
    :alt: Tape ta feuille.
+   :scale: 50
 
 On est loin de la barre d'outils de Photoshop, mais l'idée est là :
 l'utilisateur peaufine son image avant de demander au serveur de faire
@@ -402,6 +405,7 @@ La partie intelligente
 .. image:: scikit-image.jpg
   :target: http://scikit-image.org/
   :alt: Scikit-image en action.
+  :scale: 50
 
 La partie la plus intéressante est la reconnaissance des feuilles bien sûr,
 et pour la mettre en oeuvre, nous avons utilisé la librairie Python
@@ -513,4 +517,4 @@ et l'application `en ligne <http://whatthefeuille.com>`_.
 
 .. image:: Platane.jpg
    :alt: Du platane. C'est du platane je vous dis.
-
+   :scale: 50

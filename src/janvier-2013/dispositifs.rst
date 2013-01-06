@@ -54,16 +54,17 @@ Niveau détecteurs :
 
 .. image:: pir.jpg
    :alt: Détecteur PIR
-
+   :scale: 25
 
 .. image:: doorswitch.jpg
    :alt: Détecteur d'ouverture de porte
-
+   :scale: 25
 
 Regardons ce détecteur d'ouverture de porte de plus près :
 
 .. image:: doorswitch-grosplan.jpg
    :alt: Gros plan sur le détecteur d'ouverture de porte
+   :scale: 25
 
 
 On voit bien le PT2262 pour l'encodage et à gauche des jumper pour choisir le
@@ -92,6 +93,7 @@ un pin de l'Arduino ayant une interruption.
 
 .. image:: recepteur.jpg
    :alt: Recepteur
+   :scale: 25
 
 Voici un petit tableau des interruptions :
 
@@ -124,6 +126,7 @@ port série (lié à l'utilisation de l'usb après le lancement) :
 
 .. image:: sketch_demo.png
    :alt: Le code dans Arduino IDE
+   :scale: 50
 
 Envoyons le croquis sur la carte, et lancons le moniteur série (Outils >
 Moniteur Série, après avoir vérifié que le port était le bon dans Outils > Port
@@ -150,7 +153,7 @@ rouge lorsqu'il détecte un mouvement) :
 
 .. image:: capteur_move.jpg
    :alt: Détéction de moouvement
-
+   :scale: 25
 
 .. image:: deux_codes.jpg
    :alt: Deux codes
@@ -223,6 +226,7 @@ Voici ce que l'on reçoit sur le port série :
 
 .. image:: Capture-du-2012-12-17-140454.jpg
    :alt: Capture du port série
+   :scale: 50
 
 Comme vous pouvez le voir, on a l'information, mais elle se répète. C'est du à
 la nature du protocole, qui ne permet pas de vérifier la réception de
@@ -293,7 +297,7 @@ porte, marche jusqu'à une autre porte puis ouvre cette autre porte inconnue :
 
 .. image:: Capture-du-2012-12-17-142121.jpg
    :alt: Capture du port série
-
+   :scale: 50
 
 Comme vous pouvez le voir, nous n'avons pas de timer sur l'émetteur inconnu
 mais on en a un sur ceux qui sont connus.
