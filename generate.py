@@ -8,6 +8,7 @@ import sys
 import socket
 import unicodedata
 from collections import defaultdict
+import datetime
 
 import requests
 
@@ -290,7 +291,7 @@ _FOOTER = """
 
 
 def generate():
-    sitemap = {}
+    sitemap = []
 
     if not os.path.exists(target):
         os.mkdir(target)
@@ -321,7 +322,7 @@ def generate():
                 with codecs.open(file_target, 'w', encoding='utf8') as f:
                     f.write(mytemplate.render())
 
-                sitemap[url_target] = ''
+                sitemap.append(url_target)
             elif ext == '.rst':
                 # generating the tree, then creating a mako document
                 with open(path) as f:
@@ -343,7 +344,7 @@ def generate():
                     f.write(mytemplate.render(body='\n'.join(paragraphs),
                                               title=title))
 
-                sitemap[url_target] = title
+                sitemap.append(url_target)
                 _save_index()
             else:
                 print 'Copying %r' % file_target
@@ -376,7 +377,7 @@ def generate():
         file_target = os.path.join(target, cat + '.html')
 
         mytemplate = Template(filename=_CATS, lookup=lookup)
-        sitemap['/%s.html' % cat] = cat.capitalize()
+        sitemap.append('/%s.html' % cat)
 
         with codecs.open(file_target, 'w', encoding='utf8') as f:
             f.write(mytemplate.render(paths=paths, title=cat.capitalize()))
@@ -384,8 +385,14 @@ def generate():
     # creating sitemap
     sitemap_file = os.path.join(target, 'sitemap.json')
     print 'Generating sitemap at %r' % sitemap_file
+    now = datetime.datetime.now().isoformat()
+
+    urlset = [{'loc': loc, 'lastmod': now,
+               'changefreq': 'monthly',
+               'priority': 0.1} for loc in sitemap]
+
     with open(sitemap_file, 'w') as f:
-        f.write(json.dumps(sitemap))
+        f.write(json.dumps({'urlset': urlset}))
 
     # asking Trouvailles to index the web site
     print 'Indexing the whole website'
