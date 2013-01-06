@@ -1098,3 +1098,7 @@ table.highlighttable td.linenos {
 .navbar .brand {
   font-size: 80px;
 }
+
+.well {
+  background-color: #f2f2f2;
+}
