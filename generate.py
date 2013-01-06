@@ -243,10 +243,9 @@ def _tree(node, document, title):
         name = node.children[0].astext()
         value = node.children[1].astext()
         if name == 'category':
-            #text.append('<img class="subst" '
-            #            'src="http://cnd.faitmain.org/media/info.png">')
-            #text.append('</img>')
-            text.append('<i class="icon-info-sign"></i>')
+            text.append('<img class="subst" '
+                        'src="http://cnd.faitmain.org/media/info.png">')
+            text.append('</img>')
             cats = value.split(',')
             _index(document, title, name, cats)
 
@@ -284,7 +283,7 @@ _FOOTER = """
 .. |thumbsup| image:: icon-thumbs-up
 .. |right| image:: http://cnd.faitmain.org/media/right.png
 .. |flash| image:: http://cnd.faitmain.org/media/flash.png
-.. |infosign| image:: http://cnd.faitmain.org/media/info.png
+.. |infosign| image:: icon-info-sign
 """
 
 
