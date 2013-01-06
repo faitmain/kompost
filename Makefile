@@ -9,6 +9,7 @@ build:
 	bin/pip install Mako
 	bin/pip install docutils
 	bin/pip install Pygments
+	bin/pip install requests
 
 generate: 
 	bin/python generate.py

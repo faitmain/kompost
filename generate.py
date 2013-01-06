@@ -9,6 +9,8 @@ import socket
 import unicodedata
 from collections import defaultdict
 
+import requests
+
 from docutils.core import publish_doctree
 
 from mako.template import Template
@@ -384,6 +386,17 @@ def generate():
     print 'Generating sitemap at %r' % sitemap_file
     with open(sitemap_file, 'w') as f:
         f.write(json.dumps(sitemap))
+
+    # asking Trouvailles to index the web site
+    print 'Indexing the whole website'
+    url = "http://faitmain.org/s"
+    data = {'sitemap': 'http://faitmain.org/sitemap.json'}
+    headers = {'Content-type': 'application/json'}
+    r = requests.post(url, data=json.dumps(data), headers=headers)
+    if r.status_code != 200:
+        print 'Indexation failed'
+        print r.status_code
+        print r.content
 
 
 if __name__ == '__main__':
