@@ -153,7 +153,9 @@ def _tree(node, document, title):
                                       'table', strip_child='True'))
 
     elif klass == 'image':
-        # XXX find a way to display images at different sizes
+        if node.get('uri').startswith('icon'):
+            return '<i class="%s"></i>' % node.get('uri')
+
         nolegend = False
         if node.hasattr('scale'):
             span = 12. * (float(node['scale']) / 100.)
@@ -241,9 +243,10 @@ def _tree(node, document, title):
         name = node.children[0].astext()
         value = node.children[1].astext()
         if name == 'category':
-            text.append('<img class="subst" '
-                        'src="http://cnd.faitmain.org/media/info.png">')
-            text.append('</img>')
+            #text.append('<img class="subst" '
+            #            'src="http://cnd.faitmain.org/media/info.png">')
+            #text.append('</img>')
+            text.append('<i class="icon-info-sign"></i>')
             cats = value.split(',')
             _index(document, title, name, cats)
 
@@ -278,10 +281,10 @@ def _tree(node, document, title):
 _FOOTER = """
 .. |pen| image:: http://cnd.faitmain.org/media/pen.png
 .. |info| image:: http://cnd.faitmain.org/media/info.png
-.. |thumbsup| image:: http://cnd.faitmain.org/media/thumbsup.png
+.. |thumbsup| image:: icon-thumbs-up
 .. |right| image:: http://cnd.faitmain.org/media/right.png
 .. |flash| image:: http://cnd.faitmain.org/media/flash.png
-
+.. |infosign| image:: icon-info-sign
 """
 
 
