@@ -149,6 +149,7 @@ def _tree(node, document, title):
         text.extend(render_simple_tag(node, document, title,
                                       'div', strip_child=True))
     elif klass == 'image':
+        # XXX find a way to display images at different sizes
         nolegend = False
         if node.hasattr('uri'):
             uri = node['uri']
@@ -170,7 +171,7 @@ def _tree(node, document, title):
 
         text.append('</img>')
         if not nolegend and 'alt' in node:
-            text.append('<span class="legend span10 offset1">')
+            text.append('<span class="legend span12">')
             text.append(node['alt'])
             text.append('</span>')
             text.append('</div>')
