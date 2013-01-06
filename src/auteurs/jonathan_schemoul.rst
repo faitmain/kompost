@@ -3,6 +3,7 @@ Jonathan Schemoul
 
 .. image:: http://media-cache-ec1.pinterest.com/avatars/jon1012_1330945709_600.jpg
    :scale:50
+   :alt: Jonathan
 
 Nullam quis risus eget urna mollis ornare vel eu leo. Cum
 sociis natoque penatibus et magnis dis parturient montes, nascetur

@@ -3,7 +3,7 @@ Tarek Ziadé
 
 .. image:: http://blog.ziade.org/theme/images/tarek.jpg
    :scale: 50
-
+   :alt: Tarek
 
 Nullam quis risus eget urna mollis ornare vel eu leo. Cum
 sociis natoque penatibus et magnis dis parturient montes, nascetur
