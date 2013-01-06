@@ -281,10 +281,10 @@ def _tree(node, document, title):
 _FOOTER = """
 .. |pen| image:: http://cnd.faitmain.org/media/pen.png
 .. |info| image:: http://cnd.faitmain.org/media/info.png
-.. |thumbsup| image:: http://cnd.faitmain.org/media/thumbsup.png
+.. |thumbsup| image:: icon-thumbs-up
 .. |right| image:: http://cnd.faitmain.org/media/right.png
 .. |flash| image:: http://cnd.faitmain.org/media/flash.png
-.. |infosign| image:: icon-info-sign
+.. |infosign| image:: http://cnd.faitmain.org/media/info.png
 """
 
 
