@@ -2,6 +2,7 @@ Tarek Ziadé
 ===========
 
 .. image:: http://blog.ziade.org/theme/images/tarek.jpg
+   :scale: 50
 
 
 Nullam quis risus eget urna mollis ornare vel eu leo. Cum
