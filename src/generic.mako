@@ -91,9 +91,10 @@
  </div> <!-- end of row-fluid -->
 
 <br/><br/>
- <p class="pull-right"><a href="#"><img src="http://cnd.faitmain.org/media/up.png"></a></p>
 
   <footer id="footer">
+   <p class="pull-right"><a href="#"><img src="http://cnd.faitmain.org/media/up.png"></a></p>
+
   <div class="inner">
     <%block name="footer">
     <div class="links">

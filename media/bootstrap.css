@@ -290,8 +290,8 @@ legend+.control-group{margin-top:20px;-webkit-margin-top-collapse:separate;}
 .form-horizontal .help-block{margin-bottom:0;}
 .form-horizontal input+.help-block,.form-horizontal select+.help-block,.form-horizontal textarea+.help-block,.form-horizontal .uneditable-input+.help-block,.form-horizontal .input-prepend+.help-block,.form-horizontal .input-append+.help-block{margin-top:10px;}
 .form-horizontal .form-actions{padding-left:180px;}
-table{max-width:100%;background-color:#1ba7b4;border-collapse:collapse;border-spacing:0;}
-.table{width:100%;margin-bottom:20px;}.table th,.table td{padding:8px;line-height:20px;text-align:left;vertical-align:top;border-top:1px solid #1cafbd;}
+table{max-width:100%;background-color:white;border-collapse:collapse;border-spacing:0;}
+.table{width:100%;margin-bottom:20px;}.table th,.table td{padding:8px;line-height:20px;text-align:left;vertical-align:top;border-top:1px solid rgb(221, 221, 221);}
 .table th{font-weight:bold;}
 .table thead th{vertical-align:bottom;}
 .table caption+thead tr:first-child th,.table caption+thead tr:first-child td,.table colgroup+thead tr:first-child th,.table colgroup+thead tr:first-child td,.table thead:first-child tr:first-child th,.table thead:first-child tr:first-child td{border-top:0;}
@@ -950,7 +950,6 @@ div.subnav-fixed{top:0px;opacity: 0.7}
 [class^="icon-"],[class*=" icon-"]{margin-top:2px;margin-right:8px;}
 .btn-small [class^="icon-"]{margin-top:1px;}
 .add-on [class^="icon-"]{margin-left:5px;}
-.table th,.table td,.table tbody+tbody{border-top:0px solid transparent;}
 .table-bordered{-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;}
 .table tbody tr.success td{background-color:#48ca3b;}
 .table tbody tr.error td{background-color:#ad1d28;}

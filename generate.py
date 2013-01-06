@@ -95,7 +95,6 @@ SIMPLE_TAGS = {
     'bullet_list': ('ul', False),
     'enumerated_list': ('ol', False),
     'list_item': ('li', True),
-    'table': ('table', True),
     'thead': ('thead', False),
     'tbody': ('tbody', False),
     'row': ('tr', False),
@@ -148,6 +147,11 @@ def _tree(node, document, title):
         node.attributes['class'] = 'well note'
         text.extend(render_simple_tag(node, document, title,
                                       'div', strip_child=True))
+    elif klass == 'table':
+        node.attributes['class'] = 'table'
+        text.extend(render_simple_tag(node, document, title,
+                                      'table', strip_child='True'))
+
     elif klass == 'image':
         # XXX find a way to display images at different sizes
         nolegend = False
