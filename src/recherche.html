@@ -8,8 +8,9 @@
 
 <%block name="first_h1">
 <div class="page-header">
-  <h1 id="state">Recherche en cours...</h1>
-</div>  
+    <h1 id="state">Recherche en cours...</h1>
+    <p id="numres"></p>
+</div>
 </%block>
 
 
@@ -23,6 +24,7 @@
 
 
 <%block name="script">
+<script>
 function getUrlVars() {
     var vars = [], hash;
     var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
@@ -37,11 +39,17 @@ function getUrlVars() {
   $(document).ready(function(){
 
    var query = getUrlVars()["query"];
+   $('#state').replaceWith('<h1>Recherche en cours sur "' + query + '"</h1>');
 
    $.get("/search/search?query=" + query, function(data) {
+     $('#numres').replaceWith(data.results.length + " resultat(s).");
+     var items = [];
+
      $.each(data.results, function(i, item) {
-       $('results').append(item);
+         items.push('<li>' + item + '</li>');
      });
+
+     $('#results').append(items.join(''));
     }, "json");
 });
 
