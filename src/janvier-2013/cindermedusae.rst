@@ -278,11 +278,11 @@ discontinuités de la surface.
    :target: http://marcinignac.com/blog/cindermedusae-making-generative-creatures/mesh06.html
 
 
-Géométrie finale
-----------------
+Rendu final
+-----------
 
-The geometry I used for renders is much higher density mostly to have nice
-smooth curves and avoid antialiasing artifacts.
+J'ai utilisé une géométrie de triangles beaucoup plus dense pour le rendu ci-dessus,
+pour des plus belles courbes et pour éviter des artefacts d'antialiasing.
 
 .. image:: mesh.jpg
    :alt: Rendu final
@@ -291,54 +291,70 @@ smooth curves and avoid antialiasing artifacts.
 Procedural shading
 ::::::::::::::::::
 
+Lorsque j'ai commencé ce projet, je faisai des essais avec de la
+`Transluminescence <https://fr.wikipedia.org/wiki/Subsurface_scattering>`_
+et j'avais des `rendus <https://secure.flickr.com/photos/marcinignac/4776954910/in/set-72157624330971273/>_`_
+`assez <https://secure.flickr.com/photos/marcinignac/4776954912/in/set-72157624330971273/>`_
+`beaux <https://secure.flickr.com/photos/marcinignac/4776954906/in/set-72157624330971273/>`_.
 
-When I started I was aiming for very natural look so I was experimenting with
-Subsurface Scattering and even managed to get some decent looking results. I
-changed my mind after stumbling upon works by Ernst Haeckel and his amazing
-book "Kunstformen der Natur" - I knew that this is the way to go.
+Mais j'ai changé d'avis après être tombé sur le travail de Ernst Haeckel et
+son livre incroyable: `"Kunstformen der Natur" <http://en.wikipedia.org/wiki/Kunstformen_der_Natur>`_.
+Je savais que c'était la bonne voie.
 
-First step is to use standard diffuse lighting just to see if my mesh is smooth
-enough and I don't have any strange behaving normals
+La première étape est d'utiliser de la lumière diffuse standard juste pour
+vérifier que mon wireframe est suffisament lisse et n'a pas de normales
+au comportement étrange.
+
 
 .. image:: diffuse.jpg
-   :alt: Ombres
+   :alt: Lumière diffuse appliqué au modèle 3D.
 
 
-Hatching
-::::::::
+Hachurage
+:::::::::
 
+Il y a beaucoup d'articles de recherche sur les techniques pour
+avoir un rendu *croquis*. J'ai basé mon implémentation sur du code
+issu du livre `OpenGL Shading Language Book <http://www.amazon.fr/OpenGL-Shading-Language-Randi-Rost/dp/0321637631>`_
 
-There are many research papers on how to achieve sketchy look in realtime. I
-based my implementation on code from OpenGL Shading Language Book. The
-algorithm first generate vertical stripes along texture coordinates and then
-chooses the stripe density based on diffuse lighting. The less light the more
-dense the black stripes are. One important aspect was to choose the the right
-width of the stripes so to output is visually interesting but we don't get too
-much Moiré effect. Big offscreen FBO (4080 × 2720 px) and antialiasing helps a
-lot.
+L'algorithme génère d'abord des traits verticaux avec les coordonnées
+de texture, puis choisi la densité des traits en fonction de la lumière
+diffuse. Moins il y a de lumière, plus la densité de traits augmente.
+
+Un paramètre important pour un beau rendu est de bien choisir l'épaisseur
+des traits: ni trop fin pour ne pas avoir d'effet de
+`moiré <https://fr.wikipedia.org/wiki/Moir%C3%A9_%28effet_de_contraste%29>`_,
+ni trop épais pour ne pas perdre en finesse de rendu.
+
+Un grand rendu hors-écran dans un `framebuffer object <http://libcinder.org/docs/v0.8.4/guide__gl___fbo.html>`_
+de 4080 sur 2720 pixels, et l'antialiasing aident beaucoup à choisir la
+bonne épaisseur.
+
 
 .. image:: hatching.jpg
-   :alt: Hatching - cliquez pour la version hi-res
+   :alt: Hachurage - cliquez pour la version hi-res
    :target: http://marcinignac.com/blog/cindermedusae-making-generative-creatures/hatching_hi.jpg
 
+Malheureusement il n'y a aucun exemple basé sur processing.js, en partie car
+j'utilise des fonctionnalités qui dépendent des extensions *WebGL GLSL*, comme
+*GL_OES_standard_derivatives* et les fonctions *dFdx / dFdy*.
 
-Unfortunately There will be no ProcessingJS examples in this part because some
-features depends on WebGL GLSL extensions like GL_OES_standard_derivatives and
-dFdx / dFdy functions that are not supported by any WebGL implementation I know
-yet. Copy pasting source code also doesn't make sense so please refer to the
-book if interested.
+Pour aller plus loin, vous pouvez consulter le livre mentioné.
 
+Couleurs
+:::::::::
 
-Colors
-::::::
+Chaque image est composée de cinq couches:
 
-Every image is composited out of 5 layers:
+- un fond jaune
+- des coins de page orange
+- un hachurage en noir
+- des reflets bleus
+- des bordures roses
 
-yellow background color orange page corders dirt black sketchy hatch blue
-highlights and pink borders
+Les reflets bleus et les coins de pages ont été bruités
+pour donner une impression de coloriage à la main.
 
-Both orange page corners and blue highlights are masked by noise so they look
-like drawn using crayons.
 
 .. image:: color_layers.jpg
    :alt: Colorisation - cliquez pour la version hi-res
@@ -352,23 +368,26 @@ like drawn using crayons.
 Paramétrage
 :::::::::::
 
-Very important thing to mention is that all the parameters are exposed through
-simple GUI system I developed. This allows my to play with them and see how
-shape of the creature changes and what should be minimal and maximum values
-that makes sense. Having that I can simply choose a random value for each
-variable and be sure every jellyfish will look ok.
-
+J'ai aussi créé une interface graphique de paramètrage très simple.
+Cette interface me permet de jouer avec l'ensemble des paramètres de la simulation
+et de regarder comment la créature évolue en temps réel. Pour les paramètres
+qui varient entre une valeur minimal et maximal, l'interface me permet
+de calibrer ces limites afin de garder un rendu de méduse réaliste.
 
 .. image:: gui.jpg
    :alt: Interface de paramétrage
 
 
-
 La suite ?
 ::::::::::
 
-I want to work more on this project. First obvious step would be to optimize it
-so it runs on a decent framerate when animated. Right now it's around 10fps. I
-was thinkning about making WebGL port so people can create their own creatures
-online. The plan is also to extend the system and play with different organism
-types or plants.
+J'ai très envie de continuer le travail sur ce projet. Une amélioration
+évidente serait d'optimizer le code pour que le nombre de frames par secondes
+(FPS) soit correct. Il plafonne actuellement à 10 FPS.
+
+Je pensais aussi faire un portage sur *WebGL* pour que les utilisateurs
+puissent s'amuser à créer leurs propres créatures en ligne.
+
+Enfin, j'aimerais étendre le système et jouer avec d'autres types d'organismes
+ou de plantes.
+
