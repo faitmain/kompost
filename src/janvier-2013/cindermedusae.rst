@@ -14,7 +14,7 @@ Cindermedusae - Les Créatures Génératives
 
 .. note::
 
-   Cet article est une traduction de l'article de Marcin Ignac
+   Cet article est une traduction adaptée de l'article de Marcin Ignac
    originalement paru en anglais sur son blog à
    `cette addresse <http://marcinignac.com/blog/cindermedusae-making-generative-creatures>`_.
 
@@ -26,52 +26,88 @@ Cindermedusae - Les Créatures Génératives
    :alt: Les méduses en action
 
 
-Cindermedusae is quite a special project for me. It was super fast (about one
-week) and quite intensive (several late nights) yet very successful and
-rewarding when it comes to results. I liked the idea of generative book from
-the very beginning so I was very excited about Written Images competition when
-I heard about it for the first time. At this moment I was still working at
-shiftcontrol on underwater game project for ZDF called Universum Der Oceane in
-collaboration with Hosoya Schaefer Architects. More info about that project is
-here. We had many meetings and discussions about gameplay, creature behaviors
-and procedural animation so this is probably where I got interested in giant
-jellyfish. They are astonishingly interesting creatures - I like they way the
-move, so slowly. Perfect choice for a little bit of coded mesh bending.
+*Cindermedusae* est un projet qui me tiens beaucoup à cœur. Il a été
+réalisé très vite (en une semaine) et a été intensif. Mais les résultats
+que j'ai obtenus sont très concluants. J'ai toujours aimé l'idée de
+*livre génératif* et la première fois que j'ai entendu parler du concours
+de `Written Images <http://writtenimages.net/>`_ ca m'a tout de suite
+donné envie de participer.
 
+(EXPLIQUER LE CONCOURS, DIRE QUE C PAS DE LANIME)
 
-Géometrie procédurale
-:::::::::::::::::::::
-
-It's not the first time I was doing procedural geometry. Actually it's what all
-the demoscene is about. One example could be cactus-like torus in our intro
-called Borntro. Although original Cindermedusae code is in C++/Cinder I'll
-describe some basic ideas behind jellyfish geometry generation with
-accompanying code examples in ProcessingJS. Most of them will be in 2d and
-interactive so it's easier to get the idea (and draw it!). In few cases when I
-use 3d you will need WebGL capable browser to view them properly.
-
-Head
 ----
 
-Let's start with a circle (or sphere in 3d) and view from the top. It's a
-collection of points that distance r is constant from a given point called
-circle's center. If that point is (0, 0) then any point on the circle can be
-described as a function of angle phi from 0 to 2*PI::
+Je travaillais encore chez `shiftcontrol <http://shiftcontrol.dk>`_ à
+cette époque, pour un projet de jeu sous-marin pour la ZDF appelé
+`Universum Der Oceane <http://ozeane3d.zdf.de/>`_ en collaboration
+avec les architectes de `Hosoya Schaefer <http://www.hosoyaschaefer.com/>`_. Vous
+pouvez trouver plus d'information sur ce projet
+`ici <http://www.hosoyaschaefer.com/2010/10/universum-der-ozeane-2/>`_.
+
+Nous avions beaucoup de réunions pour discuter de l'ergonomie du jeu et
+du comportement des créatures sous-marines - et c'est probablement
+ce qui m'a intêressé aux méduses géantes.
+
+Ces animaux sont extraordinaires - j'adore la façon dont elles se
+`déplacement lentement <http://vimeo.com/453319>`_.  Un choix parfait
+pour un peu de codage de *mesh bending* TROUVER UN TRADUCTION.
+
+
+Animation procédurale
+:::::::::::::::::::::
+
+L'`animation procédurale <https://fr.wikipedia.org/wiki/Animation_proc%C3%A9durale>`_
+consiste à animer des objets en temps réel par le biais d'un ensemble de règles
+procédurales, c'est-à-dire une description des règles de fonctionnement du
+monde physique et un ensemble de conditions initiales.
+
+Ce n'est pas la première fois que je fais de l'animation procédurale.
+En fait, toute la `Scène démo <https://fr.wikipedia.org/wiki/Demoscene>`_ en use
+et abuse. Un bon exemple est le torus en forme de cactus dans l'introduction de mon
+projet `Borntro <http://marcinignac.com/projects/borntro/>`_.
+
+Le code original de *Cindermedusae* est en C++ et utilise la bibliothèque
+`Cinder <http://libcinder.org/>`_ mais je décris dans cet article les idées de base
+de l'animation de méduses avec des exemples
+de code en `processing.js <http://processingjs.org/>`_, le portage de
+`Processing <http://processing.org/>`_ en Javascript.
+
+La plupart des exemples sont interactifs et en 2D - c'est plus facile a
+comprendre (et a dessiner!). Dans quelques cas je présente des exemples
+en 3D et il faut un navigateur compatible `WebGL <https://fr.wikipedia.org/wiki/WebGL>`_
+pour que ca fonctionne.
+
+Tête de la méduse
+-----------------
+
+Commençons avec un cercle — ou une sphère en 3D, vue du dessus. C'est
+l'ensemble des points équidistants d'un point unique, le centre
+du cercle. Si ce cercle a pour coordonnées *(0, 0)*, et que
+le rayon du cercle est **r**, tous les points du cercles peuvent
+être décrits comme les fonction de l'angle **phi**, variant de
+0 à 2π
+
+.. code-block:: c++
 
     x = r * cos(phi)
     y = r * sin(phi)
 
-In the next step we dynamically adjust the radius with a sine wave so it will
-change from 0.925 to 1.075 (92.5% - 107.5% of it's length). We multiply theta
-by 10 so we will have our wave going up and down ten times.
+L'étape suivant consiste à ajuster dynamiquement le rayon avec une
+fonction sinusoïdale pour qu'il varie de *0.925* à *1.075* soit
+de 92.5% à 107.5% de sa valeure initiale.
 
-::
+On multiplie aussi l'angle par dix pour avoir cet effet de vague
+dix fois dans le cercle.
+
+.. code-block:: c++
 
     x = r * (1 + 0.075 * cos(phi * 10)) * cos(phi)
     y = r * (1 + 0.075 * cos(phi * 10)) * sin(phi)
 
-The red lines in the last step are segments we selected as start point for
-tentacles. We will use them in the future.
+Les segments rouges que vous voyez sur l'image sont les segments
+séléctionnés comme points de départ pour accrocher les tentacules
+de la méduse. Nous nous y intéresserons plus tard.
+
 
 .. image:: medusae_head.jpg
    :alt: Vue des têtes du dessus - cliquez pour le code
@@ -79,24 +115,32 @@ tentacles. We will use them in the future.
    :target: http://marcinignac.com/blog/cindermedusae-making-generative-creatures/mesh01.html
 
 
-If we look at the head of our jellyfish for a side it's also a circle. In the
-end we are playing with spheres in 3d, don't we? The difference is that this
-time the angle theta changes from 0 at the top to PI at the bottom. The head is
-symmetrical along Y axis so we will construct two points in every step - one on
-the left and one on the right side::
+Si l'on regarde la tête de notre méduse en 2D sur le côté, c'est aussi
+un cercle, puisqu'à la fin nous jouons avec des sphères.
+
+La différence avec le calcul précédent est que cette fois-ci, la
+variation de l'angle *theta* va de 0 (en haut) à 2π (en bas)
+
+(POURQUOI ON PASSE DE PHI A THETA?)
+
+La tête est symétrique le long de l'axe Y, donc nous construirons 2 points
+à chaque étape - un à gauche et un à droite:
+
+::
 
     x = r * cos(theta)
     y = r * sin(theta)
     x' = -x
     y' =  y
 
-Because jellyfish head is more like a dome than a sphere we want to make a
-shape that is convex on the top and concave on the bottom. All we have to do is
-to flip y coordinate after we reach certain angle (PI/2 or 90' in this case).
-We also add r/2 to push it a little bit down (otherwise both halves of the
-circle would overlap).
+Sachant que la tête de la méduse ressemble plus à un dôme qu'une sphère,
+nous devons faire une forme qui est convexe au dessus et concave en dessous.
 
-::
+Il suffit d'inverser la valeur de la coordonnée Y en atteignant π/2, ou
+90' dans notre cas. On ajoute aussi *r/2* pour pousser l'arc de cercle
+obtenu après π/2 vers le bas, afin que les deux arcs ne se confondent pas:
+
+.. code-block:: c++
 
     if (theta < PI/2) {
         x = r * cos(theta) y = r * sin(theta)
@@ -105,27 +149,37 @@ circle would overlap).
         y = -r * sin(theta) + r * 0.5
     }
 
-In the last step we smooth the edge around point when we wrap the circle for
-nicer look and to avoid shading artifacts. I won't describe it here because
-it's yet another if and sin() so please refer to the source code for details.
+Enfin, on arrondi les angles pour un meilleur rendu, et aussi pour éviter
+des artefacts d'ombre. Je ne vais pas décrire cette étape ici, car
+c'est juste un *if* et un *sin* supplémentaires. Vous pouvez lire le
+code source fourni.
 
 .. image:: medusae_head2.jpg
    :alt: Vue des têtes de côté  - cliquez pour le code
    :scale: 50
    :target: http://marcinignac.com/blog/cindermedusae-making-generative-creatures/mesh02.html
 
+----
 
-There are better ways to animate our jelly but because Written Images wasn't an
-animation competition I used the simplest one - sin(). Nobody will see the
-difference on a static image anyway. Every frame after calculating points
-positions x,y I also calculate surface normals. Next if the animation is turned
-on I move the point along the normal according to the value of sin() function
-at given moment in time t. This moves our points in and out but if we stopped
-here our head would just pulsate, growing bigger and smaller - all points at
-the same time. That's why I add y*0.5 to t so I introduce phase shift along Y
-axis and the mesh starts wobbling.
+Il y a de meilleures techniques d'animations mais comme *Written Images*
+n'était pas un concours d'animation, j'ai utilisé l'outil le plus simple:
+*sin()*. Personne ne verra la différence sur des pages statiques de
+toute façon.
 
-::
+Pour chaque frame ou je calcul les positions x et y, je calcul aussi
+`la droite normale à la surface <https://fr.wikipedia.org/wiki/Normale_%C3%A0_une_surface>`_.
+
+Ensuite, si l'animation est lancée, je déplace le point le long de la normale
+en utilisant la valeur de la fonction *sin()* à un instant *t*.
+Cette formule déplace les points mais sans rien faire de plus, la tête
+se mettrait à faire des pulsations comme un cœur, en grossissant et
+rétrécissant - car tous les points se déplacent.
+
+C'est pourquoi j'ajoute *y \* 0.5* à *t* pour introduire un *phase shift*
+(TRADUIRE) le long de l'axe Y et le mesh (TRADUIRE) commence à
+bouger d'une manière un peu plus irrégulière.
+
+.. code-block:: c++
 
     x += normal.x * sin(t + y * 0.5)
     y += normal.y * sin(t + y * 0.5)
