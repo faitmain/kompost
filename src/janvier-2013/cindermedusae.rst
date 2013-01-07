@@ -293,7 +293,7 @@ Procedural shading
 
 Lorsque j'ai commencé ce projet, je faisai des essais avec de la
 `Transluminescence <https://fr.wikipedia.org/wiki/Subsurface_scattering>`_
-et j'avais des `rendus <https://secure.flickr.com/photos/marcinignac/4776954910/in/set-72157624330971273/>_`_
+et j'avais des `rendus <https://secure.flickr.com/photos/marcinignac/4776954910/in/set-72157624330971273/>`_
 `assez <https://secure.flickr.com/photos/marcinignac/4776954912/in/set-72157624330971273/>`_
 `beaux <https://secure.flickr.com/photos/marcinignac/4776954906/in/set-72157624330971273/>`_.
 
