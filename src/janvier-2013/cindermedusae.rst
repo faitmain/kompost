@@ -222,7 +222,7 @@ La formule de la la règle de la main droite s'applique ainsi::
 
     L = U x F
 
-Où *x* est le `produit vectoriel https://fr.wikipedia.org/wiki/Produit_vectoriel>`_
+Où *x* est le `produit vectoriel <https://fr.wikipedia.org/wiki/Produit_vectoriel>`_
 des deux vecteurs à trois dimensions.
 
 Pour le deuxième point de notre ligne, on a le nouveau vecteur
