@@ -39,7 +39,7 @@ function getUrlVars() {
   $(document).ready(function(){
 
    var query = getUrlVars()["query"];
-   $('#state').replaceWith('<h1>Recherche en cours sur "' + query + '"</h1>');
+   $('#state').replaceWith('<h1>Recherche sur "' + query + '"</h1>');
 
    $.get("/search/search?query=" + query, function(data) {
      $('#numres').replaceWith(data.results.length + " resultat(s).");
