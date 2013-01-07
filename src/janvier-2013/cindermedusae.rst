@@ -50,7 +50,7 @@ ce qui m'a intêressé aux méduses géantes.
 
 Ces animaux sont extraordinaires - j'adore la façon dont elles se
 `déplacement lentement <http://vimeo.com/453319>`_.  Un choix parfait
-pour un peu de codage de *mesh bending* TROUVER UN TRADUCTION.
+pour tordre des fils de fers avec du code.
 
 
 Animation procédurale
@@ -176,8 +176,8 @@ se mettrait à faire des pulsations comme un cœur, en grossissant et
 rétrécissant - car tous les points se déplacent.
 
 C'est pourquoi j'ajoute *y \* 0.5* à *t* pour introduire un *phase shift*
-(TRADUIRE) le long de l'axe Y et le mesh (TRADUIRE) commence à
-bouger d'une manière un peu plus irrégulière.
+(TRADUIRE) le long de l'axe Y et la structure en fil de fer (*wireframe* ou
+*mesh* en anglais) commence à bouger d'une manière un peu plus naturelle.
 
 .. code-block:: c++
 
@@ -191,11 +191,10 @@ bouger d'une manière un peu plus irrégulière.
    :target: http://marcinignac.com/blog/cindermedusae-making-generative-creatures/mesh03.html
 
 
-As an excercise I decided to try to combine all above steps and code it in 3d
-using JavaScript and ProcessingJS. I was surprised that it's almost copy&paste
-of my C++ code. I tried to keep the code as simple as possible so it's not the
-most optimized version, performance suffers a lot.
-
+J'ai décidé de combiner toutes les étapes dans un script processing.js en 3D,
+et à ma surprise le code obtenu est quasiment un copier-coller de la version C++.
+J'ai essayé de garder le code le plus simple & clair possible pour cet article,
+donc il n'est pas optimal: les performances ne sont pas au rendez-vous.
 
 .. image:: medusae_head4.jpg
    :alt: Vue animée en 3D - cliquez pour code & animation
@@ -206,39 +205,61 @@ most optimized version, performance suffers a lot.
 Tentacules
 ----------
 
-Problem: Given a curve (or rather polyline) build a tube-like mesh around it.
+**Problème** Etant donné une courbe - ou plutôt une ligne polygonale, fabriquez un
+mesh en forme de tube autour de cette ligne.
 
-Solution: We start with three perpendicular vectors: Forward (usually the
-normal in point when I want to attach the tentacle or if we have curve formula
-it would be the tangent vector), Up (arbitrarily chosen by me (0,1,0)) and Left
-that can be calculated using Right-hand rule as::
+**Solution** On démarre avec trois vecteurs perpendiculaires:
+
+- **Forward** - le vecteur sur la droite normale à l'endroit où je veux accrocher
+  la tentacule - or if we have curve formula it would be the tangent vector
+
+- **Up**  - choisi arbitrairement : *(0,1,0)* et
+
+- **Left** qui peut être calculé avec `la règle de la main
+  droite <https://fr.wikipedia.org/wiki/Regle_de_la_main_droite>`_.
+
+La formule de la la règle de la main droite s'applique ainsi::
 
     L = U x F
 
-Where x is the cross product of two three dimensional vectors. Now if for the
-second point we have new F' vector but the same L vector we can calculate the
-new U' as::
+Où *x* est le `produit vectoriel https://fr.wikipedia.org/wiki/Produit_vectoriel>`_
+des deux vecteurs à trois dimensions.
 
-    U = F x L
+Pour le deuxième point de notre ligne, on a le nouveau vecteur
+**F'** et l'on conserve le même vecteur **L**, on peut calculer le
+nouveau vecteur **U'**::
 
-Then we repeat this steps for each point / segment of the line to calculate new
-coordinate base from Up, Front and Left.
+    U' = F' x L
+
+En répétant cette opération pour chaque point/segment de la ligne,
+on obtient une série de coordonnées pour chaque vecteur
+*Up*, *Front* et *Left*.
+
 
 .. image:: right_hand_rule.jpg
    :scale: 50
    :alt: Règle de la main droite
 
+Tous ces calculs sont inspirés du `repère
+de Frenet <https://fr.wikipedia.org/wiki/Rep%C3%A8re_de_Frenet>`_.
 
-All this is basically borrowing ideas from Frenet–Serret frame without playing
-with calculus to much. If you are coding in Cinder don't event bother
-implementing it by yourself. Chaoticbob already did that for you and
-implemented even better Parallel Transport Frames.
+Si vous développez dans Cinder, vous n'avez pas à vous soucier de
+tous ces calculs, car le développeur `Chaoticbob
+<http://forum.libcinder.org/#User/chaoticbob>`_ a contribué
+un système encore plus performant: les `Parallel Transport Frames
+<http://forum.libcinder.org/#topic/23286000000494005>`_.
 
-When we have all the Up and Forward vectors it's easy to start building
-triangles. In the following example I added to more things. First, the Up
-vector gets smaller and smaller towards the tip of the tentacle. Second, based
-on the mouse position I bend the tentacle. It bends more the closer to the end.
-This bending force is visualized by red lines.
+Maintenant que nous avons les vecteurs *Up* et *Forward*, il est
+facile de construire des triangles. Dans l'exemple suivant j'ai
+ajouté deux élements supplémentaires. Le premier ajout
+est une réduction du vecteur *Up* pour que la pointe de la tentacule
+apparaisse plus fine.
+
+Le deuxième ajout est un enroulement de la
+tentacule en fonction de la position de la souris.
+La tentacule est de plus en plus enroulée au fur et à mesure que l'on
+se rapproche de la pointe - la force de cette enroulement est
+représentée par des lignes rouges.
 
 
 .. image:: medusae_tentacle.jpg
@@ -246,9 +267,10 @@ This bending force is visualized by red lines.
    :scale: 50
    :target: http://marcinignac.com/blog/cindermedusae-making-generative-creatures/mesh05.html
 
+Nous sommes maintenant prêts à attacher les tentacules à la tête.
+Je regroupe tous les éléments car le travail des ombres masquera les
+discontinuités de la surface.
 
-Now we are ready to attach the tentacles to the head. I'm merging geometry at
-all because shading will hide any discontinuities on the surface.
 
 .. image:: heads_tentacle.jpg
    :alt: Tentacules & corps animés - cliquez sur l'image
