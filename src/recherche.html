@@ -23,20 +23,29 @@
 
 
 <%block name="script">
-<script langage="javascript">
-$(document).ready(function(){
-$.get("/search/search?query=tarek",
-function(data) {
-  var items = [];
+function getUrlVars() {
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for (var i = 0; i < hashes.length; i++) {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
 
-  $.each(data.results, function(i, item) {
-    items.push('<li>' + item + '</li>');
-    });
-    
-   $('#results').append(items.join(''));
+  $(document).ready(function(){
 
-}, "json");
+   var query = getUrlVars()["query"];
+
+   $.get("/search/search?query=" + query, function(data) {
+     $.each(data.results, function(i, item) {
+       $('results').append(item);
+     });
+    }, "json");
 });
+
+</%block>
 
 </script>
 </%block>
