@@ -46,7 +46,7 @@ function getUrlVars() {
      var items = [];
 
      $.each(data.results, function(i, item) {
-         items.push('<li>' + item + '</li>');
+         items.push('<li><a href="' + item[1] + '">' + item[0] + '</a></li>');
      });
 
      $('#results').append(items.join(''));
