@@ -69,7 +69,7 @@
         <li class="nav-header" style="color:black">Recherche</li>
         <li>
           <form class="form-search" action="/recherche.html" method="get">
-           <input type="text" class="input-medium search-query" name="query"/>
+           <input type="text" class="input-small search-query" name="query"/>
          </form>
         </li>
         <li class="nav-header" style="color:black">Social</li>
@@ -88,10 +88,10 @@
         <li><a href="#">Link</a></li>
         <li><a href="#">Link</a></li>
         <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>  
+        <li><a href="#">Link</a></li>
 </ul>
 
-     </div> 
+     </div>
    </div>
 
  </div> <!-- end of row-fluid -->

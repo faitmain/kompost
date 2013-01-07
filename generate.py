@@ -149,11 +149,11 @@ def _tree(node, document, title):
     elif klass == 'note':
         node.attributes['class'] = 'well note'
         text.extend(render_simple_tag(node, document, title,
-                                      'div', strip_child=True))
+                                      'div', strip_child=False))
     elif klass == 'table':
         node.attributes['class'] = 'table'
         text.extend(render_simple_tag(node, document, title,
-                                      'table', strip_child='True'))
+                                      'table', strip_child=True))
 
     elif klass == 'image':
         if node.get('uri').startswith('icon'):
@@ -262,6 +262,18 @@ def _tree(node, document, title):
                         'src="http://cnd.faitmain.org/media/flash.png">')
             text.append('</img>')
             text.append('<strong>Niveau</strong>: %s' % value.capitalize())
+        elif name == 'translator':
+            _index(document, title, name, value)
+
+            text.append('<img class="subst" '
+                        'src="http://cnd.faitmain.org/media/translation.png">')
+            text.append('</img>')
+            author_id = strip_accents(value).lower()
+            author_id = author_id.replace(' ', '_')
+            msg = ('<strong>Traduction</strong>: '
+                   '<a href="/auteurs/%s.html">%s</a>')
+            text.append(msg % (author_id, value))
+
     elif klass == 'colspec':  # table colspec
         pass
     elif klass == 'entry':  # table entry
