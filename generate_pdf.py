@@ -31,7 +31,7 @@ Magazine FaitMain
 
 .. footer::
 
-   Page ###Page### / ###Total### - © 2012 FaitMain
+   Page ###Page### / ###Total### - © 2012 FaitMain - CC-By-NC-SA
 
 
 .. raw:: pdf
