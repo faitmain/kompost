@@ -59,7 +59,7 @@ du comportement des créatures sous-marines - et c'est probablement
 ce qui m'a intêressé aux méduses géantes.
 
 Ces animaux sont extraordinaires - j'adore la façon dont elles se
-`déplacement lentement <http://vimeo.com/453319>`_.  Un choix parfait
+`déplacent lentement <http://vimeo.com/453319>`_.  Un choix parfait
 pour tordre des fils de fers avec du code.
 
 
