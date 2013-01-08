@@ -10,6 +10,8 @@ build:
 	bin/pip install docutils
 	bin/pip install Pygments
 	bin/pip install requests
+	bin/pip install Pillow
+	bin/pip install rst2pdf
 
-generate: 
+generate:
 	bin/python generate.py

@@ -21,6 +21,7 @@ from pygments import highlight
 from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter
 
+from generate_pdf import generate as pdf
 
 socket.setdefaulttimeout(1)
 
@@ -420,3 +421,5 @@ def generate():
 
 if __name__ == '__main__':
     generate()
+    pdf()
+
