@@ -39,8 +39,13 @@ et qui présente des images générées par des programmes fournis par des artis
 Chaque impression de livre est calculé individuellement - afin de créer des
 livres uniques.
 
+*Cindermedusae* a été selectionné avec 47 autres projets pour faire parti
+du livre.
 
-----
+.. image:: book.jpg
+   :alt: Un des livres imprimés © d_effekt
+   :target: https://secure.flickr.com/photos/d_effekt/5793687813/sizes/l/in/set-72157623955416899/
+
 
 Je travaillais encore chez `shiftcontrol <http://shiftcontrol.dk>`_ à
 cette époque, pour un projet de jeu sous-marin pour la ZDF appelé
@@ -396,3 +401,4 @@ puissent s'amuser à créer leurs propres créatures en ligne.
 
 Enfin, j'aimerais étendre le système et jouer avec d'autres types d'organismes
 ou de plantes.
+
