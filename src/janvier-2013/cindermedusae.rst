@@ -308,7 +308,8 @@ et j'avais des `rendus <https://secure.flickr.com/photos/marcinignac/4776954910/
 `assez <https://secure.flickr.com/photos/marcinignac/4776954912/in/set-72157624330971273/>`_
 `beaux <https://secure.flickr.com/photos/marcinignac/4776954906/in/set-72157624330971273/>`_.
 
-Mais j'ai changé d'avis après être tombé sur le travail de Ernst Haeckel et
+Mais j'ai changé d'avis après être tombé sur le travail de
+`Ernst Haeckel <https://fr.wikipedia.org/wiki/Ernst_Haeckel>`_ et
 son livre incroyable: `"Kunstformen der Natur" <http://en.wikipedia.org/wiki/Kunstformen_der_Natur>`_.
 Je savais que c'était la bonne voie.
 
