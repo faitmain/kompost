@@ -26,20 +26,20 @@ Cindermedusae - Les Créatures Génératives
    :alt: Les méduses en action
 
 
-*Cindermedusae* est un projet qui me tiens beaucoup à cœur. Il a été
+*Cindermedusae* est un projet qui me tient beaucoup à cœur. Il a été
 réalisé très vite (en une semaine) et a été intensif. Mais les résultats
 que j'ai obtenus sont très concluants. J'ai toujours aimé l'idée de
 *livre génératif* et la première fois que j'ai entendu parler du concours
-de `Written Images <http://writtenimages.net/>`_ ca m'a tout de suite
+de `Written Images <http://writtenimages.net/>`_ ça m'a tout de suite
 donné envie de participer.
 
 *Written Images* est un projet de livre génératif qui a été financé via
 la communauté `KickStarter <http://www.kickstarter.com/projects/deffekt/written-images>`_
 et qui présente des images générées par des programmes fournis par des artistes.
-Chaque impression de livre est calculé individuellement - afin de créer des
+Chaque impression de livre est calculée individuellement - afin de créer des
 livres uniques.
 
-*Cindermedusae* a été selectionné avec 47 autres projets pour faire parti
+*Cindermedusae* a été selectionné avec 47 autres projets pour faire partie
 du livre.
 
 .. image:: book.jpg
@@ -56,7 +56,7 @@ pouvez trouver plus d'information sur ce projet
 
 Nous avions beaucoup de réunions pour discuter de l'ergonomie du jeu et
 du comportement des créatures sous-marines - et c'est probablement
-ce qui m'a intêressé aux méduses géantes.
+ce qui m'a intéressé aux méduses géantes.
 
 Ces animaux sont extraordinaires - j'adore la façon dont elles se
 `déplacent lentement <http://vimeo.com/453319>`_.  Un choix parfait
@@ -82,10 +82,10 @@ de l'animation de méduses avec des exemples
 de code en `processing.js <http://processingjs.org/>`_, le portage de
 `Processing <http://processing.org/>`_ en Javascript.
 
-La plupart des exemples sont interactifs et en 2D - c'est plus facile a
-comprendre (et a dessiner!). Dans quelques cas je présente des exemples
+La plupart des exemples sont interactifs et en 2D - c'est plus facile à
+comprendre (et à dessiner!). Dans quelques cas je présente des exemples
 en 3D et il faut un navigateur compatible `WebGL <https://fr.wikipedia.org/wiki/WebGL>`_
-pour que ca fonctionne.
+pour que ça fonctionne.
 
 Tête de la méduse
 :::::::::::::::::
@@ -102,9 +102,9 @@ le rayon du cercle est **r**, tous les points du cercles peuvent
     x = r * cos(phi)
     y = r * sin(phi)
 
-L'étape suivant consiste à ajuster dynamiquement le rayon avec une
+L'étape suivante consiste à ajuster dynamiquement le rayon avec une
 fonction sinusoïdale pour qu'il varie de *0.925* à *1.075* soit
-de 92.5% à 107.5% de sa valeure initiale.
+de 92.5% à 107.5% de sa valeur initiale.
 
 On multiplie aussi l'angle par dix pour avoir cet effet de vague
 dix fois dans le cercle.
@@ -176,7 +176,7 @@ n'était pas un concours d'animation, j'ai utilisé l'outil le plus simple:
 *sin()*. Personne ne verra la différence sur des pages statiques de
 toute façon.
 
-Pour chaque frame ou je calcul les positions x et y, je calcul aussi
+Pour chaque frame où je calcule les positions x et y, je calcule aussi
 `la droite normale à la surface <https://fr.wikipedia.org/wiki/Normale_%C3%A0_une_surface>`_.
 
 Ensuite, si l'animation est lancée, je déplace le point le long de la normale
@@ -302,7 +302,7 @@ pour des plus belles courbes et pour éviter des artefacts d'antialiasing.
 Ombres procédurales
 ::::::::::::::::::::
 
-Lorsque j'ai commencé ce projet, je faisai des essais avec de la
+Lorsque j'ai commencé ce projet, je faisais des essais avec de la
 `Transluminescence <https://fr.wikipedia.org/wiki/Subsurface_scattering>`_
 et j'avais des `rendus <https://secure.flickr.com/photos/marcinignac/4776954910/in/set-72157624330971273/>`_
 `assez <https://secure.flickr.com/photos/marcinignac/4776954912/in/set-72157624330971273/>`_
@@ -383,7 +383,7 @@ Paramétrage
 J'ai aussi créé une interface graphique de paramètrage très simple.
 Cette interface me permet de jouer avec l'ensemble des paramètres de la simulation
 et de regarder comment la créature évolue en temps réel. Pour les paramètres
-qui varient entre une valeur minimal et maximal, l'interface me permet
+qui varient entre une valeur minimale et maximale, l'interface me permet
 de calibrer ces limites afin de garder un rendu de méduse réaliste.
 
 .. image:: gui.jpg
@@ -394,7 +394,7 @@ La suite ?
 ::::::::::
 
 J'ai très envie de continuer le travail sur ce projet. Une amélioration
-évidente serait d'optimizer le code pour que le nombre de frames par secondes
+évidente serait d'optimiser le code pour que le nombre de frames par secondes
 (FPS) soit correct. Il plafonne actuellement à 10 FPS.
 
 Je pensais aussi faire un portage sur *WebGL* pour que les utilisateurs
