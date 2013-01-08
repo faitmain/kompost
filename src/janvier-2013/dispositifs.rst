@@ -11,7 +11,7 @@ Piloter des dispositifs sans fil
 
 
 Partie 1: Réception en 433 MHz
-=============================
+==============================
 
 Vous avez sans doute entendu parler ou vu des détecteurs de fumée, d'ouverture
 de porte, des télécommandes, des prises murales, etc. sans fil ?
