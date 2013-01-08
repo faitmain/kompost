@@ -33,7 +33,12 @@ que j'ai obtenus sont très concluants. J'ai toujours aimé l'idée de
 de `Written Images <http://writtenimages.net/>`_ ca m'a tout de suite
 donné envie de participer.
 
-(EXPLIQUER LE CONCOURS, DIRE QUE C PAS DE LANIME)
+*Written Images* est un projet de livre génératif qui a été financé via
+la communauté `KickStarter <http://www.kickstarter.com/projects/deffekt/written-images>`_
+et qui présente des images générées par des programmes fournis par des artistes.
+Chaque impression de livre est calculé individuellement - afin de créer des
+livres uniques.
+
 
 ----
 
@@ -78,7 +83,7 @@ en 3D et il faut un navigateur compatible `WebGL <https://fr.wikipedia.org/wiki/
 pour que ca fonctionne.
 
 Tête de la méduse
------------------
+:::::::::::::::::
 
 Commençons avec un cercle — ou une sphère en 3D, vue du dessus. C'est
 l'ensemble des points équidistants d'un point unique, le centre
@@ -203,7 +208,7 @@ donc il n'est pas optimal: les performances ne sont pas au rendez-vous.
 
 
 Tentacules
-----------
+::::::::::
 
 **Problème** Etant donné une courbe - ou plutôt une ligne polygonale, fabriquez un
 mesh en forme de tube autour de cette ligne.
@@ -279,7 +284,8 @@ discontinuités de la surface.
 
 
 Rendu final
------------
+:::::::::::
+
 
 J'ai utilisé une géométrie de triangles beaucoup plus dense pour le rendu ci-dessus,
 pour des plus belles courbes et pour éviter des artefacts d'antialiasing.
@@ -288,8 +294,8 @@ pour des plus belles courbes et pour éviter des artefacts d'antialiasing.
    :alt: Rendu final
 
 
-Procedural shading
-::::::::::::::::::
+Ombres procédurales
+::::::::::::::::::::
 
 Lorsque j'ai commencé ce projet, je faisai des essais avec de la
 `Transluminescence <https://fr.wikipedia.org/wiki/Subsurface_scattering>`_
@@ -390,4 +396,3 @@ puissent s'amuser à créer leurs propres créatures en ligne.
 
 Enfin, j'aimerais étendre le système et jouer avec d'autres types d'organismes
 ou de plantes.
-
