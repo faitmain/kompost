@@ -49,13 +49,13 @@ def _notag(text):
     return cgi.escape(text)
 
 
-def shorten(url):
-    req = urllib2.Request(_SERVER, headers={'X-Short': _KEY})
+def shorten(url, server, password):
+    req = urllib2.Request(server, headers={'X-Short': password})
     req.get_method = lambda: 'POST'
     req.add_data(url)
     res = urllib2.urlopen(req).read()
     res = json.loads(res)
-    return _SERVER + '/' + res['short']
+    return server + '/' + res['short']
 
 
 
@@ -94,8 +94,8 @@ SIMPLE_TAGS = {
 }
 
 
-def render_simple_tag(node, document, title, tagname=None, strip_child=False,
-                      config=None):
+def render_simple_tag(node, document, title, config, tagname=None,
+                      strip_child=False):
     """Render a tag using the simplest default method.
 
     If tagname is provided, it is used instead of the node.tagname attribute.
@@ -139,11 +139,11 @@ def _tree(node, document, title, config):
         text.append('</div>')
     elif klass == 'note':
         node.attributes['class'] = 'well note'
-        text.extend(render_simple_tag(node, document, title,
+        text.extend(render_simple_tag(node, document, title, config,
                                       'div', strip_child=False))
     elif klass == 'table':
         node.attributes['class'] = 'table'
-        text.extend(render_simple_tag(node, document, title,
+        text.extend(render_simple_tag(node, document, title, config,
                                       'table', strip_child=True))
 
     elif klass == 'image':
@@ -193,13 +193,12 @@ def _tree(node, document, title, config):
             if 'wikipedia.org' in refuri:
                 text.append('<a href="%s" class="wikipedia">' % refuri)
             else:
-                #if 'faitmain.org' not in refuri and not refuri.startswith('/'):
-                #    try:
-                #        refuri = shorten(refuri)
-                #    except urllib2.URLError:
-                #        pass
-
-                text.append('<a href="%s">' % refuri)
+                if 'faitmain.org' not in refuri and not refuri.startswith('/'):
+                    try:
+                        refuri = shorten(refuri, config['shortener_server'],
+                                         config['shortener_key'])
+                    except urllib2.URLError:
+                        pass
         else:
             text.append('<a>')
         for child in node.children:
@@ -271,14 +270,12 @@ def _tree(node, document, title, config):
         tagname = 'td'
         if node.parent.parent.tagname == 'thead':
             tagname = 'th'
-        text.extend(render_simple_tag(node, document, title,
-                                      tagname, strip_child=True,
-                                      config=config))
+        text.extend(render_simple_tag(node, document, title, config,
+                                      tagname, strip_child=True))
     elif klass in SIMPLE_TAGS:
         tagname, strip_child = SIMPLE_TAGS[klass]
-        text.extend(render_simple_tag(node, document, title,
-                                      tagname, strip_child=strip_child,
-                                      config=config))
+        text.extend(render_simple_tag(node, document, title, config,
+                                      tagname, strip_child=strip_child))
     else:
         raise NotImplementedError(node)
 
@@ -406,8 +403,8 @@ def generate(config):
 
     # asking Trouvailles to index the web site
     print 'Indexing the whole website'
-    url = "http://faitmain.org/search"
-    data = {'sitemap': 'http://faitmain.org/sitemap.json'}
+    url = config['search_server']
+    data = {'sitemap': config['sitemap']}
     headers = {'Content-type': 'application/json'}
     r = requests.post(url, data=json.dumps(data), headers=headers)
     if r.status_code != 200:
