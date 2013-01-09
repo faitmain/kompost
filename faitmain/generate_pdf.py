@@ -1,14 +1,8 @@
 # -*- encoding: utf8 -*-
-#
 import os
 import shutil
-
 from rst2pdf.createpdf import main
 import json
-
-src = 'src/janvier-2013'
-target = 'build/janvier-2013'
-_jsonlist = os.path.join(src, 'pdf.json')
 
 
 COVER = """\
@@ -48,10 +42,20 @@ PAGEBRK = """
 
 """
 
+article_header = """
 
-def generate():
+.. header::
 
-    with open(_jsonlist) as f:
+   What the feuille - FaitMain - Janvier 2013
+
+"""
+
+
+def generate(config):
+    src = config['pdf_src']
+    target = config['pdf_target']
+
+    with open(config['jsonlist']) as f:
         jsonlist = json.loads(f.read())
 
     # creating a full rst
@@ -63,7 +67,7 @@ def generate():
         with open(article) as f:
             article = f.read()
 
-        rst += article + PAGEBRK
+        rst += article_header + article + PAGEBRK
 
     full = os.path.join(target, 'faitmain-janvier-2013.rst')
 

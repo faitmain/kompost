@@ -9,6 +9,7 @@ import socket
 import unicodedata
 from collections import defaultdict
 import datetime
+from ConfigParser import ConfigParser
 
 import requests
 
@@ -39,21 +40,9 @@ def hilite(node):
     return highlight(code, lexer, formatter)
 
 
-_SERVER = 'http://short.faitmain.org'
-_KEY = 'booba82'
-
 def strip_accents(s):
     return ''.join((c for c in unicodedata.normalize('NFD', s) if
                    unicodedata.category(c) != 'Mn'))
-
-src = 'src'
-target = 'build'
-media = os.path.abspath(os.path.join(target, 'media'))
-_GENERIC = os.path.join(src, 'generic.mako')
-_CATS = os.path.join(src, 'category.mako')
-_ICONS = ('pen.png', 'info.png', 'thumbsup.png',
-          'right.png', 'flash.png')
-_METADATA = os.path.join(target, 'metadata.json')
 
 
 def _notag(text):
@@ -77,17 +66,17 @@ def _index(document, title, name, value):
     _INDEX[document + ':' + title][name] = value
 
 
-def _save_index():
-    if os.path.exists(_METADATA):
-        with open(_METADATA) as f:
-            metadata = json.loads(f.read())
+def _save_index(metadata):
+    if os.path.exists(metadata):
+        with open(metadata) as f:
+            data = json.loads(f.read())
     else:
-        metadata = {}
+        data = {}
 
-    metadata.update(_INDEX)
+    data.update(_INDEX)
 
-    with open(_METADATA, 'w') as f:
-        f.write(json.dumps(metadata))
+    with open(metadata, 'w') as f:
+        f.write(json.dumps(data))
 
 
 SIMPLE_TAGS = {
@@ -105,7 +94,8 @@ SIMPLE_TAGS = {
 }
 
 
-def render_simple_tag(node, document, title, tagname=None, strip_child=False):
+def render_simple_tag(node, document, title, tagname=None, strip_child=False,
+                      config=None):
     """Render a tag using the simplest default method.
 
     If tagname is provided, it is used instead of the node.tagname attribute.
@@ -122,12 +112,12 @@ def render_simple_tag(node, document, title, tagname=None, strip_child=False):
     if node.children and strip_child:
         node = node.children[0]
     for child in node.children:
-        rendered.append(_tree(child, document, title))
+        rendered.append(_tree(child, document, title, config))
     rendered.append('</%s>' % tagname)
     return rendered
 
 
-def _tree(node, document, title):
+def _tree(node, document, title, config):
     """Renders a node in HTML.
     """
     text = []
@@ -139,7 +129,7 @@ def _tree(node, document, title):
     elif klass == 'paragraph':
         text.append('<p>')
         for child in node.children:
-            text.append(_tree(child, document, title))
+            text.append(_tree(child, document, title, config))
         text.append('</p>')
     elif klass == 'Text':
         text.append(node.astext())
@@ -173,7 +163,7 @@ def _tree(node, document, title):
         if node.hasattr('uri'):
             uri = node['uri']
             file_ = os.path.split(uri)[-1]
-            if file_ in _ICONS:
+            if file_ in config['icons']:
                 class_ = 'subst'
                 nolegend = True
             else:
@@ -186,7 +176,7 @@ def _tree(node, document, title):
             text.append('<img class="centered %s">' % span)
 
         for child in node.children:
-            text.append(_tree(child, document, title))
+            text.append(_tree(child, document, title, config))
 
         text.append('</img>')
         if not nolegend and 'alt' in node:
@@ -213,7 +203,7 @@ def _tree(node, document, title):
         else:
             text.append('<a>')
         for child in node.children:
-            text.append(_tree(child, document, title))
+            text.append(_tree(child, document, title, config))
         text.append('</a>')
     elif klass == 'target':
         # ??
@@ -221,7 +211,7 @@ def _tree(node, document, title):
     elif klass == 'section':
         text.append('<h2>%s</h2>' % node.children[0][0].astext())
         for child in node.children[1:]:
-            text.append(_tree(child, document, title))
+            text.append(_tree(child, document, title, config))
     elif klass == 'substitution_definition':
         #uri = node.children[0].attributes['uri']
         #text.append('<img class="subst" src="%s"></img>' % uri)
@@ -229,7 +219,7 @@ def _tree(node, document, title):
     elif klass == 'docinfo':
         # reading metadata
         for child in node.children:
-            text.append(_tree(child, document, title))
+            text.append(_tree(child, document, title, config))
     elif klass == 'author':
         value = node.astext()
         _index(document, title, 'author', value)
@@ -282,11 +272,13 @@ def _tree(node, document, title):
         if node.parent.parent.tagname == 'thead':
             tagname = 'th'
         text.extend(render_simple_tag(node, document, title,
-                                      tagname, strip_child=True))
+                                      tagname, strip_child=True,
+                                      config=config))
     elif klass in SIMPLE_TAGS:
         tagname, strip_child = SIMPLE_TAGS[klass]
         text.extend(render_simple_tag(node, document, title,
-                                      tagname, strip_child=strip_child))
+                                      tagname, strip_child=strip_child,
+                                      config=config))
     else:
         raise NotImplementedError(node)
 
@@ -303,8 +295,10 @@ _FOOTER = """
 """
 
 
-def generate():
+def generate(config):
     sitemap = []
+    target = config['target']
+    src = config['src']
 
     if not os.path.exists(target):
         os.mkdir(target)
@@ -346,10 +340,11 @@ def generate():
                 file_target = os.path.splitext(file_target)[0] + '.html'
                 url_target = file_target[len(target):]
 
-                paragraphs = ['<p>%s</p>' % _tree(text, url_target, title)
+                paragraphs = ['<p>%s</p>' % _tree(text, url_target, title,
+                    config)
                               for text in doctree.children[1:]]
 
-                mytemplate = Template(filename=_GENERIC, lookup=lookup)
+                mytemplate = Template(filename=config['generic'], lookup=lookup)
 
                 print 'Generating %r' % file_target
 
@@ -358,12 +353,14 @@ def generate():
                                               title=title))
 
                 sitemap.append(url_target)
-                _save_index()
+                _save_index(config['metadata'])
             else:
                 print 'Copying %r' % file_target
                 shutil.copyfile(path, file_target)
 
     # media
+    media = config['media']
+
     if os.path.exists(media):
         shutil.rmtree(media)
     shutil.copytree('media', media)
@@ -389,7 +386,7 @@ def generate():
         print 'Generating category %r' % cat
         file_target = os.path.join(target, cat + '.html')
 
-        mytemplate = Template(filename=_CATS, lookup=lookup)
+        mytemplate = Template(filename=config['cats'], lookup=lookup)
         sitemap.append('/%s.html' % cat)
 
         with codecs.open(file_target, 'w', encoding='utf8') as f:
@@ -419,7 +416,22 @@ def generate():
         print r.content
 
 
-if __name__ == '__main__':
-    generate()
-    pdf()
+def main():
+    config = ConfigParser()
+    config.read('faitmain.ini')
+    config = dict(config.items('faitmain'))
+    target = config['target']
+    src = config['src']
 
+    config['media'] = os.path.abspath(os.path.join(target, 'media'))
+    config['generic'] = os.path.join(src, 'generic.mako')
+    config['cats'] = os.path.join(src, 'category.mako')
+    config['icons'] = ('pen.png', 'info.png', 'thumbsup.png',
+                      'right.png', 'flash.png')
+    config['metadata'] = os.path.join(target, 'metadata.json')
+    generate(config)
+    pdf(config)
+
+
+if __name__ == '__main__':
+    main()
