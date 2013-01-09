@@ -1,6 +1,5 @@
 # -*- encoding: utf8 -*-
 import os
-import shutil
 from rst2pdf.createpdf import main
 import json
 
@@ -79,4 +78,3 @@ def generate(config):
 
 if __name__ == '__main__':
     generate()
-
