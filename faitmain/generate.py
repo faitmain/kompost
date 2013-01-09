@@ -120,6 +120,7 @@ def render_simple_tag(node, document, title, config, tagname=None,
 def _tree(node, document, title, config):
     """Renders a node in HTML.
     """
+    cnd = config['cnd']
     text = []
     klass = node.__class__.__name__
     if klass == 'transition':
@@ -225,7 +226,7 @@ def _tree(node, document, title, config):
         author_id = strip_accents(value).lower()
         author_id = author_id.replace(' ', '_')
         text.append('<img class="subst" '
-                    'src="http://cnd.faitmain.org/media/pen.png">')
+                    'src="%s/media/pen.png">' % cnd)
         text.append('</img>')
         text.append('<a href="/auteurs/%s.html">%s</a>' % (author_id,
                                                            value))
@@ -237,7 +238,7 @@ def _tree(node, document, title, config):
         value = node.children[1].astext()
         if name == 'category':
             text.append('<img class="subst" '
-                        'src="http://cnd.faitmain.org/media/info.png">')
+                        'src="%s/media/info.png">' % cnd)
             text.append('</img>')
             cats = value.split(',')
             _index(document, title, name, cats)
@@ -249,14 +250,14 @@ def _tree(node, document, title, config):
             _index(document, title, name, value)
 
             text.append('<img class="subst" '
-                        'src="http://cnd.faitmain.org/media/flash.png">')
+                        'src="%s/media/flash.png">' % cnd)
             text.append('</img>')
             text.append('<strong>Niveau</strong>: %s' % value.capitalize())
         elif name == 'translator':
             _index(document, title, name, value)
 
             text.append('<img class="subst" '
-                        'src="http://cnd.faitmain.org/media/translation.png">')
+                        'src="%s/media/translation.png">' % cnd)
             text.append('</img>')
             author_id = strip_accents(value).lower()
             author_id = author_id.replace(' ', '_')
