@@ -18,7 +18,7 @@ Cindermedusae - Les Créatures Génératives
    originalement paru en anglais sur son blog à
    `cette addresse <http://marcinignac.com/blog/cindermedusae-making-generative-creatures>`_.
 
-   Vous pouvez retrouvez tous les projets de Marcin ici:
+   Vous pouvez retrouvez tous les projets de Marcin ici :
    http://marcinignac.com/projects/category/featured/
 
 
@@ -83,7 +83,7 @@ de code en `processing.js <http://processingjs.org/>`_, le portage de
 `Processing <http://processing.org/>`_ en Javascript.
 
 La plupart des exemples sont interactifs et en 2D - c'est plus facile à
-comprendre (et à dessiner!). Dans quelques cas je présente des exemples
+comprendre (et à dessiner !). Dans quelques cas je présente des exemples
 en 3D et il faut un navigateur compatible `WebGL <https://fr.wikipedia.org/wiki/WebGL>`_
 pour que ça fonctionne.
 
@@ -131,10 +131,10 @@ un cercle, puisqu'à la fin nous jouons avec des sphères.
 La différence avec le calcul précédent est que cette fois-ci, la
 variation de l'angle *theta* va de 0 (en haut) à 2π (en bas)
 
-(POURQUOI ON PASSE DE PHI A THETA?)
+(POURQUOI ON PASSE DE PHI A THETA ?)
 
 La tête est symétrique le long de l'axe Y, donc nous construirons 2 points
-à chaque étape - un à gauche et un à droite:
+à chaque étape - un à gauche et un à droite :
 
 ::
 
@@ -148,7 +148,7 @@ nous devons faire une forme qui est convexe au dessus et concave en dessous.
 
 Il suffit d'inverser la valeur de la coordonnée Y en atteignant π/2, ou
 90' dans notre cas. On ajoute aussi *r/2* pour pousser l'arc de cercle
-obtenu après π/2 vers le bas, afin que les deux arcs ne se confondent pas:
+obtenu après π/2 vers le bas, afin que les deux arcs ne se confondent pas :
 
 .. code-block:: c++
 
@@ -172,7 +172,7 @@ code source fourni.
 ----
 
 Il y a de meilleures techniques d'animations mais comme *Written Images*
-n'était pas un concours d'animation, j'ai utilisé l'outil le plus simple:
+n'était pas un concours d'animation, j'ai utilisé l'outil le plus simple :
 *sin()*. Personne ne verra la différence sur des pages statiques de
 toute façon.
 
@@ -204,7 +204,7 @@ C'est pourquoi j'ajoute *y \* 0.5* à *t* pour introduire un *phase shift*
 J'ai décidé de combiner toutes les étapes dans un script processing.js en 3D,
 et à ma surprise le code obtenu est quasiment un copier-coller de la version C++.
 J'ai essayé de garder le code le plus simple & clair possible pour cet article,
-donc il n'est pas optimal: les performances ne sont pas au rendez-vous.
+donc il n'est pas optimal : les performances ne sont pas au rendez-vous.
 
 .. image:: medusae_head4.jpg
    :alt: Vue animée en 3D - cliquez pour code & animation
@@ -218,17 +218,19 @@ Tentacules
 **Problème** Etant donné une courbe - ou plutôt une ligne polygonale, fabriquez un
 mesh en forme de tube autour de cette ligne.
 
-**Solution** On démarre avec trois vecteurs perpendiculaires:
+**Solution** On démarre avec trois vecteurs perpendiculaires :
 
 - **Forward** - le vecteur sur la droite normale à l'endroit où je veux accrocher
   la tentacule - or if we have curve formula it would be the tangent vector
 
-- **Up**  - choisi arbitrairement : *(0,1,0)* et
+- **Up**  - choisi arbitrairement : *(0,1,0)* et
 
 - **Left** qui peut être calculé avec `la règle de la main
   droite <https://fr.wikipedia.org/wiki/Regle_de_la_main_droite>`_.
 
-La formule de la la règle de la main droite s'applique ainsi::
+La formule de la la règle de la main droite s'applique ainsi :
+
+::
 
     L = U x F
 
@@ -237,7 +239,9 @@ des deux vecteurs à trois dimensions.
 
 Pour le deuxième point de notre ligne, on a le nouveau vecteur
 **F'** et l'on conserve le même vecteur **L**, on peut calculer le
-nouveau vecteur **U'**::
+nouveau vecteur **U'** :
+
+::
 
     U' = F' x L
 
@@ -256,7 +260,7 @@ de Frenet <https://fr.wikipedia.org/wiki/Rep%C3%A8re_de_Frenet>`_.
 Si vous développez dans Cinder, vous n'avez pas à vous soucier de
 tous ces calculs, car le développeur `Chaoticbob
 <http://forum.libcinder.org/#User/chaoticbob>`_ a contribué
-un système encore plus performant: les `Parallel Transport Frames
+un système encore plus performant : les `Parallel Transport Frames
 <http://forum.libcinder.org/#topic/23286000000494005>`_.
 
 Maintenant que nous avons les vecteurs *Up* et *Forward*, il est
@@ -310,7 +314,7 @@ et j'avais des `rendus <https://secure.flickr.com/photos/marcinignac/4776954910/
 
 Mais j'ai changé d'avis après être tombé sur le travail de
 `Ernst Haeckel <https://fr.wikipedia.org/wiki/Ernst_Haeckel>`_ et
-son livre incroyable: `"Kunstformen der Natur" <http://en.wikipedia.org/wiki/Kunstformen_der_Natur>`_.
+son livre incroyable : `"Kunstformen der Natur" <http://en.wikipedia.org/wiki/Kunstformen_der_Natur>`_.
 Je savais que c'était la bonne voie.
 
 La première étape est d'utiliser de la lumière diffuse standard juste pour
@@ -334,7 +338,7 @@ de texture, puis choisi la densité des traits en fonction de la lumière
 diffuse. Moins il y a de lumière, plus la densité de traits augmente.
 
 Un paramètre important pour un beau rendu est de bien choisir l'épaisseur
-des traits: ni trop fin pour ne pas avoir d'effet de
+des traits : ni trop fin pour ne pas avoir d'effet de
 `moiré <https://fr.wikipedia.org/wiki/Moir%C3%A9_%28effet_de_contraste%29>`_,
 ni trop épais pour ne pas perdre en finesse de rendu.
 
@@ -356,7 +360,7 @@ Pour aller plus loin, vous pouvez consulter le livre mentioné.
 Couleurs
 :::::::::
 
-Chaque image est composée de cinq couches:
+Chaque image est composée de cinq couches :
 
 - un fond jaune
 - des coins de page orange
@@ -390,7 +394,7 @@ de calibrer ces limites afin de garder un rendu de méduse réaliste.
    :alt: Interface de paramétrage
 
 
-La suite ?
+La suite ?
 ::::::::::
 
 J'ai très envie de continuer le travail sur ce projet. Une amélioration
