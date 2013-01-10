@@ -5,6 +5,7 @@ import socket
 import datetime
 from ConfigParser import ConfigParser
 from collections import defaultdict
+import logging
 
 import requests
 
@@ -12,9 +13,9 @@ from faitmain.generate_pdf import generate as pdf
 from faitmain.generators import generators
 from faitmain.generators._mako import Mako
 from faitmain.index import get_index
+from faitmain import logger
 
 
-socket.setdefaulttimeout(1)
 
 
 def generate(config):
@@ -40,8 +41,7 @@ def generate(config):
             if ext in ('.mako', '.un~'):
                 continue
 
-            # getting ridd of '/src
-            location = path[len('src/'):]
+            location = path[len(src) + 1:]
             file_target = os.path.join(target, location)
             target_dir = os.path.dirname(file_target)
             url_target = file_target[len(target):]
@@ -54,7 +54,7 @@ def generate(config):
                 match[ext](path, file_target, url_target)
 
             else:
-                print 'Copying %r' % file_target
+                logger.info('Copying %r' % file_target)
                 shutil.copyfile(path, file_target)
 
     # media
@@ -84,7 +84,7 @@ def generate(config):
     gen = Mako(config)
 
     for cat, paths in categories.items():
-        print 'Generating category %r' % cat
+        logger.info('Generating category %r' % cat)
         url_target = '/%s.html' % cat
         file_target = os.path.join(target, cat + '.html')
         gen(config['cats'], file_target, url_target, paths=paths,
@@ -93,7 +93,7 @@ def generate(config):
 
     # creating sitemap
     sitemap_file = os.path.join(target, 'sitemap.json')
-    print 'Generating sitemap at %r' % sitemap_file
+    logger.info('Generating sitemap at %r' % sitemap_file)
     now = datetime.datetime.now().isoformat()
 
     urlset = [{'loc': loc, 'lastmod': now,
@@ -104,24 +104,40 @@ def generate(config):
         f.write(json.dumps({'urlset': urlset}))
 
     # asking Trouvailles to index the web site
-    print 'Indexing the whole website'
+    logger.info('Indexing the whole website')
     url = config['search_server']
     data = {'sitemap': config['sitemap']}
     headers = {'Content-type': 'application/json'}
     r = requests.post(url, data=json.dumps(data), headers=headers)
     if r.status_code != 200:
-        print 'Indexation failed'
-        print r.status_code
-        print r.content
+        logger.info('Indexation failed')
+        logger.info(r.status_code)
+        logger.info(r.content)
+
+
+LOG_FMT = r"[%(levelname)s] %(message)s"
+LOG_DATE_FMT = r"%Y-%m-%d %H:%M:%S"
+
+
+def configure_logger(loglevel=logging.INFO, output="-"):
+    logger.setLevel(loglevel)
+    if output == "-":
+        h = logging.StreamHandler()
+    else:
+        h = logging.FileHandler(output)
+    fmt = logging.Formatter(LOG_FMT, LOG_DATE_FMT)
+    h.setFormatter(fmt)
+    logger.addHandler(h)
 
 
 def main():
+    configure_logger()
     config = ConfigParser()
     config.read('faitmain.ini')
     config = dict(config.items('faitmain'))
     target = config['target']
     src = config['src']
-
+    socket.setdefaulttimeout(int(config.get('timeout', 10)))
     config['media'] = os.path.abspath(os.path.join(target, 'media'))
     config['generic'] = os.path.join(src, 'generic.mako')
     config['cats'] = os.path.join(src, 'category.mako')

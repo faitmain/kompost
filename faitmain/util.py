@@ -7,6 +7,8 @@ from pygments import highlight
 from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter
 
+from faitmain import logger
+
 
 def hilite(node):
     lexer = 'text'
@@ -31,9 +33,15 @@ def _notag(text):
 
 
 def shorten(url, server, password):
+    logger.info('Shortening %r' % url)
     req = urllib2.Request(server, headers={'X-Short': password})
     req.get_method = lambda: 'POST'
     req.add_data(url)
-    res = urllib2.urlopen(req).read()
+    try:
+        res = urllib2.urlopen(req).read()
+    except urllib2.URLError:
+        logger.info('Error on the call')
+        return url
     res = json.loads(res)
-    return server + '/' + res['short']
+    logger.info('Shortened to %r' % res)
+    return res

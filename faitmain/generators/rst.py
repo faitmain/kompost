@@ -4,6 +4,7 @@ import urllib2
 
 from faitmain.index import save_index, index
 from faitmain.util import shorten, hilite, strip_accents
+from faitmain import logger
 
 from docutils.core import publish_doctree
 from mako.template import Template
@@ -136,11 +137,8 @@ def _tree(node, document, title, config):
                 text.append('<a href="%s" class="wikipedia">' % refuri)
             else:
                 if 'faitmain.org' not in refuri and not refuri.startswith('/'):
-                    try:
-                        refuri = shorten(refuri, config['shortener_server'],
-                                         config['shortener_key'])
-                    except urllib2.URLError:
-                        pass
+                    refuri = shorten(refuri, config['shortener_server'],
+                                     config['shortener_key'])
         else:
             text.append('<a>')
         for child in node.children:
@@ -249,7 +247,7 @@ class RestructuredText(object):
         mytemplate = Template(filename=self.config['generic'],
                               lookup=self.lookup)
 
-        print 'Generating %r' % target
+        logger.info('Generating %r' % target)
 
         with codecs.open(target, 'w', encoding='utf8') as f:
             f.write(mytemplate.render(body='\n'.join(paragraphs),

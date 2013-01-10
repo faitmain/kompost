@@ -4,6 +4,8 @@ import os
 from mako.template import Template
 from mako.lookup import TemplateLookup
 
+from faitmain import logger
+
 
 class Mako(object):
 
@@ -16,6 +18,6 @@ class Mako(object):
     def __call__(self, path, target, url_target, **options):
         target = os.path.splitext(target)[0] + '.html'
         mytemplate = Template(filename=path, lookup=self.lookup)
-        print 'Generating %r' % target
+        logger.info('Generating %r' % target)
         with codecs.open(target, 'w', encoding='utf8') as f:
             f.write(mytemplate.render(**options))

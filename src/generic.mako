@@ -81,14 +81,6 @@
         <li><a target="_blank" title="GitHub" href="http://github.com/tarekziade/faitmain" id="topgithub">
           <img src="http://cnd.faitmain.org/media/github.png"/> Github
 </a></li>
-
-        <li class="nav-header" style="color:black">Archives</li>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
 </ul>
 
      </div>
