@@ -7,7 +7,7 @@ install_requires = ['Mako', 'docutils', 'Pygments', 'requests',
 
 setup(name='kompost',
       version="0.1",
-      url='https://github.com/tarekziade/boom',
+      url='https://github.com/faitmain/kompost',
       packages=find_packages(),
       description=("FaitMain Magazine"),
       author="Tarek Ziade",
@@ -21,5 +21,5 @@ setup(name='kompost',
       install_requires=install_requires,
       entry_points="""
       [console_scripts]
-      faitmain = faitmain.generate:main
+      kompost = kompost.generate:main
       """)

@@ -2,9 +2,9 @@ import os
 import codecs
 import urllib2
 
-from faitmain.index import save_index, index
-from faitmain.util import shorten, hilite, strip_accents
-from faitmain import logger
+from kompost.index import save_index, index
+from kompost.util import shorten, hilite, strip_accents
+from kompost import logger
 
 from docutils.core import publish_doctree
 from mako.template import Template

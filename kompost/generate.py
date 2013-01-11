@@ -9,11 +9,11 @@ import logging
 
 import requests
 
-from faitmain.generate_pdf import generate as pdf
-from faitmain.generators import generators
-from faitmain.generators._mako import Mako
-from faitmain.index import get_index
-from faitmain import logger
+from kompost.generate_pdf import generate as pdf
+from kompost.generators import generators
+from kompost.generators._mako import Mako
+from kompost.index import get_index
+from kompost import logger
 
 
 
@@ -136,8 +136,8 @@ def configure_logger(loglevel=logging.INFO, output="-"):
 def main():
     configure_logger()
     config = ConfigParser()
-    config.read('faitmain.ini')
-    config = dict(config.items('faitmain'))
+    config.read('kompost.ini')
+    config = dict(config.items('kompost'))
     target = config['target']
     src = config['src']
     socket.setdefaulttimeout(int(config.get('timeout', 10)))

@@ -4,7 +4,7 @@ import os
 from mako.template import Template
 from mako.lookup import TemplateLookup
 
-from faitmain import logger
+from kompost import logger
 
 
 class Mako(object):

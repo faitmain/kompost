@@ -7,7 +7,7 @@ from pygments import highlight
 from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter
 
-from faitmain import logger
+from kompost import logger
 
 
 def hilite(node):
