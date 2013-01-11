@@ -5,7 +5,7 @@ install_requires = ['Mako', 'docutils', 'Pygments', 'requests',
                     'rst2pdf', 'Pillow']
 
 
-setup(name='magazine',
+setup(name='kompost',
       version="0.1",
       url='https://github.com/tarekziade/boom',
       packages=find_packages(),
