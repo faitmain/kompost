@@ -12,6 +12,7 @@ from mako.lookup import TemplateLookup
 
 
 _FOOTER = """
+
 .. |pen| image:: http://cnd.faitmain.org/media/pen.png
 .. |info| image:: http://cnd.faitmain.org/media/info.png
 .. |thumbsup| image:: icon-thumbs-up

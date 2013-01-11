@@ -17,7 +17,6 @@ from faitmain import logger
 
 
 
-
 def generate(config):
     sitemap = []
     target = config['target']
