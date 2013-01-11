@@ -1094,11 +1094,11 @@ table.highlighttable td.linenos {
   vertical-align: top;
 }
 
-.navbar .brand .hidden-phone {
+.navbar a.big-logo {
   font-size: 80px;
 }
 
-.navbar .brand .visible-phone {
+.navbar a.small-logo {
   font-size: 40px;
 }
 

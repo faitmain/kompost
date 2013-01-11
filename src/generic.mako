@@ -29,7 +29,9 @@
 <span class="icon-bar"></span>
 <span class="icon-bar"></span>
 </a>
-<a class="brand" href="/">Fait Main</a>
+<a class="brand small-logo visible-phone" href="/">Fait Main</a>
+<a class="brand big-logo hidden-phone" href="/">Fait Main</a>
+
 <div class="nav-collapse">
 <ul class="nav">
 <li><a href="/electronique.html" title="A propos">Electronique</a></li>
