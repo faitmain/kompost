@@ -13,6 +13,10 @@ setup(name='FaitMain',
       author="Tarek Ziade",
       author_email="tarek@ziade.org",
       include_package_data=True,
+      classifiers=[
+          "Programming Language :: Python :: 2.6",
+          "Programming Language :: Python :: 2.7",
+          "License :: OSI Approved :: Apache Software License"],
       zip_safe=False,
       install_requires=install_requires,
       entry_points="""
