@@ -35,6 +35,9 @@ def generate(config):
 
     for root, dirs, files in os.walk(src):
         for file in files:
+            if file.endswith('.DS_Store'):
+                continue
+
             ext = os.path.splitext(file)[-1]
             path = os.path.join(root, file)
 
@@ -44,7 +47,8 @@ def generate(config):
             location = path[len(src) + 1:]
             file_target = os.path.join(target, location)
             target_dir = os.path.dirname(file_target)
-            url_target = file_target[len(target):]
+            file_target_name, ext = os.path.splitext(file_target)
+            url_target = file_target_name[len(target):] + '.html'
 
             if not os.path.exists(target_dir):
                 os.makedirs(target_dir)
