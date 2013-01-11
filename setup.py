@@ -5,7 +5,7 @@ install_requires = ['Mako', 'docutils', 'Pygments', 'requests',
                     'rst2pdf', 'Pillow']
 
 
-setup(name='FaitMain',
+setup(name='magazine',
       version="0.1",
       url='https://github.com/tarekziade/boom',
       packages=find_packages(),
