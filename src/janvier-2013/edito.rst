@@ -111,4 +111,4 @@ Ont participé à ce numéro :
 - `Tarek Ziadé </auteurs/tarek.html>`_ - Article "What The Feuille",
   Traduction "Cindermedusae"
 - `Marcin Ignac </auteurs/marcin_ignac.html>`_ - Article "Cindermedusae".
-- `Jonathan Schemoul </auteurs/jonathan_schemoul.html>` - Article "Dispositifs sans fils"
+- `Jonathan Schemoul </auteurs/jonathan_schemoul.html>`_ - Article "Dispositifs sans fils"

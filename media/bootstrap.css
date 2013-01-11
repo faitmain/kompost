@@ -1094,9 +1094,16 @@ table.highlighttable td.linenos {
   vertical-align: top;
 }
 
-.navbar .brand {
+.navbar .brand .hidden-phone {
   font-size: 80px;
 }
+
+.navbar .brand .visible-phone {
+  font-size: 40px;
+}
+
+
+
 
 .well {
   background-color: #fbfbfb;

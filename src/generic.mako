@@ -78,7 +78,7 @@
         </li>
         <li><a target="_blank" href="https://plus.google.com/u/0/communities/117661540788222488034" id="topgoogleplus" rel="nofollow">
            <img src="http://cnd.faitmain.org/media/google_plus.png"/> Google+</a> </li>
-        <li><a target="_blank" title="GitHub" href="http://github.com/tarekziade/faitmain" id="topgithub">
+        <li><a target="_blank" title="GitHub" href="http://github.com/faitmain" id="topgithub">
           <img src="http://cnd.faitmain.org/media/github.png"/> Github
 </a></li>
 </ul>
