@@ -33,15 +33,16 @@ def _notag(text):
 
 
 def shorten(url, server, password):
-    logger.info('Shortening %r' % url)
+    logger.debug('Shortening %r' % url)
     req = urllib2.Request(server, headers={'X-Short': password})
     req.get_method = lambda: 'POST'
     req.add_data(url)
     try:
         res = urllib2.urlopen(req).read()
     except urllib2.URLError:
-        logger.info('Error on the call')
+        logger.debug('Error on the call')
         return url
     res = json.loads(res)
-    logger.info('Shortened to %r' % res)
+    res = server + '/' + res['short']
+    logger.debug('Shortened to %r' % res)
     return res

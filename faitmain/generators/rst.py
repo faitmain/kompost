@@ -139,6 +139,7 @@ def _tree(node, document, title, config):
                 if 'faitmain.org' not in refuri and not refuri.startswith('/'):
                     refuri = shorten(refuri, config['shortener_server'],
                                      config['shortener_key'])
+                text.append('<a href="%s">' % refuri)
         else:
             text.append('<a>')
         for child in node.children:
