@@ -43,18 +43,31 @@ dans son propre projet DIY.
 Le magazine qui se rapproche finalement le plus de ce que je souhaite
 faire avec *Fait Main* est le magazine américain `Make <http://makezine.com>`_.
 
-*Fait Main* sera mensuel, et chaque mois on présentera une série
-d'articles qui pourront être lus sur un mobile, une tablette ou un ordinateur,
-dans une mise en page très épurée et sans chichi.
+*Fait Main* sera dans un premier temps trimestriel et à chaque numéro, nous
+présenterons une série d'articles qui pourront être lus sur mobiles, tablettes
+et ordinateurs, dans une mise en page très épurée et sans chichi.
 
 Chaque article essayera de toucher au moins deux des domaines cités,
 et nous chercherons sans cesse de nouveaux auteurs qui auront envie de
 participer à un numéro.
 
+L'objectif à terme est de faire de *Fait Main* un magazine participatif
+où chacun puisse venir proposer un article et être relu par d'autre
+passionés, puis édité.
+
 *Fait Main* est entièrement gratuit et son contenu est distribué sous
 licence `CC-By-NC-SA <https://creativecommons.org/licenses/by-nc-sa/2.0/>`_,
+et l'auteur(e) de chaque article conserve tous ses droits.
 
-Le magazine est conçu sur **github** à cette adresse : https://github.com/tarekziade/faitmain
+L'objectif de cette licence est de protéger le contenu des auteur(e)s afin
+qu'il ne puisse pas être réutilisé sur le web à des fins commerciales.
+
+Le magazine est conçu sur **github** à cette adresse : https://github.com/faitmain
+
+Si vous souhaitez participer à ce projet, la page http://faitmain.org/apropos.html
+regroupe toutes les informations nécessaires.
+
+Bonne Lecture!
 
 
 Contenu du Numéro de Janvier
@@ -66,18 +79,24 @@ feuille écrite pendant un Hackathon.
 C'est l'application qui a été écrite
 en 24 heures par Olivier, Ronan & Tarek lors du dernier **AngelHack** à Paris.
 
-On y parle de `machine learning <https://fr.wikipedia.org/wiki/Machine_learning>`_
+On y parle de machine learning
 au service des plantes, des *hackathons* de programmation & de *responsive design*.
 
 |right| `Lire l'article <http://faitmain.org/janvier-2013/wtf.html>`_
 
-----
+Le deuxième article présente le travail de Marcin Ignac: des méduses
+animées en 3D. Des captures d'écran de ces méduses ont ensuite été utilisées
+faire partie d'un projet de livre génératif.
 
-Le deuxième article, lui, propose une introduction aux *CNCs*, qui sont
-des machines-outils pilotables depuis un microcontrôleur ou un ordinateur.
-Les possibilités offertes par ces machines sont énormes, puisqu'elles
-permettent des travaux de précisions comme graver des circuits électroniques
-ou travailler du bois. |right| `Lire l'article <http://faitmain.org/janvier-2013/cnc.html>`_
+On y parle d'**animation procédurale**, de **processing.js** & d'hachurage.
+
+|right| `Lire l'article <http://faitmain.org/janvier-2013/cindermedusae.html>`_
+
+Le troisième article parle de **domotique** et vous explique comment
+piloter des dispositifs sans fils - portails, détecteurs de mouvements etc.
+
+On y parle d'**Arduino**, de **Raspberry-PI** et de signal en **433 mhz**.
+
 
 
 Equipe
@@ -88,7 +107,8 @@ est surtout possible grâce aux créateurs d'articles et aux relecteurs.
 
 Ont participé à ce numéro :
 
-- Yannick Jost - relecteur
-- Xavier Fernandez - relecteur
-- `Tarek Ziadé </auteurs/tarek.html>`_ - Article "What The Feuille"
-
+- Yannick Jost, Xavier Fernandez, Mathieu Agopian - relectures
+- `Tarek Ziadé </auteurs/tarek.html>`_ - Article "What The Feuille",
+  Traduction "Cindermedusae"
+- `Marcin Ignac </auteurs/marcin_ignac.html>`_ - Article "Cindermedusae".
+- `Jonathan Schemoul </auteurs/jonathan_schemoul.html>` - Article "Dispositifs sans fils"
