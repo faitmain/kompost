@@ -41,13 +41,7 @@ PAGEBRK = """
 
 """
 
-article_header = """
-
-.. header::
-
-   What the feuille - FaitMain - Janvier 2013
-
-"""
+article_header = ""
 
 
 def generate(config):
