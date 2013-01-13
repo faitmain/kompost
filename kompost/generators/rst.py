@@ -137,7 +137,8 @@ def _tree(node, document, title, config):
             if 'wikipedia.org' in refuri:
                 text.append('<a href="%s" class="wikipedia">' % refuri)
             else:
-                if 'faitmain.org' not in refuri and not refuri.startswith('/'):
+                if ('faitmain.org' not in refuri and not refuri.startswith('/')
+                    and int(config.get('shorten', 1)) == 1):
                     refuri = shorten(refuri, config['shortener_server'],
                                      config['shortener_key'])
                 text.append('<a href="%s">' % refuri)

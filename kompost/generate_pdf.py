@@ -1,35 +1,40 @@
 # -*- encoding: utf8 -*-
 import os
-from rst2pdf.createpdf import main
 import json
+import socket
+from ConfigParser import ConfigParser
+import logging
+
+from rst2pdf.createpdf import main as create_pdf
+
+from kompost.util import configure_logger
+
 
 
 COVER = """\
-Magazine FaitMain
-=================
+.
 
-**Janvier 2013**
-
-.. note::
-
-   PDF généré automatiquement avec le contenu du numéro de Janvier.
-
-**Bonne Lecture!**
+.. role:: wfont
 
 
 .. header::
 
-   FaitMain - Janvier 2013
+   .. class:: wfont
+
+   ###Section### - FaitMain Magazine - Janvier 2013
 
 
 .. footer::
 
-   Page ###Page### / ###Total### - © 2012 FaitMain - CC-By-NC-SA
+   .. class:: wfont
+
+   Page ###Page###/###Total### - © 2012 FaitMain Magazine - CC-By-NC-SA
 
 
 .. raw:: pdf
 
-   OddPageBreak
+   PageBreak page
+
 
 """
 
@@ -37,7 +42,8 @@ PAGEBRK = """
 
 .. raw:: pdf
 
-   OddPageBreak
+   PageBreak page
+
 
 """
 
@@ -67,8 +73,25 @@ def generate(config):
     with open(full, 'w') as f:
         f.write(rst)
 
-    main([full, '--config', 'pdf.conf'])
+    create_pdf([full, '--config',  config['pdf_conf']])
+
+
+def main():
+    configure_logger()
+    config = ConfigParser()
+    config.read('kompost.ini')
+    config = dict(config.items('kompost'))
+    target = config['target']
+    src = config['src']
+    socket.setdefaulttimeout(int(config.get('timeout', 10)))
+    config['media'] = os.path.abspath(os.path.join(target, 'media'))
+    config['generic'] = os.path.join(src, 'generic.mako')
+    config['cats'] = os.path.join(src, 'category.mako')
+    config['icons'] = ('pen.png', 'info.png', 'thumbsup.png',
+                       'right.png', 'flash.png')
+    config['metadata'] = os.path.join(target, 'metadata.json')
+    generate(config)
 
 
 if __name__ == '__main__':
-    generate()
+    main()

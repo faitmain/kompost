@@ -2,12 +2,28 @@ import json
 import urllib2
 import cgi
 import unicodedata
+import logging
 
 from pygments import highlight
 from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter
 
 from kompost import logger
+
+
+LOG_FMT = r"[%(levelname)s] %(message)s"
+LOG_DATE_FMT = r"%Y-%m-%d %H:%M:%S"
+
+
+def configure_logger(loglevel=logging.INFO, output="-"):
+    logger.setLevel(loglevel)
+    if output == "-":
+        h = logging.StreamHandler()
+    else:
+        h = logging.FileHandler(output)
+    fmt = logging.Formatter(LOG_FMT, LOG_DATE_FMT)
+    h.setFormatter(fmt)
+    logger.addHandler(h)
 
 
 def hilite(node):

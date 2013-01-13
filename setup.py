@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 
 install_requires = ['Mako', 'docutils', 'Pygments', 'requests',
-                    'rst2pdf', 'Pillow']
+                    'rst2pdf', 'Pillow', 'pyPdf']
 
 
 setup(name='kompost',
@@ -22,4 +22,5 @@ setup(name='kompost',
       entry_points="""
       [console_scripts]
       kompost = kompost.generate:main
+      kompost-pdf = kompost.generate_pdf:main
       """)

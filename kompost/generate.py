@@ -14,7 +14,7 @@ from kompost.generators import generators
 from kompost.generators._mako import Mako
 from kompost.index import get_index
 from kompost import logger
-
+from kompost.util import configure_logger
 
 
 def generate(config):
@@ -116,21 +116,6 @@ def generate(config):
         logger.info('Indexation failed')
         logger.info(r.status_code)
         logger.info(r.content)
-
-
-LOG_FMT = r"[%(levelname)s] %(message)s"
-LOG_DATE_FMT = r"%Y-%m-%d %H:%M:%S"
-
-
-def configure_logger(loglevel=logging.INFO, output="-"):
-    logger.setLevel(loglevel)
-    if output == "-":
-        h = logging.StreamHandler()
-    else:
-        h = logging.FileHandler(output)
-    fmt = logging.Formatter(LOG_FMT, LOG_DATE_FMT)
-    h.setFormatter(fmt)
-    logger.addHandler(h)
 
 
 def main():
