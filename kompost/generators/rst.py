@@ -70,6 +70,11 @@ def _tree(node, document, title, config):
         text.append('<hr/>')
     elif klass == 'system_message':
         pass
+    elif klass == 'block_quote':
+        text.append('<blockquote>')
+        for child in node.children:
+            text.append(_tree(child, document, title, config))
+        text.append('</blockquote>')
     elif klass == 'paragraph':
         text.append('<p>')
         for child in node.children:
