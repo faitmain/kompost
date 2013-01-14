@@ -70,6 +70,8 @@ def generate(config):
 
     full = os.path.join(target, 'faitmain-janvier-2013.rst')
 
+    rst = rst.replace('\xc2\xa0', ' ')
+
     with open(full, 'w') as f:
         f.write(rst)
 
