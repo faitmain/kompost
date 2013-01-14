@@ -94,7 +94,6 @@ def _tree(node, document, title, config):
         node.attributes['class'] = 'table'
         text.extend(render_simple_tag(node, document, title, config,
                                       'table', strip_child=True))
-
     elif klass == 'image':
         if node.get('uri').startswith('icon'):
             return '<i class="%s"></i>' % node.get('uri')
@@ -102,7 +101,7 @@ def _tree(node, document, title, config):
         nolegend = False
         if node.hasattr('scale'):
             span = 12. * (float(node['scale']) / 100.)
-            offset = int((12-span) / 2.)
+            offset = int((12-span) / 2.) - 1
             span = 'span%d' % int(span)
             if offset > 0:
                 span += ' offset%d' % offset
@@ -133,6 +132,55 @@ def _tree(node, document, title, config):
             text.append(node['alt'])
             text.append('</span>')
             text.append('</div>')
+
+    elif klass == 'figure':
+        data = {}
+
+        for child in node.children:
+            klass = child.__class__.__name__
+            data[klass] = child
+
+        if 'image' not in data and 'reference' in data:
+            data['image'] = data['reference'].children[0]
+
+        # scaling
+        if 'scale' in data['image']:
+            scale = float(data['image']['scale'])
+            span = 12. * (scale / 100.)
+            offset = int((12-span) / 2.)
+            span = 'span%d' % int(span)
+            if offset > 0:
+                span += ' offset%d' % offset
+        else:
+            span = 'span12'
+
+        # url
+        if 'reference' in data:
+            text.append('<a href="%s">' % data['reference']['refuri'])
+
+        # image
+        uri = data['image']['uri']
+        file_ = os.path.split(uri)[-1]
+        if file_ in config['icons']:
+            class_ = 'subst'
+            nolegend = True
+        else:
+            text.append('<div class="row-fluid">')
+            class_ = 'centered %s' % span
+        text.append('<img class="%s" src="%s">' % (class_, uri))
+        text.append('</img>')
+
+        # caption
+        if 'caption' in data:
+            text.append('<span class="legend %s">' % span)
+            for child in data['caption'].children:
+                text.append(_tree(child, document, title, config))
+            text.append('</span>')
+
+        if 'reference' in data:
+            text.append('</a>')
+
+        text.append('</div>')
 
     elif klass == 'reference':  # link
         if node.hasattr('refid'):
