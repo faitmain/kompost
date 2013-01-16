@@ -38,6 +38,9 @@ def generate(config):
 
     for root, dirs, files in os.walk(src):
         for file in files:
+            if file.startswith('_'):
+                continue
+
             if file.endswith('.DS_Store'):
                 continue
 
