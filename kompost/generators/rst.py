@@ -7,8 +7,10 @@ from kompost.util import shorten, hilite, strip_accents
 from kompost import logger
 
 from docutils.core import publish_doctree
+
 from mako.template import Template
 from mako.lookup import TemplateLookup
+from mako.exceptions import RichTraceback
 
 
 _FOOTER = """
@@ -306,7 +308,15 @@ class RestructuredText(object):
         logger.info('Generating %r' % target)
 
         with codecs.open(target, 'w', encoding='utf8') as f:
-            f.write(mytemplate.render(body='\n'.join(paragraphs),
-                                      title=title, **options))
+            try:
+                f.write(mytemplate.render(body='\n'.join(paragraphs),
+                                          title=title, **options))
+            except Exception:
+                traceback = RichTraceback()
+                for filename, lineno, function, line in traceback.traceback:
+                    print "File %s, line %s, in %s" % (filename,
+                                                       lineno, function)
+                    print line, "\n"
+                raise
 
         save_index(self.config['metadata'])

@@ -32,6 +32,10 @@ def generate(config):
         for ext in gen.exts:
             match[ext] = gen
 
+    cats = config.get('categories', '').split(',')
+    cats = [cat.strip() for cat in cats if cat.strip() != '']
+    config['categories'] = cats
+
     for root, dirs, files in os.walk(src):
         for file in files:
             if file.endswith('.DS_Store'):
@@ -54,8 +58,11 @@ def generate(config):
 
             # now calling the right generator
             if ext in match:
-                match[ext](path, file_target, url_target)
-
+                try:
+                    match[ext](path, file_target, url_target, config=config)
+                except Exception:
+                    logger.info('Failed on %s' % path)
+                    raise
             else:
                 logger.info('Copying %r' % file_target)
                 shutil.copyfile(path, file_target)
@@ -78,8 +85,7 @@ def generate(config):
             for cat in value:
                 categories[cat].append((path, title))
 
-    for wanted in ('electronique', 'informatique', 'art', 'cuisine',
-                   'ecologie'):
+    for wanted in config['categories']:
         if wanted in categories:
             continue
         categories[wanted] = []
@@ -91,7 +97,7 @@ def generate(config):
         url_target = '/%s.html' % cat
         file_target = os.path.join(target, cat + '.html')
         gen(config['cats'], file_target, url_target, paths=paths,
-            title=cat.capitalize())
+            title=cat.capitalize(), config=config)
         sitemap.append(url_target)
 
     # creating sitemap
