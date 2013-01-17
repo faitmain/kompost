@@ -66,6 +66,7 @@ def generate(config):
                 except Exception:
                     logger.info('Failed on %s' % path)
                     raise
+                sitemap.append(url_target)
             else:
                 logger.info('Copying %r' % file_target)
                 shutil.copyfile(path, file_target)
