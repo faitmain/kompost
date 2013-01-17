@@ -180,8 +180,16 @@ def _tree(node, document, title, config):
                 class_ = span
             else:
                 class_ = floating
-            text.append('<a href="%s" class="%s">' %
-                            (data['reference']['refuri'], class_))
+
+            refuri = data['reference']['refuri']
+
+            if ('faitmain.org' not in refuri and not refuri.startswith('/')
+                and int(config.get('shorten', 1)) == 1):
+                refuri = shorten(refuri, config['shortener_server'],
+                                 config['shortener_key'],
+                                 config.get('amazon_tag'))
+
+            text.append('<a href="%s" class="%s">' % (refuri, class_))
             class_ = 'centered'
         else:
             if floating is None:
