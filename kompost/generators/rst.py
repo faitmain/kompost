@@ -136,6 +136,12 @@ def _tree(node, document, title, config):
             text.append('</div>')
 
     elif klass == 'figure':
+        if len(node['classes']) > 0:
+            floating = ' '.join(node['classes'])
+        else:
+            # let's use a row-fluid
+            floating = None
+
         data = {}
 
         for child in node.children:
@@ -156,9 +162,7 @@ def _tree(node, document, title, config):
         else:
             span = 'span12'
 
-        # url
-        if 'reference' in data:
-            text.append('<a href="%s">' % data['reference']['refuri'])
+        linked = 'reference' in data
 
         # image
         uri = data['image']['uri']
@@ -167,22 +171,43 @@ def _tree(node, document, title, config):
             class_ = 'subst'
             nolegend = True
         else:
-            text.append('<div class="row-fluid">')
-            class_ = 'centered %s' % span
+            if not linked and floating is None:
+                text.append('<div class="row-fluid">')
+
+        # url
+        if linked:
+            if floating is None:
+                class_ = span
+            else:
+                class_ = floating
+            text.append('<a href="%s" class="%s">' %
+                            (data['reference']['refuri'], class_))
+            class_ = 'centered'
+        else:
+            if floating is None:
+                class_ = 'centered %s' % span
+            else:
+                class_ = 'centered %s' % floating
+
+
         text.append('<img class="%s" src="%s">' % (class_, uri))
         text.append('</img>')
 
         # caption
         if 'caption' in data:
-            text.append('<span class="legend %s">' % span)
+            class_ = 'legend'
+            if floating is None:
+                class_ += ' ' + span
+            text.append('<span class="%s">' % class_)
             for child in data['caption'].children:
                 text.append(_tree(child, document, title, config))
             text.append('</span>')
 
-        if 'reference' in data:
+        if linked:
             text.append('</a>')
 
-        text.append('</div>')
+        if floating is None:
+            text.append('</div>')
 
     elif klass == 'reference':  # link
         if node.hasattr('refid'):

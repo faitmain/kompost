@@ -16,6 +16,10 @@ COVER = """\
 
 .. role:: wfont
 
+.. role:: rightfloat
+
+.. role:: leftfloat
+
 
 .. header::
 
