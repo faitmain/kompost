@@ -92,6 +92,11 @@ def _tree(node, document, title, config):
         node.attributes['class'] = 'well note'
         text.extend(render_simple_tag(node, document, title, config,
                                       'div', strip_child=False))
+    elif klass == 'warning':
+        text.append('<div class="alert">')
+        for child in node.children:
+            text.append(_tree(child, document, title, config))
+        text.append('</div>')
     elif klass == 'table':
         node.attributes['class'] = 'table'
         text.extend(render_simple_tag(node, document, title, config,
