@@ -171,7 +171,7 @@ def _tree(node, document, title, config):
             class_ = 'subst'
             nolegend = True
         else:
-            if not linked and floating is None:
+            if floating is None:
                 text.append('<div class="row-fluid">')
 
         # url
@@ -190,13 +190,16 @@ def _tree(node, document, title, config):
                                  config.get('amazon_tag'))
 
             text.append('<a href="%s" class="%s">' % (refuri, class_))
-            class_ = 'centered'
+
+            if floating is None:
+                class_ = 'centered span12'
+            else:
+                class_ = 'centered %s' % floating
         else:
             if floating is None:
                 class_ = 'centered %s' % span
             else:
                 class_ = 'centered %s' % floating
-
 
         text.append('<img class="%s" src="%s">' % (class_, uri))
         text.append('</img>')
