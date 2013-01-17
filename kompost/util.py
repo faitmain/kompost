@@ -48,8 +48,11 @@ def _notag(text):
     return cgi.escape(text)
 
 
-def shorten(url, server, password):
+def shorten(url, server, password, amazon_tag=None):
     logger.debug('Shortening %r' % url)
+    # XXX should use urlparse
+    if amazon_tag and 'amazon.fr' in url:
+        url += '&tag=' + amazon_tag
     req = urllib2.Request(server, headers={'X-Short': password})
     req.get_method = lambda: 'POST'
     req.add_data(url)

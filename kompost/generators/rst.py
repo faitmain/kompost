@@ -220,7 +220,8 @@ def _tree(node, document, title, config):
                 if ('faitmain.org' not in refuri and not refuri.startswith('/')
                     and int(config.get('shorten', 1)) == 1):
                     refuri = shorten(refuri, config['shortener_server'],
-                                     config['shortener_key'])
+                                     config['shortener_key'],
+                                     config.get('amazon_tag'))
                 text.append('<a href="%s">' % refuri)
         else:
             text.append('<a>')
