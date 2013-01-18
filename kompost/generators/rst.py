@@ -348,8 +348,8 @@ class RestructuredText(object):
         mytemplate = Template(filename=self.config['generic'],
                               lookup=self.lookup)
 
-        body = '\n'.join(paragraphs)
-        body = body.replace('--', '—')
+        body = u'\n'.join(paragraphs)
+        body = body.replace(u'--', u'—')
 
         logger.info('Generating %r' % target)
 
