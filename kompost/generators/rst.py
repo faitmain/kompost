@@ -347,12 +347,14 @@ class RestructuredText(object):
         mytemplate = Template(filename=self.config['generic'],
                               lookup=self.lookup)
 
+        body = '\n'.join(paragraphs)
+        body = body.replace('--', '—')
+
         logger.info('Generating %r' % target)
 
         with codecs.open(target, 'w', encoding='utf8') as f:
             try:
-                f.write(mytemplate.render(body='\n'.join(paragraphs),
-                                          title=title, **options))
+                f.write(mytemplate.render(body=body, title=title, **options))
             except Exception:
                 traceback = RichTraceback()
                 for filename, lineno, function, line in traceback.traceback:
