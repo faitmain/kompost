@@ -101,7 +101,8 @@ def generate(config):
         url_target = '/%s.html' % cat
         file_target = os.path.join(target, cat + '.html')
         gen(config['cats'], file_target, url_target, paths=paths,
-            title=cat.capitalize(), config=config)
+            title=cat.capitalize(), config=config,
+            category=cat)
         sitemap.append(url_target)
 
     # creating sitemap
