@@ -349,7 +349,7 @@ class RestructuredText(object):
                               lookup=self.lookup)
 
         body = u'\n'.join(paragraphs)
-        body = body.replace(u'--', u'—')
+        #body = body.replace(u'--', u'—')
 
         logger.info('Generating %r' % target)
 
