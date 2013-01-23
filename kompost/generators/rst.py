@@ -168,6 +168,7 @@ def _tree(node, document, title, config):
         else:
             span = 'span12'
 
+
         linked = 'reference' in data
 
         # image
@@ -180,13 +181,14 @@ def _tree(node, document, title, config):
             if floating is None:
                 text.append('<div class="row-fluid">')
 
+        # subdiv
+        if floating is None:
+            text.append('<div class="%s">' % span)
+        else:
+            text.append('<div class="%s">' % floating)
+
         # url
         if linked:
-            if floating is None:
-                class_ = span
-            else:
-                class_ = floating
-
             refuri = data['reference']['refuri']
 
             if ('faitmain.org' not in refuri and not refuri.startswith('/')
@@ -195,33 +197,21 @@ def _tree(node, document, title, config):
                                  config['shortener_key'],
                                  config.get('amazon_tag'))
 
-            text.append('<a href="%s" class="%s">' % (refuri, class_))
+            text.append('<a href="%s">' % refuri)
 
-            if floating is None:
-                class_ = 'centered span12'
-            else:
-                class_ = 'centered %s' % floating
-        else:
-            if floating is None:
-                class_ = 'centered %s' % span
-            else:
-                class_ = 'centered %s' % floating
-
-        text.append('<img class="%s" src="%s">' % (class_, uri))
-        text.append('</img>')
+        text.append('<img class="centered" src="%s"></img>' % uri)
 
         # caption
         if 'caption' in data:
-            class_ = 'legend'
-            if floating is None:
-                class_ += ' ' + span
-            text.append('<span class="%s">' % class_)
+            text.append('<span class="legend">')
             for child in data['caption'].children:
                 text.append(_tree(child, document, title, config))
             text.append('</span>')
 
         if linked:
             text.append('</a>')
+
+        text.append('</div>')
 
         if floating is None:
             text.append('</div>')
