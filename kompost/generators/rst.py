@@ -4,7 +4,7 @@ import codecs
 import urllib2
 
 from kompost.index import save_index, index
-from kompost.util import shorten, hilite, strip_accents
+from kompost.util import shorten, hilite, str2authorid
 from kompost import logger
 
 from docutils.core import publish_doctree
@@ -253,8 +253,7 @@ def _tree(node, document, title, config):
     elif klass == 'author':
         value = node.astext()
         index(document, title, 'author', value)
-        author_id = strip_accents(value).lower()
-        author_id = author_id.replace(' ', '_')
+        author_id = str2authorid(value)
         text.append('<img class="subst" '
                     'src="%s/media/pen.png">' % cnd)
         text.append('</img>')
@@ -289,8 +288,7 @@ def _tree(node, document, title, config):
             text.append('<img class="subst" '
                         'src="%s/media/translation.png">' % cnd)
             text.append('</img>')
-            author_id = strip_accents(value).lower()
-            author_id = author_id.replace(' ', '_')
+            author_id = str2authorid(value)
             msg = ('<strong>Traduction</strong>: '
                    '<a href="/auteurs/%s.html">%s</a>')
             text.append(msg % (author_id, value))

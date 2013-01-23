@@ -44,6 +44,11 @@ def strip_accents(s):
                    unicodedata.category(c) != 'Mn'))
 
 
+def str2authorid(value):
+    author_id = strip_accents(value).lower()
+    return author_id.replace(' ', '_')
+
+
 def _notag(text):
     return cgi.escape(text)
 

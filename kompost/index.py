@@ -7,7 +7,9 @@ _INDEX = defaultdict(dict)
 
 
 def get_index():
-    return _INDEX.items()
+    items = _INDEX.items()
+    items.sort()
+    return items
 
 
 def index(document, title, name, value):

@@ -12,9 +12,10 @@ import requests
 from kompost.generate_pdf import generate as pdf
 from kompost.generators import generators
 from kompost.generators._mako import Mako
+from kompost.generators.rst import RestructuredText
 from kompost.index import get_index
 from kompost import logger
-from kompost.util import configure_logger
+from kompost.util import configure_logger, str2authorid
 
 
 def generate(config):
@@ -104,6 +105,37 @@ def generate(config):
             title=cat.capitalize(), config=config,
             category=cat)
         sitemap.append(url_target)
+
+    # creating the authors index page
+    # XXX should be configurable...
+    authors_template = os.path.join(src, 'auteurs', 'index.mako')
+    authors = {}
+    for key, index in get_index():
+        path, title = key.split(':')
+        for key, author_name in index.items():
+            if key != 'author':
+                continue
+
+            author_id = str2authorid(author_name)
+
+            if author_id in authors:
+                authors[author_id]['articles'].append((title, path))
+            else:
+                # should be configurable
+                link = '/auteurs/%s.html' % author_id
+                authors[author_id] = {'link': link,
+                                      'articles': [(title, path)],
+                                      'name': author_name}
+
+    authors = authors.items()
+    authors.sort()
+
+    logger.info('Generating authors index')
+    url_target = '/auteurs/index.html'
+    file_target = os.path.join(target, 'auteurs', 'index.html')
+    gen(authors_template, file_target, url_target, authors=authors,
+        title=cat.capitalize(), config=config)
+    sitemap.append(url_target)
 
     # creating sitemap
     sitemap_file = os.path.join(target, 'sitemap.json')
