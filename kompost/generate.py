@@ -6,6 +6,8 @@ import datetime
 from ConfigParser import ConfigParser
 from collections import defaultdict
 import logging
+import tempfile
+import codecs
 
 import requests
 
@@ -16,6 +18,15 @@ from kompost.generators.rst import RestructuredText
 from kompost.index import get_index
 from kompost import logger
 from kompost.util import configure_logger, str2authorid
+
+
+AUTHOR_ARTICLES = u"""\
+
+Articles:
+
+%s
+
+"""
 
 
 def generate(config):
@@ -49,6 +60,11 @@ def generate(config):
             path = os.path.join(root, file)
 
             if ext in ('.mako', '.un~'):
+                continue
+
+            # configurable XXX
+            if (os.path.split(path)[0] == 'src/auteurs' and
+                file.endswith('.rst')):
                 continue
 
             location = path[len(src) + 1:]
@@ -107,8 +123,6 @@ def generate(config):
         sitemap.append(url_target)
 
     # creating the authors index page
-    # XXX should be configurable...
-    authors_template = os.path.join(src, 'auteurs', 'index.mako')
     authors = {}
     for key, index in get_index():
         path, title = key.split(':')
@@ -130,12 +144,48 @@ def generate(config):
     authors = authors.items()
     authors.sort()
 
+    # XXX should be configurable...
+    authors_template = os.path.join(src, 'auteurs', 'index.mako')
     logger.info('Generating authors index')
     url_target = '/auteurs/index.html'
     file_target = os.path.join(target, 'auteurs', 'index.html')
     gen(authors_template, file_target, url_target, authors=authors,
-        title=cat.capitalize(), config=config)
+        title="Auteurs", config=config)
     sitemap.append(url_target)
+
+    # creating the author pages
+    gen = RestructuredText(config)
+    for author_id, data in authors:
+        template = os.path.join(src, 'auteurs', '%s.rst' % author_id)
+        if not os.path.exists(template):
+            logger.warning('Template not found for author %r' % author_id)
+            continue
+
+        # we're supposed to find an author .rst file in /auteur
+        url_target = '/auteurs/%s.html' % author_id
+        file_target = os.path.join(target, 'auteurs', '%s.html' % author_id)
+
+        fd, tmp = tempfile.mkstemp()
+        os.close(fd)
+
+        def _line(line):
+            return u'- `%s <%s>`_' % (line[0], line[1])
+
+        articles = AUTHOR_ARTICLES % '\n'.join([_line(data) for data in
+                                                data['articles']])
+
+        with codecs.open(template, encoding='utf8') as source_file:
+            with codecs.open(tmp, 'w', encoding='utf8') as target_file:
+                data = source_file.read()
+                data += articles
+                target_file.write(data)
+
+        try:
+            gen(tmp, file_target, url_target, config=config)
+        finally:
+            os.remove(tmp)
+
+        sitemap.append(url_target)
 
     # creating sitemap
     sitemap_file = os.path.join(target, 'sitemap.json')
