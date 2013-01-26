@@ -199,7 +199,7 @@ def _tree(node, document, title, config):
 
             text.append('<a href="%s">' % refuri)
 
-        text.append('<img class="centered" src="%s"></img>' % uri)
+        text.append('<img class="centered span12" src="%s"></img>' % uri)
 
         # caption
         if 'caption' in data:
