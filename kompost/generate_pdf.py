@@ -53,6 +53,17 @@ PAGEBRK = """
 
 article_header = ""
 
+_FOOTER = """
+
+.. |pen| image:: ../media/pen.png
+.. |info| image:: ../media/info.png
+.. |thumbsup| image:: ../media/thumbsup.png
+.. |right| image:: ../media/right.png
+.. |flash| image:: ../media/flash.png
+.. |infosign| image:: icon-info-sign
+"""
+
+
 
 def generate(config):
     src = config['pdf_src']
@@ -73,6 +84,7 @@ def generate(config):
 
         rst += article_header + article + PAGEBRK
 
+    rst += _FOOTER
     full = os.path.join(target, '%s.rst' % name)
     rst = rst.replace('\xc2\xa0', ' ')
 
