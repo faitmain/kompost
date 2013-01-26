@@ -25,14 +25,14 @@ COVER = """\
 
    .. class:: wfont
 
-   ###Section### - FaitMain Magazine - Janvier 2013
+   %s
 
 
 .. footer::
 
    .. class:: wfont
 
-   Page ###Page###/###Total### - © 2012 FaitMain Magazine - CC-By-NC-SA
+   %s
 
 
 .. raw:: pdf
@@ -57,12 +57,13 @@ article_header = ""
 def generate(config):
     src = config['pdf_src']
     target = config['pdf_target']
+    name = config['pdf_name']
 
     with open(config['jsonlist']) as f:
         jsonlist = json.loads(f.read())
 
     # creating a full rst
-    rst = COVER
+    rst = COVER % (config['pdf_header'], config['pdf_footer'])
 
     for article in jsonlist['articles']:
         article = os.path.join(src, article)
@@ -72,8 +73,7 @@ def generate(config):
 
         rst += article_header + article + PAGEBRK
 
-    full = os.path.join(target, 'faitmain-janvier-2013.rst')
-
+    full = os.path.join(target, '%s.rst' % name)
     rst = rst.replace('\xc2\xa0', ' ')
 
     with open(full, 'w') as f:
