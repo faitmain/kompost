@@ -83,7 +83,7 @@ def generate(config):
                 except Exception:
                     logger.info('Failed on %s' % path)
                     raise
-                sitemap.append(url_target)
+                sitemap.append((url_target, True))
             else:
                 logger.info('Copying %r' % file_target)
                 shutil.copyfile(path, file_target)
@@ -120,7 +120,7 @@ def generate(config):
         gen(config['cats'], file_target, url_target, paths=paths,
             title=cat.capitalize(), config=config,
             category=cat)
-        sitemap.append(url_target)
+        sitemap.append((url_target, False))
 
     # creating the authors index page
     authors = {}
@@ -151,7 +151,7 @@ def generate(config):
     file_target = os.path.join(target, 'auteurs', 'index.html')
     gen(authors_template, file_target, url_target, authors=authors,
         title="Auteurs", config=config)
-    sitemap.append(url_target)
+    sitemap.append((url_target, False))
 
     # creating the author pages
     gen = RestructuredText(config)
@@ -185,7 +185,7 @@ def generate(config):
         finally:
             os.remove(tmp)
 
-        sitemap.append(url_target)
+        sitemap.append((url_target, True))
 
     # creating sitemap
     sitemap_file = os.path.join(target, 'sitemap.json')
@@ -194,7 +194,9 @@ def generate(config):
 
     urlset = [{'loc': loc, 'lastmod': now,
                'changefreq': 'monthly',
-               'priority': 0.1} for loc in sitemap]
+               'priority': 0.1,
+               'indexable': int(indexable)}
+               for loc, indexable in sitemap]
 
     with open(sitemap_file, 'w') as f:
         f.write(json.dumps({'urlset': urlset}))
