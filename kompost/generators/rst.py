@@ -89,6 +89,13 @@ def _tree(node, document, title, config):
         text.append('<div class="syntax rounded">')
         text.append(hilite(node))
         text.append('</div>')
+    elif klass == 'sidebar':
+        text.append('<div class="alert alert-info">')
+        text.append('<h4>%s</h4>' % node.children[0].astext())
+        for child in node.children[1:]:
+            text.append(_tree(child, document, title, config))
+        text.append('</div>')
+
     elif klass == 'note':
         node.attributes['class'] = 'well note'
         text.extend(render_simple_tag(node, document, title, config,
