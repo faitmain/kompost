@@ -12,8 +12,14 @@ def get_index():
     return items
 
 
-def index(document, title, name, value):
-    _INDEX[document + ':' + title][name] = value
+def index(document, title, name, value, append=False):
+    key = document + ':' + title
+
+    if append:
+        current = _INDEX[key].get(name, [])
+        current.append(value)
+    else:
+        _INDEX[key][name] = value
 
 
 def save_index(metadata):
