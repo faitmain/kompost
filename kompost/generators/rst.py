@@ -3,7 +3,7 @@ import os
 import codecs
 import urllib2
 
-from kompost.index import save_index, index
+from kompost.index import save_index, index, get_document_index
 from kompost.util import shorten, hilite, str2authorid
 from kompost import logger
 
@@ -246,12 +246,12 @@ def _tree(node, document, title, config):
         # ??
         pass
     elif klass == 'section':
-        title = node.children[0][0].astext()
+        section_title = node.children[0][0].astext()
         id = node.attributes['ids'][0]
-        index(document, title, 'section', (title, id), append=True)
+        index(document, title, 'sections', (section_title, id), append=True)
         header = (u'<h2>%s <a class="headerlink" href="#%s"'
                   u'title="Lien vers cette section">\xb6</a></h2>')
-        header = header % (title, id)
+        header = header % (section_title, id)
         text.append(header)
 
         for child in node.children[1:]:
@@ -348,6 +348,8 @@ class RestructuredText(object):
                                           self.config)
                       for text in doctree.children[1:]]
 
+        # loading sections
+        doc_sections = get_document_index(url_target, title).get('sections', [])
         mytemplate = Template(filename=self.config['generic'],
                               lookup=self.lookup)
 
@@ -358,7 +360,8 @@ class RestructuredText(object):
 
         with codecs.open(target, 'w', encoding='utf8') as f:
             try:
-                f.write(mytemplate.render(body=body, title=title, **options))
+                f.write(mytemplate.render(body=body, title=title,
+                                          doc_sections=doc_sections, **options))
             except Exception:
                 traceback = RichTraceback()
                 for filename, lineno, function, line in traceback.traceback:

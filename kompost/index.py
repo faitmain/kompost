@@ -11,6 +11,9 @@ def get_index():
     items.sort()
     return items
 
+def get_document_index(document, title):
+    return _INDEX[document + ':' + title]
+
 
 def index(document, title, name, value, append=False):
     key = document + ':' + title
@@ -18,8 +21,9 @@ def index(document, title, name, value, append=False):
     if append:
         current = _INDEX[key].get(name, [])
         current.append(value)
-    else:
-        _INDEX[key][name] = value
+        value = current
+
+    _INDEX[key][name] = value
 
 
 def save_index(metadata):
