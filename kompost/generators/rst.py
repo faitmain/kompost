@@ -249,6 +249,7 @@ def _tree(node, document, title, config):
         section_title = node.children[0][0].astext()
         id = node.attributes['ids'][0]
         index(document, title, 'sections', (section_title, id), append=True)
+        text.append('<div id="%s" class="section">' % id)
         header = (u'<h2>%s <a class="headerlink" href="#%s"'
                   u'title="Lien vers cette section">\xb6</a></h2>')
         header = header % (section_title, id)
@@ -256,6 +257,7 @@ def _tree(node, document, title, config):
 
         for child in node.children[1:]:
             text.append(_tree(child, document, title, config))
+        text.append('</div>')
 
     elif klass == 'substitution_definition':
         #uri = node.children[0].attributes['uri']
