@@ -177,7 +177,7 @@ def generate(config):
         with codecs.open(template, encoding='utf8') as source_file:
             with codecs.open(tmp, 'w', encoding='utf8') as target_file:
                 data = source_file.read()
-                data += articles
+                data += articles + '\n'
                 target_file.write(data)
 
         try:
