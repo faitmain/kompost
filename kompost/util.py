@@ -3,6 +3,7 @@ import urllib2
 import cgi
 import unicodedata
 import logging
+import socket
 
 from pygments import highlight
 from pygments.lexers import get_lexer_by_name
@@ -54,7 +55,11 @@ def _notag(text):
 
 
 def shorten(url, server, password, amazon_tag=None):
+    if url.startswith('mailto'):
+        return url
+
     logger.debug('Shortening %r' % url)
+    url = url.rstrip('/')
     # XXX should use urlparse
     if amazon_tag and 'amazon.fr' in url:
         # XXX crappy
@@ -68,8 +73,8 @@ def shorten(url, server, password, amazon_tag=None):
     req.add_data(url)
     try:
         res = urllib2.urlopen(req).read()
-    except urllib2.URLError:
-        logger.debug('Error on the call')
+    except (socket.error, urllib2.URLError), e:
+        logger.debug('Error on the call %r' % url)
         return url
     res = json.loads(res)
     res = server + '/' + res['short']
