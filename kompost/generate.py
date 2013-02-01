@@ -15,7 +15,7 @@ from kompost.generate_pdf import generate as pdf
 from kompost.generators import generators
 from kompost.generators._mako import Mako
 from kompost.generators.rst import RestructuredText
-from kompost.index import get_index
+from kompost.index import get_index, get_articles
 from kompost import logger
 from kompost.util import configure_logger, str2authorid
 

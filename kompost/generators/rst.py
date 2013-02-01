@@ -277,8 +277,8 @@ def _tree(node, document, title, config):
         text.append('<a href="/auteurs/%s.html">%s</a>' % (author_id,
                                                            value))
     elif klass == 'date':
-        # XXX
-        pass
+        index(document, title, 'date', node.astext())
+
     elif klass == 'field':
         name = node.children[0].astext()
         value = node.children[1].astext()
@@ -371,5 +371,9 @@ class RestructuredText(object):
                                                        lineno, function)
                     print line, "\n"
                 raise
+
+        paths = target.split('/')
+        if len(paths) > 2:
+            index(url_target, title, 'volume', paths[1])
 
         save_index(self.config['metadata'])

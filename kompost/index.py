@@ -37,3 +37,20 @@ def save_index(metadata):
 
     with open(metadata, 'w') as f:
         f.write(json.dumps(data))
+
+
+def get_articles(volume=None):
+    articles = []
+
+    for id_, data in get_index():
+        path, title = id_.split(':')
+        if 'date' in data:
+            if volume is not None and data['volume'] != volume:
+                continue
+            data['title'] = title
+            data['path'] = path
+            articles.append((id_, data))
+
+    articles.sort()
+    return articles
+
