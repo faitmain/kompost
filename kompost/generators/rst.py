@@ -345,6 +345,8 @@ class RestructuredText(object):
 
         title = doctree.children[0].astext()
         target = os.path.splitext(target)[0] + '.html'
+        paths = target.split('/')
+        is_article = len(paths) > 2
 
         paragraphs = ['<p>%s</p>' % _tree(text, url_target, title,
                                           self.config)
@@ -357,6 +359,8 @@ class RestructuredText(object):
 
         body = u'\n'.join(paragraphs)
         #body = body.replace(u'--', u'—')
+        if is_article:
+            index(url_target, title, 'body', body)
 
         logger.info('Generating %r' % target)
 
@@ -373,7 +377,7 @@ class RestructuredText(object):
                 raise
 
         paths = target.split('/')
-        if len(paths) > 2:
+        if is_article:
             index(url_target, title, 'volume', paths[1])
 
         save_index(self.config['metadata'])
