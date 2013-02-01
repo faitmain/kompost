@@ -1,6 +1,7 @@
 import os
 import json
 from collections import defaultdict
+from datetime import datetime
 
 
 _INDEX = defaultdict(dict)
@@ -49,6 +50,7 @@ def get_articles(volume=None):
                 continue
             data['title'] = title
             data['path'] = path
+            data['date'] = datetime.strptime(data['date'], '%Y-%M-%d')
             articles.append((id_, data))
 
     articles.sort()
