@@ -5,11 +5,12 @@ import socket
 import datetime
 from ConfigParser import ConfigParser
 from collections import defaultdict
-import logging
 import tempfile
 import codecs
 
 import requests
+
+from feedgenerator import Atom1Feed
 
 from kompost.generate_pdf import generate as pdf
 from kompost.generators import generators
@@ -186,6 +187,28 @@ def generate(config):
             os.remove(tmp)
 
         sitemap.append((url_target, True))
+
+    # create the atom feed
+    siteurl = config.get('siteurl')
+    feed = Atom1Feed(
+        title='FaitMain.org',
+        link=siteurl,
+        feed_url=siteurl + 'feed.xml',
+        description=config.get('site-description'))
+
+    for key, article in get_articles():
+        path, title = key.split(':')
+
+        feed.add_item(
+            title=title,
+            link='%s/%s' % (siteurl, path),
+            description=article['body'],
+            categories=article['category'],
+            author_name=article['author'],
+            pubdate=article['date'])
+
+    with open(os.path.join(target, 'feed.xml'), 'w') as f:
+        feed.write(f, 'utf-8')
 
     # creating sitemap
     sitemap_file = os.path.join(target, 'sitemap.json')
