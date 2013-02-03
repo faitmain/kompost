@@ -205,6 +205,9 @@ def _tree(node, document, title, config):
                                  config.get('amazon_tag'))
 
             text.append('<a href="%s">' % refuri)
+        else:
+            uri = '/'.join([config['cnd'], document.split('/')[1], uri])
+
 
         text.append('<img class="centered span12" src="%s"></img>' % uri)
 
