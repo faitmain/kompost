@@ -16,11 +16,11 @@ from mako.exceptions import RichTraceback
 
 _FOOTER = """
 
-.. |pen| image:: http://cnd.faitmain.org/media/pen.png
-.. |info| image:: http://cnd.faitmain.org/media/info.png
-.. |thumbsup| image:: http://cnd.faitmain.org/media/thumbsup.png
-.. |right| image:: http://cnd.faitmain.org/media/right.png
-.. |flash| image:: http://cnd.faitmain.org/media/flash.png
+.. |pen| image:: %(cnd)s/media/pen.png
+.. |info| image:: %(cnd)s/media/info.png
+.. |thumbsup| image:: %(cnd)s/media/thumbsup.png
+.. |right| image:: %(cnd)s/media/right.png
+.. |flash| image:: %(cnd)s/media/flash.png
 .. |infosign| image:: icon-info-sign
 """
 
@@ -342,7 +342,7 @@ class RestructuredText(object):
         target = os.path.splitext(target)[0] + '.html'
 
         with open(path) as f:
-            content = f.read() + _FOOTER
+            content = f.read() + _FOOTER % {'cnd': self.config['cnd']}
             doctree = publish_doctree(content)
 
         title = doctree.children[0].astext()
