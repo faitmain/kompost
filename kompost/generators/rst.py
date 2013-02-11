@@ -276,8 +276,8 @@ def _tree(node, document, title, config):
         text.append('<img class="subst" '
                     'src="%s/media/pen.png">' % cnd)
         text.append('</img>')
-        text.append('<a href="/auteurs/%s.html">%s</a>' % (author_id,
-                                                           value))
+        text.append('<a href="%s/auteurs/%s.html">%s</a>' %
+                        (config['siteurl'], author_id, value))
     elif klass == 'date':
         index(document, title, 'date', node.astext())
 
@@ -291,7 +291,8 @@ def _tree(node, document, title, config):
             cats = value.split(',')
             index(document, title, name, cats)
 
-            cats = ['<a href="/%s.html">%s</a>' % (cat, cat.capitalize())
+            cats = ['<a href="%s/%s.html">%s</a>' % (config['siteurl'],
+                                                     cat, cat.capitalize())
                     for cat in cats]
             text.append(' | '.join(cats))
         elif name == 'level':
@@ -309,8 +310,8 @@ def _tree(node, document, title, config):
             text.append('</img>')
             author_id = str2authorid(value)
             msg = ('<strong>Traduction</strong>: '
-                   '<a href="/auteurs/%s.html">%s</a>')
-            text.append(msg % (author_id, value))
+                   '<a href="%s/auteurs/%s.html">%s</a>')
+            text.append(msg % (config['siteurl'], author_id, value))
 
     elif klass == 'colspec':  # table colspec
         pass

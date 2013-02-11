@@ -49,6 +49,10 @@ def generate(config):
     cats = [cat.strip() for cat in cats if cat.strip() != '']
     config['categories'] = cats
 
+    for path in ('cnd', 'siteurl'):
+        if os.path.exists(config[path]):
+            config[path] = os.path.abspath(config[path])
+
     for root, dirs, files in os.walk(src):
         for file in files:
             if file.startswith('_'):
@@ -137,7 +141,7 @@ def generate(config):
                 authors[author_id]['articles'].append((title, path))
             else:
                 # should be configurable
-                link = '/auteurs/%s.html' % author_id
+                link = '%s/auteurs/%s.html' % (config['siteurl'], author_id)
                 authors[author_id] = {'link': link,
                                       'articles': [(title, path)],
                                       'name': author_name}
@@ -170,7 +174,9 @@ def generate(config):
         os.close(fd)
 
         def _line(line):
-            return u'- `%s <%s>`_' % (line[0], line[1])
+            title, path = line
+            path = '%s/%s' % (config['siteurl'], path)
+            return u'- `%s <%s>`_' % (title, path)
 
         articles = AUTHOR_ARTICLES % '\n'.join([_line(data) for data in
                                                 data['articles']])
