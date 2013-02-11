@@ -231,6 +231,9 @@ def generate(config):
         f.write(json.dumps({'urlset': urlset}))
 
     # asking Trouvailles to index the web site
+    if int(config['indexing']) == 0:
+        return
+
     logger.info('Indexing the whole website')
     url = config['search_server']
     data = {'sitemap': config['sitemap']}
