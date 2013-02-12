@@ -16,11 +16,11 @@ from mako.exceptions import RichTraceback
 
 _FOOTER = """
 
-.. |pen| image:: %(cnd)s/media/pen.png
-.. |info| image:: %(cnd)s/media/info.png
-.. |thumbsup| image:: %(cnd)s/media/thumbsup.png
-.. |right| image:: %(cnd)s/media/right.png
-.. |flash| image:: %(cnd)s/media/flash.png
+.. |pen| image:: %(cdn)s/media/pen.png
+.. |info| image:: %(cdn)s/media/info.png
+.. |thumbsup| image:: %(cdn)s/media/thumbsup.png
+.. |right| image:: %(cdn)s/media/right.png
+.. |flash| image:: %(cdn)s/media/flash.png
 .. |infosign| image:: icon-info-sign
 """
 
@@ -66,7 +66,7 @@ def render_simple_tag(node, document, title, config, tagname=None,
 def _tree(node, document, title, config):
     """Renders a node in HTML.
     """
-    cnd = config['cnd']
+    cdn = config['cdn']
     text = []
     klass = node.__class__.__name__
     if klass == 'transition':
@@ -207,7 +207,7 @@ def _tree(node, document, title, config):
             text.append('<a href="%s">' % refuri)
 
         if not uri.startswith('http'):
-            uri = '/'.join([config['cnd'], document.split('/')[1], uri])
+            uri = '/'.join([config['cdn'], document.split('/')[1], uri])
         text.append('<img class="centered span12" src="%s"></img>' % uri)
 
         # caption
@@ -274,7 +274,7 @@ def _tree(node, document, title, config):
         index(document, title, 'author', value)
         author_id = str2authorid(value)
         text.append('<img class="subst" '
-                    'src="%s/media/pen.png">' % cnd)
+                    'src="%s/media/pen.png">' % cdn)
         text.append('</img>')
         text.append('<a href="%s/auteurs/%s.html">%s</a>' %
                         (config['siteurl'], author_id, value))
@@ -286,7 +286,7 @@ def _tree(node, document, title, config):
         value = node.children[1].astext()
         if name == 'category':
             text.append('<img class="subst" '
-                        'src="%s/media/info.png">' % cnd)
+                        'src="%s/media/info.png">' % cdn)
             text.append('</img>')
             cats = value.split(',')
             index(document, title, name, cats)
@@ -299,14 +299,14 @@ def _tree(node, document, title, config):
             index(document, title, name, value)
 
             text.append('<img class="subst" '
-                        'src="%s/media/flash.png">' % cnd)
+                        'src="%s/media/flash.png">' % cdn)
             text.append('</img>')
             text.append('<strong>Niveau</strong>: %s' % value.capitalize())
         elif name == 'translator':
             index(document, title, name, value)
 
             text.append('<img class="subst" '
-                        'src="%s/media/translation.png">' % cnd)
+                        'src="%s/media/translation.png">' % cdn)
             text.append('</img>')
             author_id = str2authorid(value)
             msg = ('<strong>Traduction</strong>: '
@@ -343,7 +343,7 @@ class RestructuredText(object):
         target = os.path.splitext(target)[0] + '.html'
 
         with open(path) as f:
-            content = f.read() + _FOOTER % {'cnd': self.config['cnd']}
+            content = f.read() + _FOOTER % {'cdn': self.config['cdn']}
             doctree = publish_doctree(content)
 
         title = doctree.children[0].astext()

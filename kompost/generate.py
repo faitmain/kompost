@@ -49,7 +49,7 @@ def generate(config):
     cats = [cat.strip() for cat in cats if cat.strip() != '']
     config['categories'] = cats
 
-    for path in ('cnd', 'siteurl'):
+    for path in ('cdn', 'siteurl'):
         if os.path.exists(config[path]):
             config[path] = os.path.abspath(config[path])
 
