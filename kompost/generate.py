@@ -248,7 +248,7 @@ def generate(config):
 def main():
     configure_logger()
     config = ConfigParser()
-    config.read('kompost.ini')
+    config.readfp(codecs.open("kompost.ini", "r", "utf8"))
     config = dict(config.items('kompost'))
     target = config['target']
     src = config['src']

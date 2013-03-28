@@ -342,7 +342,7 @@ class RestructuredText(object):
     def __call__(self, path, target, url_target, **options):
         target = os.path.splitext(target)[0] + '.html'
 
-        with open(path) as f:
+        with codecs.open(path, "r", "utf8") as f:
             content = f.read() + _FOOTER % {'cnd': self.config['cnd']}
             doctree = publish_doctree(content)
 

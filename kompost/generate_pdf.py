@@ -4,6 +4,7 @@ import json
 import socket
 from ConfigParser import ConfigParser
 import logging
+import codecs
 
 from rst2pdf.createpdf import main as create_pdf
 
@@ -79,16 +80,16 @@ def generate(config):
     for article in jsonlist['articles']:
         article = os.path.join(src, article)
 
-        with open(article) as f:
+        with codecs.open(article, "r", "utf8") as f:
             article = f.read()
 
         rst += article_header + article + PAGEBRK
 
     rst += _FOOTER
     full = os.path.join(target, '%s.rst' % name)
-    rst = rst.replace('\xc2\xa0', ' ')
+    rst = rst.replace(u'\xa0', u' ')
 
-    with open(full, 'w') as f:
+    with codecs.open(full, 'w', 'utf8') as f:
         f.write(rst)
 
     create_pdf([full, '--config',  config['pdf_conf']])
