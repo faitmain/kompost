@@ -94,10 +94,11 @@ def generate(config):
                 shutil.copyfile(path, file_target)
 
     # media
-    media = config['media']
+    media = str(config['media'])
 
     if os.path.exists(media):
         shutil.rmtree(media)
+
     shutil.copytree('media', media)
 
     # building category pages now
