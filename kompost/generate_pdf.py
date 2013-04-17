@@ -12,7 +12,7 @@ from kompost.util import configure_logger
 
 
 
-COVER = """\
+COVER = u"""\
 .
 
 .. role:: wfont
@@ -43,7 +43,7 @@ COVER = """\
 
 """
 
-PAGEBRK = """
+PAGEBRK = u"""
 
 .. raw:: pdf
 
@@ -52,9 +52,9 @@ PAGEBRK = """
 
 """
 
-article_header = ""
+article_header = u""
 
-_FOOTER = """
+_FOOTER = u"""
 
 .. |pen| image:: ../media/pen.png
 .. |info| image:: ../media/info.png
@@ -98,7 +98,7 @@ def generate(config):
 def main():
     configure_logger()
     config = ConfigParser()
-    config.read('kompost.ini')
+    config.readfp(codecs.open('kompost.ini', 'r', 'utf8'))
     config = dict(config.items('kompost'))
     target = config['target']
     src = config['src']

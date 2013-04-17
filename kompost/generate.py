@@ -106,6 +106,7 @@ def generate(config):
 
     for key, index in get_index():
         path, title = key.split(':')
+
         for key, value in index.items():
             if key != 'category':
                 continue

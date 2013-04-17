@@ -18,7 +18,6 @@ def get_document_index(document, title):
 
 def index(document, title, name, value, append=False):
     key = document + ':' + title
-
     if append:
         current = _INDEX[key].get(name, [])
         current.append(value)
