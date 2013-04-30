@@ -177,7 +177,7 @@ def generate(config):
 
         def _line(line):
             title, path = line
-            path = '%s/%s' % (config['siteurl'], path)
+            path = '%s/%s' % (config['siteurl'].rstrip('/'), path)
             return u'- `%s <%s>`_' % (title, path)
 
         articles = AUTHOR_ARTICLES % '\n'.join([_line(data) for data in
