@@ -29,7 +29,10 @@ def index(document, title, name, value, append=False):
 def save_index(metadata):
     if os.path.exists(metadata):
         with open(metadata) as f:
-            data = json.loads(f.read())
+            try:
+                data = json.loads(f.read())
+            except ValueError:
+                raise ValueError("Could not read %s" % metadata)
     else:
         data = {}
 

@@ -7,6 +7,7 @@ from ConfigParser import ConfigParser
 from collections import defaultdict
 import tempfile
 import codecs
+import sys
 
 import requests
 
@@ -250,7 +251,11 @@ def generate(config):
 def main():
     configure_logger()
     config = ConfigParser()
-    config.readfp(codecs.open("kompost.ini", "r", "utf8"))
+    if len(sys.argv) > 1:
+        ini = sys.argv[1]
+    else:
+        ini = "kompost.ini"
+    config.readfp(codecs.open(ini, "r", "utf8"))
     config = dict(config.items('kompost'))
     target = config['target']
     src = config['src']
