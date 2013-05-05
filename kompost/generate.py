@@ -3,13 +3,13 @@ import shutil
 import json
 import socket
 import datetime
-from ConfigParser import ConfigParser
 from collections import defaultdict
 import tempfile
 import codecs
 import sys
 
 import requests
+from konfig import Config
 
 from feedgenerator import Atom1Feed
 
@@ -250,12 +250,12 @@ def generate(config):
 
 def main():
     configure_logger()
-    config = ConfigParser()
     if len(sys.argv) > 1:
         ini = sys.argv[1]
     else:
         ini = "kompost.ini"
-    config.readfp(codecs.open(ini, "r", "utf8"))
+    os.environ['CURDIR'] = os.getcwd()
+    config = Config(codecs.open(ini, "r", "utf8"))
     config = dict(config.items('kompost'))
     target = config['target']
     src = config['src']

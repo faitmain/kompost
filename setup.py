@@ -2,7 +2,9 @@ from setuptools import setup, find_packages
 
 
 install_requires = ['Mako', 'docutils', 'Pygments', 'requests',
-                    'rst2pdf', 'Pillow', 'pyPdf', 'feedgenerator']
+                    'rst2pdf', 'Pillow', 'pyPdf', 'feedgenerator',
+                    'konfig']
+
 
 
 setup(name='kompost',
