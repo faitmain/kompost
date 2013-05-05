@@ -57,8 +57,7 @@ def _notag(text):
 def shorten(url, server, password, amazon_tag=None):
     if url.startswith('mailto'):
         return url
-
-    logger.debug('Shortening %r' % url)
+    logger.info('Shortening %r' % url)
     url = url.rstrip('/')
     # XXX should use urlparse
     if amazon_tag and 'amazon.fr' in url:
@@ -71,11 +70,15 @@ def shorten(url, server, password, amazon_tag=None):
     req = urllib2.Request(server, headers={'X-Short': password})
     req.get_method = lambda: 'POST'
     req.add_data(url)
+    old_timeout = socket.getdefaulttimeout()
+    socket.setdefaulttimeout(2)
     try:
         res = urllib2.urlopen(req).read()
     except (socket.error, urllib2.URLError), e:
-        logger.debug('Error on the call %r' % url)
+        logger.info('Error on the call %r' % url)
         return url
+    finally:
+        socket.setdefaulttimeout(old_timeout)
     res = json.loads(res)
     res = server + '/' + res['short']
     logger.debug('Shortened to %r' % res)
