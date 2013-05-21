@@ -312,6 +312,11 @@ def _tree(node, document, title, config):
             msg = ('<strong>Traduction</strong>: '
                    '<a href="%s/auteurs/%s.html">%s</a>')
             text.append(msg % (config['siteurl'], author_id, value))
+        elif name == 'licence':
+            text.append('<img class="subst" '
+                        'src="%s/media/cc.png">' % cnd)
+            text.append('</img>')
+            text.append(value)
 
     elif klass == 'colspec':  # table colspec
         pass
