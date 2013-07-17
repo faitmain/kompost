@@ -270,14 +270,15 @@ def _tree(node, document, title, config):
         for child in node.children:
             text.append(_tree(child, document, title, config))
     elif klass == 'author':
-        value = node.astext()
-        index(document, title, 'author', value)
-        author_id = str2authorid(value)
         text.append('<img class="subst" '
                     'src="%s/media/pen.png">' % cnd)
         text.append('</img>')
-        text.append('<a href="%s/auteurs/%s.html">%s</a>' %
-                        (config['siteurl'], author_id, value))
+        for value in node.astext().split(','):
+            value = value.strip()
+            index(document, title, 'author', value)
+            author_id = str2authorid(value)
+            text.append('<a href="%s/auteurs/%s.html">%s</a>' %
+                            (config['siteurl'], author_id, value))
     elif klass == 'date':
         index(document, title, 'date', node.astext())
 
