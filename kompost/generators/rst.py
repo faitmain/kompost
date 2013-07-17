@@ -37,6 +37,10 @@ SIMPLE_TAGS = {
     'thead': ('thead', False),
     'tbody': ('tbody', False),
     'row': ('tr', False),
+    'definition_list': ('dl', False),
+    'definition_list_item': (False, False),
+    'term': ('dt', False),
+    'definition': ('dd', False),
 }
 
 
@@ -52,14 +56,18 @@ def render_simple_tag(node, document, title, config, tagname=None,
     if tagname is None:
         tagname = node.tagname
     attributes = ['%s="%s"' % (attr, value) for attr, value in node.attlist()]
-    rendered = ['<%s>' % tagname]
-    if attributes:
-        rendered[0] = '<%s %s>' % (tagname, " ".join(attributes))
+    rendered = ['']
+    if tagname is not False:
+        rendered = ['<%s>' % tagname]
+        if attributes:
+            rendered[0] = '<%s %s>' % (tagname, " ".join(attributes))
     if node.children and strip_child:
         node = node.children[0]
     for child in node.children:
         rendered.append(_tree(child, document, title, config))
-    rendered.append('</%s>' % tagname)
+
+    if tagname is not False:
+        rendered.append('</%s>' % tagname)
     return rendered
 
 
