@@ -283,6 +283,8 @@ def _tree(node, document, title, config):
         text.append('</img>')
         for value in node.astext().split(','):
             value = value.strip()
+            if value == '':
+                continue
             index(document, title, 'author', value)
             author_id = str2authorid(value)
             text.append('<a href="%s/auteurs/%s.html">%s</a>' %
