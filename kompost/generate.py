@@ -54,6 +54,8 @@ def generate(config):
         if os.path.exists(config[path]):
             config[path] = os.path.abspath(config[path])
 
+    source_root = config.get('source_root')
+
     for root, dirs, files in os.walk(src):
         for file in files:
             if file.startswith('_'):
@@ -79,6 +81,9 @@ def generate(config):
             file_target_name, ext = os.path.splitext(file_target)
             url_target = file_target_name[len(target):] + '.html'
 
+            if source_root is not None:
+                config['github'] = os.path.join(source_root, location)
+
             if not os.path.exists(target_dir):
                 os.makedirs(target_dir)
 
@@ -93,6 +98,9 @@ def generate(config):
             else:
                 logger.info('Copying %r' % file_target)
                 shutil.copyfile(path, file_target)
+
+    if 'github' in config:
+        del config['github']
 
     # media
     media = str(config['media'])

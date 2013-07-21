@@ -57,6 +57,9 @@ def _notag(text):
 def shorten(url, server, password, amazon_tag=None):
     if url.startswith('mailto'):
         return url
+    if url.lower().endswith('.jpg'):
+        return url
+
     logger.info('Shortening %r' % url)
     url = url.rstrip('/')
     # XXX should use urlparse
@@ -71,10 +74,13 @@ def shorten(url, server, password, amazon_tag=None):
     req.get_method = lambda: 'POST'
     req.add_data(url)
     old_timeout = socket.getdefaulttimeout()
-    socket.setdefaulttimeout(2)
+    socket.setdefaulttimeout(20)
     try:
         res = urllib2.urlopen(req).read()
     except (socket.error, urllib2.URLError), e:
+        #if isinstance(e, urllib2.HTTPError):
+        #    raise ValueError("Error %s on %s" % (e.code, url))
+
         logger.info('Error on the call %r' % url)
         return url
     finally:
