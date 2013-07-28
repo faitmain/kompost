@@ -71,9 +71,15 @@ def render_simple_tag(node, document, title, config, tagname=None,
     return rendered
 
 
+_LEVEL = 0
+
+
 def _tree(node, document, title, config):
     """Renders a node in HTML.
     """
+    global _LEVEL
+    _LEVEL += 1
+
     cnd = config['cnd']
     text = []
     klass = node.__class__.__name__
@@ -256,12 +262,21 @@ def _tree(node, document, title, config):
         # ??
         pass
     elif klass == 'section':
+        if _LEVEL == 1:
+            tag = '<h2>%s</h2>'
+        elif _LEVEL == 2:
+            tag = '<h3>%s</h3>'
+        else:
+            tag = '<h4>%s</h4>'
+
         section_title = node.children[0][0].astext()
         id = node.attributes['ids'][0]
-        index(document, title, 'sections', (section_title, id), append=True)
+        if _LEVEL == 1:
+            index(document, title, 'sections', (section_title, id),
+                  append=True)
         text.append('<div id="%s" class="section">' % id)
-        header = (u'<h2>%s <a class="headerlink" href="#%s"'
-                  u'title="Lien vers cette section">\xb6</a></h2>')
+        header = (tag % u'%s <a class="headerlink" href="#%s"'
+                  u'title="Lien vers cette section">\xb6</a>')
         header = header % (section_title, id)
         text.append(header)
 
@@ -344,6 +359,7 @@ def _tree(node, document, title, config):
     else:
         raise NotImplementedError(node)
 
+    _LEVEL -= 1
     return ' '.join(text)
 
 
