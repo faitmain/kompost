@@ -142,20 +142,20 @@ def generate(config):
     authors = {}
     for key, index in get_index():
         path, title = key.split(':')
-        for key, author_name in index.items():
+        for key, authors_ in index.items():
             if key != 'author':
                 continue
 
-            author_id = str2authorid(author_name)
-
-            if author_id in authors:
-                authors[author_id]['articles'].append((title, path))
-            else:
-                # should be configurable
-                link = '%s/auteurs/%s.html' % (config['siteurl'], author_id)
-                authors[author_id] = {'link': link,
-                                      'articles': [(title, path)],
-                                      'name': author_name}
+            for author_name in authors_:
+                author_id = str2authorid(author_name)
+                if author_id in authors:
+                    authors[author_id]['articles'].append((title, path))
+                else:
+                    # should be configurable
+                    link = '%s/auteurs/%s.html' % (config['siteurl'], author_id)
+                    authors[author_id] = {'link': link,
+                                          'articles': [(title, path)],
+                                          'name': author_name}
 
     authors = authors.items()
     authors.sort()

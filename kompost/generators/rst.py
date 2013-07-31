@@ -296,14 +296,18 @@ def _tree(node, document, title, config):
         text.append('<img class="subst" '
                     'src="%s/media/pen.png">' % cnd)
         text.append('</img>')
+        authors = []
+
         for value in node.astext().split(','):
             value = value.strip()
             if value == '':
                 continue
-            index(document, title, 'author', value)
+            authors.append(value)
             author_id = str2authorid(value)
             text.append('<a href="%s/auteurs/%s.html">%s</a>' %
                             (config['siteurl'], author_id, value))
+
+        index(document, title, 'author', authors)
     elif klass == 'date':
         index(document, title, 'date', node.astext())
 
